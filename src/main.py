@@ -5,6 +5,7 @@
 #Basic imports
 from ctypes import *
 import sys
+import commands
 #Phidet specific imports
 from Phidgets.PhidgetException import PhidgetErrorCodes, PhidgetException
 from Phidgets.Events.Events import AttachEventArgs, DetachEventArgs, ErrorEventArgs, OutputChangeEventArgs, TagEventArgs
@@ -17,21 +18,26 @@ import lcd
 # Twitter Functions 
 ########################
 def twitUserLogin(user):
-    print ("%s" % user)
+    global csss_lcd
+    status, output = commands.getstatusoutput("python --version")
+    #output = subprocess.check_output("python --version", shell=True)
+    print ("{%s}" % output)
+
+    csss_lcd.displaySlow(0, output)
 
 ########################
 # MAIN
 ########################
-#csss_rfid = rfid.csss_rfid()
-#csss_rfid.setOnTagCallback(twitUserLogin)
+csss_rfid = rfid.csss_rfid()
+csss_rfid.setOnTagCallback(twitUserLogin)
 
 csss_lcd = lcd.csss_lcd()
-csss_lcd.displaySlow(0,"OPEN")
-csss_lcd.displaySlow(1,"CLOSED")
-csss_lcd.clearRow(1)
-csss_lcd.displaySlow(1,"Hello")
-csss_lcd.clearAll()
-csss_lcd.display(1,"Herp derp derp, I'm scrollllinngg!!!")
+#csss_lcd.displaySlow(0,"OPEN")
+##csss_lcd.displaySlow(1,"CLOSED")
+#csss_lcd.clearRow(1)
+#csss_lcd.displaySlow(1,"Hello")
+#csss_lcd.clearAll()
+#csss_lcd.display(1,"Herp derp derp, I'm scrollllinngg!!!")
 
 chr = sys.stdin.read(1)
 

@@ -69,7 +69,7 @@ class csss_lcd:
 				if self.textLCD.getDeviceID()==PhidgetID.PHIDID_TEXTLCD_ADAPTER:
 						self.textLCD.setScreenIndex(0)
 						self.textLCD.setScreenSize(TextLCD_ScreenSize.PHIDGET_TEXTLCD_SCREEN_2x8)
-				self.textLCD.setDisplayString(row, bytes(str, 'utf-8'))
+				self.textLCD.setDisplayString(row, str)#bytes(str, 'utf-8'))
 			except PhidgetException as e:
 				print("Phidget Exception %i: %s" % (e.code, e.details))
 
