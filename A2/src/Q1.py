@@ -39,7 +39,13 @@ def dateStringToDayOfYear(dateString, format='%B %d'):
     date_struct = time.strptime(dateString, format)
     return date_struct[7]
 
+
+
+#------------------------------------------------------------------------------
+#main
+#------------------------------------------------------------------------------
+
 lines = fileLinesToArray('Midterm_Constraints.txt')
 for line in lines:
-    print type(dateStringToDayOfYear(line))
+    print (dateStringToDayOfYear(line))
 print lines
