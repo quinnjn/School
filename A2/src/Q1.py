@@ -44,6 +44,9 @@ def dateStringToDayOfYear(dateString, format='%B %d'):
 #------------------------------------------------------------------------------
 #main
 #------------------------------------------------------------------------------
+
+Domains = ['March 1st', 'March 4th', 'March 6th', 'March 8th', 'March 11th', 'March 13th', 'March 15th']
+
 lines = fileLinesToArray('Midterm_Constraints.txt')
 for i,line in enumerate(lines):
     lines[i] = dateStringToDayOfYear(line)
