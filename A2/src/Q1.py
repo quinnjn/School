@@ -44,8 +44,7 @@ def dateStringToDayOfYear(dateString, format='%B %d'):
 #------------------------------------------------------------------------------
 #main
 #------------------------------------------------------------------------------
-
 lines = fileLinesToArray('Midterm_Constraints.txt')
-for line in lines:
-    print (dateStringToDayOfYear(line))
+for i,line in enumerate(lines):
+    lines[i] = dateStringToDayOfYear(line)
 print lines
