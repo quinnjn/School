@@ -8,6 +8,7 @@
 #IMPORTS
 ###############################################################################
 import time
+from time import strftime
 
 ###############################################################################
 #FUNCTIONS
@@ -39,7 +40,30 @@ def dateStringToDayOfYear(dateString, format='%B %d'):
     date_struct = time.strptime(dateString, format)
     return date_struct[7]
 
+#------------------------------------------------------------------------------
+#dateStringToDayOfYear
+#------------------------------------------------------------------------------
+#Given a date string (and possible a format) returns the day of year that
+# date is
+#params: datestring - string - some string representing a date
+#optional params: format - string - The format to try parse the date string with
+# default format is '%B %d' (Month day_of_month, ex March 11)
+#returns: int - the day of year the dateString is
+def dateStringToDayOfYear(dateString, format='%B %d'):
+    date_struct = time.strptime(dateString, format)
+    return date_struct[7]
 
+#------------------------------------------------------------------------------
+#dayOfYearToDateString
+#------------------------------------------------------------------------------
+#Given a day of year (and possible a format) returns the date string
+#params: dayOfYear - int - number between 1 and 366 representing the day of year
+#optional params: format - string - The format to try parse the date string with
+# default format is '%B %d' (Month day_of_month, ex March 11)
+#returns: string - the dateStirng the day of year is
+def dayOfYearToDateString(dayOfYear, format='%B %d'):
+    date_struct = time.strptime(str(dayOfYear), '%j')
+    return strftime(format, date_struct)
 
 #------------------------------------------------------------------------------
 #main
@@ -55,20 +79,35 @@ Constraints = fileLinesToArray('Midterm_Constraints.txt')
 #the text string.
 for i,date in enumerate(Domains):
     Domains[i] = dateStringToDayOfYear(date)
-print Domains
+print "Domains:", Domains
 
 for i,Constraint in enumerate(Constraints):
     Constraints[i] = dateStringToDayOfYear(Constraint)
-print Constraints
+print "Constraints:",Constraints
 
 #Loop through from 100 to 0
 for i in range(100):
+    prevAcceptableDomains = Domains[:]
     for Domain in Domains:
-        isAcceptable = True
+
+        #Determine the range of freedom that is allowed
+        minRange = Domain - i
+        maxRange = Domain + i
+        
         for Constraint in Constraints:
-            if(Domain >= (Constraint+i) or Domain <= (Constraint-i)):
-                isAcceptable = False
-                print Domain, Constraint, i
-        if(isAcceptable):
-            print Domain
-            exit()
+            #If the constraint is between the min and max range
+            if(minRange <= Constraint and maxRange >= Constraint):
+                #This number isnt acceptable
+                Domains.remove(Domain)
+                break
+
+    #If we still have Domains, print and continue
+    if(Domains):
+        print "N:", i, "Domains:", Domains
+    else:
+        print
+        print "The program tried to run N:",i,"but has finished with no successful results, here is the last successful results:"
+        for acceptedDomain in prevAcceptableDomains:
+            print acceptedDomain, "==", dayOfYearToDateString(acceptedDomain)
+        exit()
+
