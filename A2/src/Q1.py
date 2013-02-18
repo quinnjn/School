@@ -45,23 +45,29 @@ def dateStringToDayOfYear(dateString, format='%B %d'):
 #main
 #------------------------------------------------------------------------------
 
+#These are the domains mentioned in the assignment
 Domains = ['March 1', 'March 4', 'March 6', 'March 8', 'March 11', 'March 13', 'March 15']
+
+#Using the text file supplied, we can touch the constraints
+Constraints = fileLinesToArray('Midterm_Constraints.txt')
+
+#For both the Domains and Constraints, go through and get the DoY rather than
+#the text string.
 for i,date in enumerate(Domains):
     Domains[i] = dateStringToDayOfYear(date)
 print Domains
 
-Constraints = fileLinesToArray('Midterm_Constraints.txt')
 for i,Constraint in enumerate(Constraints):
     Constraints[i] = dateStringToDayOfYear(Constraint)
 print Constraints
 
-for i in range(100,0, -1):
+#Loop through from 100 to 0
+for i in range(100):
     for Domain in Domains:
         isAcceptable = True
         for Constraint in Constraints:
             if(Domain >= (Constraint+i) or Domain <= (Constraint-i)):
                 isAcceptable = False
-            #if(Domain > (Constraint+i) or Domain < (Constraint-i)):
                 print Domain, Constraint, i
         if(isAcceptable):
             print Domain
