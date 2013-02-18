@@ -50,7 +50,19 @@ for i,date in enumerate(Domains):
     Domains[i] = dateStringToDayOfYear(date)
 print Domains
 
-lines = fileLinesToArray('Midterm_Constraints.txt')
-for i,line in enumerate(lines):
-    lines[i] = dateStringToDayOfYear(line)
-print lines
+Constraints = fileLinesToArray('Midterm_Constraints.txt')
+for i,Constraint in enumerate(Constraints):
+    Constraints[i] = dateStringToDayOfYear(Constraint)
+print Constraints
+
+for i in range(100,0, -1):
+    for Domain in Domains:
+        isAcceptable = True
+        for Constraint in Constraints:
+            if(Domain >= (Constraint+i) or Domain <= (Constraint-i)):
+                isAcceptable = False
+            #if(Domain > (Constraint+i) or Domain < (Constraint-i)):
+                print Domain, Constraint, i
+        if(isAcceptable):
+            print Domain
+            exit()
