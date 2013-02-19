@@ -1,0 +1,72 @@
+\documentclass{article}
+%--Packages------------
+\usepackage{fancyvrb}
+\usepackage{alltt}
+
+%----------------------
+
+%--Variables-----------
+\newcommand{\AssignmentNum}{2}
+\newcommand{\QuestionNum}{2}
+\newcommand{\AssignmentTitle}{Are you satised with Constraint Satisfaction?}
+\newcommand{\AssignmentDate}{\today}
+%----------------------
+
+%--Title & Author------
+\title{CMPT 317, Term 2, 2013\\
+Assignment \AssignmentNum\\
+\AssignmentTitle
+}
+\author{
+	\begin{tabular}{ l r }
+	  Name: & Quinn Neumiiller \\
+	  NSID: & qjn162 \\
+	  Student \# & 11065618 \\
+	\end{tabular}
+}
+\date{\AssignmentDate}
+%----------------------
+
+%--Document------------
+\begin{document}
+   \maketitle
+   
+   \section{Compiling}
+   Not required for Python
+
+   \section{Execution}
+   To execute, change the terminal directory to where this PDF file sits.
+   Then in the terminal execute:
+	\begin{alltt}
+	python src/Q\QuestionNum.py
+	\end{alltt}
+
+  \section{Usage}
+    No usage required, script is self automated
+  \section{Explanation}
+    The script will take in the Midterm\_Constraints.txt and it already knows about the domains.
+
+    It will go from 0 till 100 trying to find acceptable domains given the constraints.
+
+    It will range from Domain-N to Domain+N, if the constraint is found in that range the
+    Domain is removed as a acceptable domain.
+
+    The program continues until there is no more successful answers, at that point it will grab the previous
+    set of acceptable answers and print them out.
+
+    NOTE: for ease of comparison I've transformed all dates into the day of year they represent
+    Ex) March 11 == 70th day of the year
+
+    I convert the accepted dates back into their string representation for reading.
+  \section{Answer}
+    According to the script, March 11th (70th day of the year) is the highest accepted 
+    date between constraints and is the day of the Midterm
+
+  \section{Suggestions}
+    I really really liked the idea of this question when posted, although it would be much cooler
+    if we could enter in our own constraints (ex: other midterms scheduled) and try find our most
+    acceptable midterm date out of the Domains provided. Obviously majority gets the midterm date of their chosing.
+
+\end{document}
+%----------------------
+
