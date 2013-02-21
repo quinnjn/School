@@ -81,26 +81,40 @@ Constraints = fileLinesToArray('Assignment_Constraints.txt')
 #the text string.
 Domains = range(
     dateStringToDayOfYear(StartDomain),
-    dateStringToDayOfYear(EndDomain)
+    dateStringToDayOfYear(EndDomain)+1
 )
-print "Domains:",Domains
 
 for i,Constraint in enumerate(Constraints):
     Constraints[i] = dateStringToDayOfYear(Constraint)
 
-#Add in midterm week
-for i in range(dateStringToDayOfYear('February 17'), dateStringToDayOfYear('February 24')+1 ):
-    Constraints.append(i)
-print "Constraints:",Constraints
+#midterm week
+midtermDays = range(
+    dateStringToDayOfYear('February 17'),
+    dateStringToDayOfYear('February 24')+1 
+)
+
+#We cannot assign assignments during time so remove those values from the domain
+Domains = list(set(Domains) - set(midtermDays))
+
+#Print starting data
+#print "Domains:",Domains
+#print "ProhibitedConstraints:", midtermDays
+#print "Constraints:",Constraints
+#print
+#print
+
+bestDueDates = []
+bestX = 0
 
 #Loop through from 100 to 0
-for i in range(100):
+for N in range(5):
     prevAcceptableDomains = Domains[:]
+    #Determine N
     for Domain in Domains:
 
         #Determine the range of freedom that is allowed
-        minRange = Domain - i
-        maxRange = Domain + i
+        minRange = Domain - N
+        maxRange = Domain + N
         
         for Constraint in Constraints:
             #If the constraint is between the min and max range
@@ -109,13 +123,43 @@ for i in range(100):
                 Domains.remove(Domain)
                 break
 
-    #If we still have Domains, print and continue
-    if(Domains):
-        print "N:", i, "Domains:", Domains
-    else:
-        print
-        print "The program tried to run N:",i,"but has finished with no successful results, here is the last successful results:"
-        for acceptedDomain in prevAcceptableDomains:
-            print acceptedDomain, "==", dayOfYearToDateString(acceptedDomain)
-        exit()
+    #Determine X
+    #If our list is in order, then the first and last items should be the min
+    # and max due dates possible. We are just required to find 2 more based on
+    # our X heuristic.
+    for X in range(100):
+        minDueDate = Domains[0]
+        possibleDueDates = [minDueDate]
 
+        recentDueDate = minDueDate
+
+        for Domain in Domains:
+            if(Domain == recentDueDate + X):
+                recentDueDate = Domain
+                possibleDueDates.append(Domain)
+                if(len(possibleDueDates) == 4):
+                    continue
+
+        if(len(possibleDueDates) == 4 and X > bestX):
+            possibleDueDatesStringArray = []
+            for possibleDueDate in possibleDueDates:
+                possibleDueDatesStringArray.append(dayOfYearToDateString(possibleDueDate))
+            print "Found successful match for X:", X, "giving:", possibleDueDatesStringArray
+            bestX = X
+            bestDueDates = possibleDueDates[:]
+        #else:
+            #print "Did not find successful match", possibleDueDates
+            
+            
+
+
+
+#If we still have Domains, print and continue
+# if(Domains):
+#     print "N:", N, "Domains:", Domains
+# else:
+#     print
+#     print "The program tried to run N:",i,"but has finished with no successful results, here is the last successful results:"
+#     for acceptedDomain in prevAcceptableDomains:
+#         print acceptedDomain, "==", dayOfYearToDateString(acceptedDomain)
+#     exit()
