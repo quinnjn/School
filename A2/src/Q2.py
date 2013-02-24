@@ -124,9 +124,6 @@ for N in range(5):
                 #This number isnt acceptable with our constraints, removing it
                 DomainsWithoutConstraints.remove(Domain)
                 #We can break at this point because we cant re-remove the item
-                if(Domain == 89):
-                    print minRange, Domain, maxRange, Constraint
-                    exit()
                 break
 
 
@@ -145,8 +142,10 @@ for N in range(5):
         possibleDueDates = [minDueDate]
         recentDueDate = minDueDate
 
+        checkedDomains = 0
         #loop through the DomainsWithoutConstraints trying to find acceptable dates
         for Domain in DomainsWithoutConstraints:
+            checkedDomains += 1
             #If the domain is greater than or equal to the last assignment date + X, we can use this number.
             if(Domain >= recentDueDate + X):
                 recentDueDate = Domain
@@ -161,5 +160,5 @@ for N in range(5):
             #This is cleaning up from DoY to a string that is easy to read.
             for possibleDueDate in possibleDueDates:
                 possibleDueDatesStringArray.append(dayOfYearToDateString(possibleDueDate))
-            print "N:", N, "X:", X, "giving:", possibleDueDatesStringArray
+            print "N:", N, "X:", X, "nodes checked:",checkedDomains,"giving:", possibleDueDatesStringArray
     print          
