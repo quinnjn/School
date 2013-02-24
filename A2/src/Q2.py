@@ -1,5 +1,5 @@
 ###############################################################################
-#Q1.py 
+#Q2.py 
 #CMPT 317 A2
 #Quinn Neumiiller
 #11065618
@@ -81,7 +81,7 @@ Constraints = fileLinesToArray('Assignment_Constraints.txt')
 #the text string.
 Domains = range(
     dateStringToDayOfYear(StartDomain),
-    dateStringToDayOfYear(EndDomain)+1
+    dateStringToDayOfYear(EndDomain)+1 #Including this date, range in python is exclusive
 )
 
 for i,Constraint in enumerate(Constraints):
@@ -90,76 +90,76 @@ for i,Constraint in enumerate(Constraints):
 #midterm week
 midtermDays = range(
     dateStringToDayOfYear('February 17'),
-    dateStringToDayOfYear('February 24')+1 
+    dateStringToDayOfYear('February 24')+1 #Including this date, range in python is exclusive
 )
 
 #We cannot assign assignments during time so remove those values from the domain
 Domains = list(set(Domains) - set(midtermDays))
 
-#Print starting data
-#print "Domains:",Domains
-#print "ProhibitedConstraints:", midtermDays
-#print "Constraints:",Constraints
-#print
-#print
 
-bestDueDates = []
-bestX = 0
+#This will be the domains without constraints
+#We are defining this out of the loop because as N increases we just remove
+#more items.
+DomainsWithoutConstraints = Domains[:]
 
 #Loop through from 100 to 0
 for N in range(5):
-    prevAcceptableDomains = Domains[:]
+    print "--- N = %d ---" % N
+
+    #This is a temp list that we loop over, removing items from DomainsWithoutConstraints
+    tempDomains = DomainsWithoutConstraints[:]
+
     #Determine N
-    for Domain in Domains:
+    #This can be optimized by just reusing DomainsWithoutConstraints
+    for Domain in tempDomains:
 
         #Determine the range of freedom that is allowed
         minRange = Domain - N
         maxRange = Domain + N
         
+        #Loop through the constraints and remove items that shouldn't be there
         for Constraint in Constraints:
             #If the constraint is between the min and max range
-            if(minRange <= Constraint and maxRange >= Constraint):
-                #This number isnt acceptable
-                Domains.remove(Domain)
+            if(minRange < Constraint and Constraint < maxRange):
+                #This number isnt acceptable with our constraints, removing it
+                DomainsWithoutConstraints.remove(Domain)
+                #We can break at this point because we cant re-remove the item
+                if(Domain == 89):
+                    print minRange, Domain, maxRange, Constraint
+                    exit()
                 break
 
+
+    #At this point, DomainsWithoutConstraints includes the dates that are acceptable given our Constraint
+    #So any of these due dates will not interfere with our constraints
+
     #Determine X
-    #If our list is in order, then the first and last items should be the min
+    #If our list is in order (which it is), then the first and last items should be the min
     # and max due dates possible. We are just required to find 2 more based on
     # our X heuristic.
-    for X in range(100):
-        minDueDate = Domains[0]
-        possibleDueDates = [minDueDate]
+    print "Removed %d problematic domains from the original %d" %((len(Domains) - len(DomainsWithoutConstraints)), len(Domains))
 
+    #Loop through some range of X, in this case 1-100
+    for X in range(100+1): #Including this date, range in python is exclusive
+        minDueDate = DomainsWithoutConstraints[0]
+        possibleDueDates = [minDueDate]
         recentDueDate = minDueDate
 
-        for Domain in Domains:
-            if(Domain == recentDueDate + X):
+        #loop through the DomainsWithoutConstraints trying to find acceptable dates
+        for Domain in DomainsWithoutConstraints:
+            #If the domain is greater than or equal to the last assignment date + X, we can use this number.
+            if(Domain >= recentDueDate + X):
                 recentDueDate = Domain
                 possibleDueDates.append(Domain)
+
+                #If we hit 4 dates its good to go
                 if(len(possibleDueDates) == 4):
                     continue
 
-        if(len(possibleDueDates) == 4 and X > bestX):
+        if(len(possibleDueDates) == 4):
             possibleDueDatesStringArray = []
+            #This is cleaning up from DoY to a string that is easy to read.
             for possibleDueDate in possibleDueDates:
                 possibleDueDatesStringArray.append(dayOfYearToDateString(possibleDueDate))
-            print "Found successful match for X:", X, "giving:", possibleDueDatesStringArray
-            bestX = X
-            bestDueDates = possibleDueDates[:]
-        #else:
-            #print "Did not find successful match", possibleDueDates
-            
-            
-
-
-
-#If we still have Domains, print and continue
-# if(Domains):
-#     print "N:", N, "Domains:", Domains
-# else:
-#     print
-#     print "The program tried to run N:",i,"but has finished with no successful results, here is the last successful results:"
-#     for acceptedDomain in prevAcceptableDomains:
-#         print acceptedDomain, "==", dayOfYearToDateString(acceptedDomain)
-#     exit()
+            print "N:", N, "X:", X, "giving:", possibleDueDatesStringArray
+    print          
