@@ -48,36 +48,65 @@ Question \QuestionNum\\
     The script will take in the Assignment\_Constraints.txt and it already knows about the domains listed in the assignment.
 
     The domains are:
-    $D_i=\left\{{January\ 17th - April\ 9th}\right\}$
+    $D$=\{January 17th, 18th, ... April 9th\} - \{Februrary 17th, 18th, ... Februrary 24th\}
 
     The constraints are:
-    C=\{February 17th - Februrary 24th, A1 Due Date \textless A2 Due Date, A2 Due Date \textless A3 Due Date, A3 Due Date \textless A4 Due Date\}
+    $C$=\{January 23, January 29, February 1, February 6, February 14, February 16, March 3, March 5, March 6, March 8, March 20, April 3, April 8, April 9, A1 Due Date \textless A2 Due Date, A2 Due Date \textless A3 Due Date, A3 Due Date \textless A4 Due Date\}
 
-    -----
+    The program will search through N 0-4, and then X:0-100 for each N. Note on N, the assignments need to be atleast N days apart so if my N was 1, January 1 would be 1 N away from January 2 in this program.
 
+    Each time we find 4 domains X apart, it prints out the possible X's allowed. 
 
+    The first Domain is always part of our solution since it is the earliest item, and now that I think about it the last Domain should technically
+    be the last Domain of our solution because $minDomain < X < 2X < maxDomain$ could be our 4 elements. If I have time I will make this change.
 
+    We continue to loop through X until we can no longer find a X that fits in the given domain.
 
-    It will go from 0 till 100 trying to find acceptable domains given the constraints.
-
-    It will range from Domain-N to Domain+N, if the constraint is found in that range the
-    Domain is removed as a acceptable domain.
-
-    The program continues until there is no more successful answers, at that point it will grab the previous
-    set of acceptable answers and print them out.
-
-    NOTE: for ease of comparison I've transformed all dates into the day of year they represent
-    Ex) March 11 == 70th day of the year
-
-    I convert the accepted dates back into their string representation for reading.
   \section{Answer}
-    According to the script, March 11th (70th day of the year) is the highest accepted 
-    date between constraints and is the day of the Midterm
+    According to the script, here is the answers:
+    \begin{verbatim}
+--- N = 0 ---
+Removed 0 problematic domains from the original 75
+N: 0 X: 21 giving: ['January 17', 'February 07', 'February 28', 'March 21']
+N: 0 X: 22 giving: ['January 17', 'February 08', 'March 02', 'March 24']
+N: 0 X: 23 giving: ['January 17', 'February 09', 'March 04', 'March 27']
+N: 0 X: 24 giving: ['January 17', 'February 10', 'March 06', 'March 30']
+N: 0 X: 25 giving: ['January 17', 'February 11', 'March 08', 'April 02']
+N: 0 X: 26 giving: ['January 17', 'February 12', 'March 10', 'April 05']
+N: 0 X: 27 giving: ['January 17', 'February 13', 'March 12', 'April 08']
 
-  \section{Suggestions}
-    I really really liked the idea of this question when posted, although it would be much cooler
-    if we could enter in our own constraints (ex: other midterms scheduled) and try find our most
-    acceptable midterm date out of the Domains provided. Obviously majority gets the midterm date of their chosing.
+--- N = 1 ---
+Removed 14 problematic domains from the original 75
+N: 1 X: 20 giving: ['January 17', 'February 07', 'February 27', 'March 19']
+N: 1 X: 21 giving: ['January 17', 'February 07', 'February 28', 'March 21']
+N: 1 X: 22 giving: ['January 17', 'February 08', 'March 02', 'March 24']
+N: 1 X: 23 giving: ['January 17', 'February 09', 'March 04', 'March 27']
+N: 1 X: 24 giving: ['January 17', 'February 10', 'March 07', 'March 31']
+N: 1 X: 25 giving: ['January 17', 'February 11', 'March 09', 'April 04']
+N: 1 X: 26 giving: ['January 17', 'February 12', 'March 10', 'April 05']
+
+--- N = 2 ---
+Removed 33 problematic domains from the original 75
+N: 2 X: 20 giving: ['January 17', 'February 08', 'February 28', 'March 22']
+N: 2 X: 21 giving: ['January 17', 'February 08', 'March 01', 'March 22']
+N: 2 X: 22 giving: ['January 17', 'February 08', 'March 10', 'April 01']
+N: 2 X: 23 giving: ['January 17', 'February 09', 'March 10', 'April 05']
+N: 2 X: 24 giving: ['January 17', 'February 10', 'March 10', 'April 05']
+N: 2 X: 25 giving: ['January 17', 'February 11', 'March 10', 'April 05']
+N: 2 X: 26 giving: ['January 17', 'February 12', 'March 10', 'April 05']
+
+--- N = 3 ---
+Removed 47 problematic domains from the original 75
+N: 3 X: 17 giving: ['January 17', 'February 09', 'February 26', 'March 15']
+N: 3 X: 18 giving: ['January 17', 'February 09', 'February 27', 'March 17']
+N: 3 X: 19 giving: ['January 17', 'February 09', 'February 28', 'March 23']
+N: 3 X: 20 giving: ['January 17', 'February 09', 'March 11', 'March 31']
+
+--- N = 4 ---
+Removed 56 problematic domains from the original 75
+N: 4 X: 17 giving: ['January 17', 'February 10', 'February 27', 'March 16']
+N: 4 X: 18 giving: ['January 17', 'February 10', 'March 12', 'March 30']
+  \end{verbatim}
 
 \end{document}
 %----------------------
