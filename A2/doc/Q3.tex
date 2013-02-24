@@ -44,5 +44,35 @@ Question \QuestionNum\\
 
   \section{Usage}
     No usage required, script is self automated
+  \section{The War of the Monsters problem as a CSP}
+  {\setlength{\parindent}{0cm}
+    D = \{$P, N, B, T$\}
+
+    V = \{$G, M, R, MG, K$\}
+
+    coastal(N)
+
+    coastal(T)
+
+    hasMonument(P)
+
+    hasMonument(N)
+
+    $D_G = \{N, T\}$
+
+    $D_K = \{N, P\}$
+
+    $D_{MG} = \{P, N, B\}$
+
+    $D_M = \{P, N, B, T\}$
+
+    $D_R = \{P, N, B, T\}$
+
+
+    $C=\{M\ne R, G \ne K, MG=G$ or $MG=M\}$
+
+  }
+
+
   \section{Explanation}
 \end{document}
