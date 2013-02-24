@@ -55,7 +55,7 @@ Question \QuestionNum\\
 
     The program will search through N 0-4, and then X:0-100 for each N. Note on N, the assignments need to be atleast N days apart so if my N was 1, January 1 would be 1 N away from January 2 in this program.
 
-    Each time we find 4 domains X apart, it prints out the possible X's allowed. 
+    Each time we increase N, we check our current Domains against our constraints and remove Domains that no longer fit. Because N is just increasing the range that is an acceptable padding between constraints, by applying arc consistency we can remove Domains that violate the constraints at N. If we removed a set $A$ of Domains that would not fit with the constraints at N and a set $B$ of Domains that would not fit with the constraints at N+1 we would see that $A \subseteq B$. This allows for a better time complexity and a faster search of X by not having to recheck all Domains for every interval of N.
 
     The first Domain is always part of our solution since it is the earliest item, and now that I think about it the last Domain should technically
     be the last Domain of our solution because $minDomain < X < 2X < maxDomain$ could be our 4 elements. If I have time I will make this change.
