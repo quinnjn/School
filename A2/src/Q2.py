@@ -102,30 +102,34 @@ Domains = list(set(Domains) - set(midtermDays))
 #more items.
 DomainsWithoutConstraints = Domains[:]
 
+#Everytime we check a domain, incremement it.
+checkedDomains = 0
 #Loop through from 100 to 0
 for N in range(5):
+    checkedDomains = 0
     print "--- N = %d ---" % N
 
     #This is a temp list that we loop over, removing items from DomainsWithoutConstraints
     tempDomains = DomainsWithoutConstraints[:]
 
-    #Determine N
-    #This can be optimized by just reusing DomainsWithoutConstraints
-    for Domain in tempDomains:
+    #If N is 0, meaning we want Domains to be 0 days away from a constraint, we can ignore constraints
+    if N != 0:
+        #Determine N
+        #This can be optimized by just reusing DomainsWithoutConstraints
+        for Domain in tempDomains:
+            checkedDomains +=1
 
-        #Determine the range of freedom that is allowed
-        minRange = Domain - N
-        maxRange = Domain + N
-        
-        #Loop through the constraints and remove items that shouldn't be there
-        for Constraint in Constraints:
-            #If the constraint is between the min and max range
-            if(minRange < Constraint and Constraint < maxRange):
-                #This number isnt acceptable with our constraints, removing it
-                DomainsWithoutConstraints.remove(Domain)
-                #We can break at this point because we cant re-remove the item
-                break
-
+            #Determine the range of freedom that is allowed
+            minRange = Domain - N
+            maxRange = Domain + N
+            #Loop through the constraints and remove items that shouldn't be there
+            for Constraint in Constraints:
+                #If the constraint is between the min and max range
+                if(minRange < Constraint and Constraint < maxRange):
+                    #This number isnt acceptable with our constraints, removing it
+                    DomainsWithoutConstraints.remove(Domain)
+                    #We can break at this point because we cant re-remove the item
+                    break
 
     #At this point, DomainsWithoutConstraints includes the dates that are acceptable given our Constraint
     #So any of these due dates will not interfere with our constraints
@@ -137,21 +141,31 @@ for N in range(5):
     print "Removed %d problematic domains from the original %d" %((len(Domains) - len(DomainsWithoutConstraints)), len(Domains))
 
     #Loop through some range of X, in this case 1-100
-    for X in range(100+1): #Including this date, range in python is exclusive
-        minDueDate = DomainsWithoutConstraints[0]
+    for X in range(100): #Including this date, range in python is exclusive
+        #Making a copy so we can pop the first and last possible Domains.
+        DomainsForX = DomainsWithoutConstraints[:]
+        minDueDate = DomainsForX.pop(0)
+        maxDueDate = DomainsForX.pop()
         possibleDueDates = [minDueDate]
         recentDueDate = minDueDate
 
-        checkedDomains = 0
-        #loop through the DomainsWithoutConstraints trying to find acceptable dates
-        for Domain in DomainsWithoutConstraints:
+        #loop through the DomainsForX trying to find acceptable dates
+        for Domain in DomainsForX:
             checkedDomains += 1
+
+            breakDiff = 0
+            if(dateStringToDayOfYear('February 17') <= recentDueDate and Domain >= dateStringToDayOfYear('February 24')):
+                breakDiff = 8
+            
             #If the domain is greater than or equal to the last assignment date + X, we can use this number.
-            if(Domain >= recentDueDate + X):
+            if(Domain >= recentDueDate + X + breakDiff):
                 recentDueDate = Domain
                 possibleDueDates.append(Domain)
 
-                #If we hit 4 dates its good to go
+                #If we hit 3 dates its good to go
+                if(len(possibleDueDates) == 3):
+                    if(maxDueDate >= recentDueDate + X):
+                        possibleDueDates.append(maxDueDate)
                 if(len(possibleDueDates) == 4):
                     continue
 
@@ -161,4 +175,5 @@ for N in range(5):
             for possibleDueDate in possibleDueDates:
                 possibleDueDatesStringArray.append(dayOfYearToDateString(possibleDueDate))
             print "N:", N, "X:", X, "nodes checked:",checkedDomains,"giving:", possibleDueDatesStringArray
+            break
     print          
