@@ -38,7 +38,15 @@ Question \QuestionNum\\
    To execute, change the terminal directory to where this PDF file sits.
    Then in the terminal execute:
     \begin{alltt}
-    python src/Q\QuestionNum.py
+    # For question \QuestionNum Part 1
+    python src/Q{\QuestionNum}P1.py
+
+    # For question \QuestionNum Part 2
+    python src/Q{\QuestionNum}P2.py
+
+    # For question \QuestionNum Part 3
+    python src/Q{\QuestionNum}P3.py
+
     \end{alltt}
 
   \section{Usage}
@@ -82,6 +90,49 @@ Question \QuestionNum\\
        Godzilla lives in New York
           Rodan lives in New York
   Nodes searched: 7
-  Finished in 0.000 seconds
+  Finished in 0.000116 seconds
   \end{verbatim}
+  \subsection{MRV}
+  \subsubsection{Answer}
+  \begin{verbatim}
+Old Variable Order: ['Godzilla', 'Mothra', 'Rodan', 'MechaGodzilla', 'King Kong']
+New Variable Order: ['King Kong', 'Godzilla', 'MechaGodzilla', 'Mothra', 'Rodan']
+Old Variable Order: ['Godzilla', 'MechaGodzilla', 'Mothra', 'Rodan']
+New Variable Order: ['Godzilla', 'MechaGodzilla', 'Mothra', 'Rodan']
+Old Variable Order: ['MechaGodzilla', 'Mothra', 'Rodan']
+New Variable Order: ['MechaGodzilla', 'Mothra', 'Rodan']
+Old Variable Order: ['Mothra', 'Rodan']
+New Variable Order: ['Mothra', 'Rodan']
+Old Variable Order: ['Rodan']
+New Variable Order: ['Rodan']
+         Mothra lives in Paris
+          Rodan lives in New York
+      King Kong lives in Paris
+       Godzilla lives in New York
+  MechaGodzilla lives in Paris
+Nodes searched: 7
+Finished in 0.000502 seconds
+\end{verbatim}
+  \subsection{MRV + MCV}
+  \subsubsection{Answer}
+  \begin{verbatim}
+Old Variable Order: ['Godzilla', 'Mothra', 'Rodan', 'MechaGodzilla', 'King Kong']
+New Variable Order: ['King Kong', 'Godzilla', 'MechaGodzilla', 'Mothra', 'Rodan']
+Old Variable Order: ['Godzilla', 'MechaGodzilla', 'Mothra', 'Rodan']
+New Variable Order: ['Godzilla', 'MechaGodzilla', 'Mothra', 'Rodan']
+Old Variable Order: ['MechaGodzilla', 'Mothra', 'Rodan']
+New Variable Order: ['MechaGodzilla', 'Mothra', 'Rodan']
+Old Variable Order: ['Mothra', 'Rodan']
+New Variable Order: ['Mothra', 'Rodan']
+Old Variable Order: ['Rodan']
+New Variable Order: ['Rodan']
+         Mothra lives in Paris
+          Rodan lives in New York
+      King Kong lives in Paris
+       Godzilla lives in New York
+  MechaGodzilla lives in Paris
+Nodes searched: 7
+Finished in 0.000545 seconds
+\end{verbatim}
+
 \end{document}
