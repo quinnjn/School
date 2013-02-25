@@ -2,7 +2,6 @@
 %--Packages------------
 \usepackage{fancyvrb}
 \usepackage{alltt}
-
 %----------------------
 
 %--Variables-----------
@@ -69,10 +68,20 @@ Question \QuestionNum\\
     $D_R = \{P, N, B, T\}$
 
 
-    $C=\{M\ne R, G \ne K, MG=G$ or $MG=M\}$
+    $C=\{M\ne R, R\ne M, G \ne K, K \ne G, MG=G$ or $MG=M\}$
 
   }
 
-
-  \section{Explanation}
+  \section{Results}
+  \subsection{Basic with no inference}
+  \subsubsection{Answer}
+  \begin{verbatim}
+      King Kong lives in Paris
+  MechaGodzilla lives in Paris
+         Mothra lives in Paris
+       Godzilla lives in New York
+          Rodan lives in New York
+  Nodes searched: 7
+  Finished in 0.000 seconds
+  \end{verbatim}
 \end{document}
