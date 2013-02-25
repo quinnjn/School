@@ -39,8 +39,21 @@ def Backtrack(assignment, csp):
     if(not Variables):
         return assignment
     #   var <- Select-Unassigned-Variable(csp)
-    #First unassigned Variable
+
+    #MRV
+    #Sort the Values to find by choosing the variable with the least domain choices
+    newVariableOrder = {}
+    for monster, place in VariableDomains.iteritems():
+        if(monster in Variables):
+            newVariableOrder[monster] = len(place)
+    
+    print "Old Variable Order:", Variables
+    Variables = (sorted(newVariableOrder, key=newVariableOrder.__getitem__))
+    print "New Variable Order:", Variables
+
+    csp['Variables'] = Variables
     var = Variables.pop(0)
+
     #   for each value in Order-Domain-Values(var, assignment, csp) do
     for value in Domains:
         NODES_SEARCHED+= 1
@@ -182,4 +195,4 @@ results = BacktrackSearch(csp)
 for monster, place in results.iteritems():
     print "%15s lives in %s" % (monster, place)
 print "Nodes searched: %d" % NODES_SEARCHED
-print "Finished in %5.3f seconds" % (clock()-start)
+print "Finished in %5.6f seconds" % (clock()-start)

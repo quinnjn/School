@@ -1,5 +1,5 @@
 ###############################################################################
-#Q3P1.py 
+#Q3P3.py 
 #CMPT 317 A2
 #Quinn Neumiiller
 #11065618
@@ -39,8 +39,52 @@ def Backtrack(assignment, csp):
     if(not Variables):
         return assignment
     #   var <- Select-Unassigned-Variable(csp)
-    #First unassigned Variable
+
+    print "Old Variable Order:", Variables
+
+    #MRV
+    #Sort the Values to find by choosing the variable with the least domain choices
+    MRV = {}
+    for monster, place in VariableDomains.iteritems():
+        if(monster in Variables):
+            MRV[monster] = len(place)
+    #print "MRV",MRV
+    Variables = (sorted(MRV, key=MRV.__getitem__))
+
+    #MCV
+    MCV = {}
+    for constraint in Constraints:
+        monster = constraint[0]
+        if(monster in MCV):
+            MCV[monster]+=1
+        else:
+            MCV[monster]=1
+    #print "MCV",constrainingVariable
+
+    lastMRV = 0
+    finalVariableList = []
+    for monster in Variables:
+        #Check if the MRV is equal to the last monsters
+        if(MRV[monster] == lastMRV):
+            #Compare the MCV
+            if(MCV[finalVariableList[-1]] >= MCV[monster]):
+                #MCV is greater than or equal, so just add it after.
+                finalVariableList.append(monster)
+            else:
+                #new monster has a higher MCV than prev, so add it before
+                finalVariableList.insert(-1, monster)
+            hitCount = MRV[monster]
+
+        elif(MRV[monster] > lastMRV):
+            finalVariableList.append(monster)
+            hitCount = MRV[monster]
+
+    csp['Variables'] = finalVariableList
+    Variables = finalVariableList
+    print "New Variable Order:", Variables
+
     var = Variables.pop(0)
+
     #   for each value in Order-Domain-Values(var, assignment, csp) do
     for value in Domains:
         NODES_SEARCHED+= 1
