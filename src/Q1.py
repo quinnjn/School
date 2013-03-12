@@ -8,6 +8,7 @@
 #IMPORTS
 ###############################################################################
 from Tkinter import *
+import tkMessageBox
 import sys
 
 
@@ -15,12 +16,23 @@ import sys
 #CLASS
 ###############################################################################
 
+###############################################################################
+#GameSquare
+###############################################################################
+# The GameSquare object
+###############################################################################
 class GameSquare:
     def __init__(self, legend, hasPlayer):
         self.hasPlayer = hasPlayer
-        self.legend = legend
+        if(legend == 'E'):
+            self.legend = []
+        else:
+            self.legend = [legend]
         self.string = StringVar()
-        self.setString(self)
+        self.reload()
+        self.backgroundColor = 'black'
+        if(self.hasPlayer):
+            self.backgroundColor = 'white'
 
     def getLegend(self):
         return self.legend
@@ -29,43 +41,49 @@ class GameSquare:
         self.l = Label(
             master,
             textvariable = self.string,
+            background = self.backgroundColor,
             width = 10,
             height = 5
         )
         return self.l
 
     def reload(self):
-        self.setString(self)
-
-    def setString(self, string):
-        self.string.set(string)
+        self.string.set(self)
 
     def __str__(self):
-        returnString = self.legend
+        returnString = ''.join(self.legend)
         if(self.hasPlayer):
             returnString +=  "\n"
             returnString += "o\n"
             returnString += "/|\\\n"
             returnString += "/ \\\n"
-                # "o\n"+=
-                # "+\n"+=
-                # "/\\"
+
+        # elif(self.legend == 'W'):
+        #     returnString +=  "\n"
+        #     returnString+= "  ^o^\n"
+        #     returnString+= "^\/0\/^\n"
+        #     returnString+= "  /O\\\n"
+        #     returnString+= "_| /_"
         return returnString
 
+###############################################################################
+#GameBoard
+###############################################################################
+# The GameSquare object
+###############################################################################
 class GameBoard:
     def keyPress(self, event):
         key = event.keysym
-        print self.playerPos
         x,y = self.playerPos
         newX,newY = x,y
 
-        if(key == "Up"):
+        if("Up" == key):
             #If we hit the top, dont keep going.
             if(x == 0):
                 return
             newX -= 1
             
-        elif(key == "Down"):
+        elif("Down" == key):
             #If we are at SIZE, dont keep going.
             if(x == self.SIZE-1):
                 return
@@ -79,27 +97,41 @@ class GameBoard:
             if(y == self.SIZE-1):
                 return
             newY += 1
+        elif("space" == key):
+            legend = self.GameSquareMasterList[x][y].getLegend()
+            if('S' == legend):
+                exit()
+            elif('G' == legend):
+                self.GameSquareMasterList[x][y].legend.remove('G')
+                self.GameSquareMasterList[x][y].reload()
+            return
 
         self.playerPos = (newX,newY)
 
         #Set the new player pos
         self.GameSquareMasterList[x][y].hasPlayer = False
+        self.GameSquareMasterList[x][y].l.configure(background='white')
+
         self.GameSquareMasterList[newX][newY].hasPlayer = True
+        self.GameSquareMasterList[newX][newY].l.configure(background='white')
+
 
         #Redraw
         self.GameSquareMasterList[x][y].reload()
         self.GameSquareMasterList[newX][newY].reload()
 
-        self.master.update_idletasks()
-
     def __init__(self, textBoard):
-        self.playerPos = False
+        self.playerPos = None
         master = Tk()
+
         master.bind("<Key>", self.keyPress)
         master.title("Wumpus' Dungeon")
         self.SIZE = int(textBoard.pop(0))
-
-        print textBoard
+        itemLocations = {
+            'G':[],
+            'P':[],
+            'W':[]
+        }
 
         GameSquareMasterList = list()
         for x in range(self.SIZE):
@@ -107,11 +139,16 @@ class GameBoard:
             GameSquareList = list()
             for y in range(self.SIZE):
 
+                item = textBoard[x][y]
+
                 hasPlayer = False
-                if(textBoard[x][y] == 'S'):
+                if(item == 'S'):
                     hasPlayer = True
                     self.playerPos = (x,y)
-                gs = GameSquare(textBoard[x][y], hasPlayer)
+                elif(not item == 'E' ):
+                    itemLocations[item].append((x,y))
+
+                gs = GameSquare(item, hasPlayer)
                 GameSquareList.append(gs)
 
                 gs.label(
@@ -122,9 +159,35 @@ class GameBoard:
                 )       
 
             GameSquareMasterList.append(GameSquareList)
+
         self.master = master
         self.GameSquareMasterList = GameSquareMasterList
+        self.addWarnings(itemLocations)
 
+    def addWarnings(self, itemLocations):
+        for item in itemLocations:
+            print item
+
+            for x,y in itemLocations[item]:
+                warning = ''
+                if('P' == item):
+                    warning = 'B'
+                elif('W' == item):
+                    warning = 'S'
+                #elif('G' == item):
+                #    print 'G'
+                else:
+                    continue
+                for newX in range(x-1, x+1):
+                    if(newX<0 or newX>self.SIZE-1):
+                        continue
+                    for newY in range(y-1, y+1):
+                        if(newY<0 or newY>self.SIZE-1):
+                            continue
+                        print warning, newX, newY
+                        if(newY != Y and newX != X and warning not in self.GameSquareMasterList):
+                            self.GameSquareMasterList[newX][newY].legend.append(warning)
+                            self.GameSquareMasterList[newX][newY].reload()
 
     def loop(self):
         self.master.mainloop() 
@@ -139,4 +202,12 @@ f = open(fileLoc, 'r')
 file = f.read().strip().split("\n")
 
 gb = GameBoard(list(file))
+
+tkMessageBox.showinfo(
+    "How To Play", 
+    "Arrow keys to move\n"+
+    "Space to leave\n"+
+    ""
+)
+
 gb.loop()
