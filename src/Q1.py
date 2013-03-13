@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 ###############################################################################
 #Q1.py 
 #CMPT 317 A3
@@ -22,8 +23,9 @@ import sys
 # The GameSquare object
 ###############################################################################
 class GameSquare:
-    def __init__(self, legend, hasPlayer):
+    def __init__(self, legend, hasPlayer, playerArrowDirection):
         self.hasPlayer = hasPlayer
+        self.playerArrowDirection = playerArrowDirection
         if(legend == 'E'):
             self.legend = []
         else:
@@ -34,29 +36,40 @@ class GameSquare:
         if(self.hasPlayer):
             self.backgroundColor = 'white'
 
-    def getLegend(self):
-        return self.legend
-
     def label(self, master):
         self.l = Label(
             master,
             textvariable = self.string,
             background = self.backgroundColor,
-            width = 10,
+            width = 15,
             height = 5
         )
         return self.l
+
+    def getArrowDir(self):
+        return self.playerArrowDirection
+    def setArrowDir(self, arrowDir):
+        self.playerArrowDirection = arrowDir
+
 
     def reload(self):
         self.string.set(self)
 
     def __str__(self):
-        returnString = ''.join(self.legend)
+
+        returnString = ', '.join(self.legend)
+        returnString = returnString.replace('G', '☼')
         if(self.hasPlayer):
             returnString +=  "\n"
             returnString += "o\n"
-            returnString += "/|\\\n"
+            returnString += "/|\\"
+            returnString += self.playerArrowDirection
+            returnString += "\n"
             returnString += "/ \\\n"
+        elif('S' in self.legend):
+            returnString  = "|-|\n"
+            returnString += "|-|\n"
+            returnString += "|-|\n"
 
         # elif(self.legend == 'W'):
         #     returnString +=  "\n"
@@ -72,10 +85,36 @@ class GameSquare:
 # The GameSquare object
 ###############################################################################
 class GameBoard:
+    def validRange(self,x,y):
+        return ((x>=0 and x<self.SIZE)and(y>=0 and y<self.SIZE))
+    def shoot(self, x, y):
+        if(not self.validRange(x,y)):
+            return
+        oldSquare = self.GameSquareMasterList[x][y]
+
+        if('W' in oldSquare.legend):
+            oldSquare.legend.remove('W')
+
+            minX = x-1
+            maxX = x+1
+            minY = y-1
+            maxY = y+1
+
+            if(minX >= 0):
+                self.GameSquareMasterList[minX][y].legend.remove('Smell')
+            if(maxX < self.SIZE):
+                self.GameSquareMasterList[maxX][y].legend.remove('Smell')
+            if(minY >= 0):
+                self.GameSquareMasterList[x][minY].legend.remove('Smell')
+            if(maxY < self.SIZE):
+                self.GameSquareMasterList[x][maxY].legend.remove('Smell')
+
     def keyPress(self, event):
         key = event.keysym
         x,y = self.playerPos
         newX,newY = x,y
+
+        oldSquare = self.GameSquareMasterList[x][y]
 
         if("Up" == key):
             #If we hit the top, dont keep going.
@@ -90,36 +129,86 @@ class GameBoard:
             newX += 1
 
         elif("Left" == key):
+            #If we hit the left most side, dont keep going
             if(y == 0):
                 return
             newY -= 1
         elif("Right" == key):
+            #If we hit the right most side, dont keep going
             if(y == self.SIZE-1):
                 return
             newY += 1
         elif("space" == key):
-            legend = self.GameSquareMasterList[x][y].getLegend()
-            if('S' == legend):
+            #Action key is hit.
+            legend = oldSquare.legend
+            #If it's the start location, allow to exit.
+            if('S' in legend):
+                tkMessageBox.showinfo(
+                    "LOST", 
+                    "You left the dungeon but no gold :("
+                )
                 exit()
-            elif('G' == legend):
-                self.GameSquareMasterList[x][y].legend.remove('G')
-                self.GameSquareMasterList[x][y].reload()
+            #If it's the Gold location, allow to exit.
+            elif('G' in legend):
+                tkMessageBox.showinfo(
+                    "WINNER", 
+                    "You received the gold and left the dungeon!"
+                )
+                exit()
             return
 
+        elif("w" == key and oldSquare.playerArrowDirection):
+            oldSquare.playerArrowDirection = '↑'
+        elif("a" == key and oldSquare.playerArrowDirection):
+            oldSquare.playerArrowDirection = '←'
+        elif("d" == key and oldSquare.playerArrowDirection):
+            oldSquare.playerArrowDirection = '→'
+        elif("s" == key and oldSquare.playerArrowDirection):
+            oldSquare.playerArrowDirection = '↓'
+        elif("q" == key and oldSquare.playerArrowDirection):
+            arrow = oldSquare.playerArrowDirection
+            if('↑' == arrow):
+                self.shoot(x-1, y)
+            elif('←' == arrow):
+                self.shoot(x, y-1)
+            elif('→' == arrow):
+                self.shoot(x, y+1)
+            elif('↓' == arrow):
+                self.shoot(x+1, y)
+            oldSquare.playerArrowDirection = ''
+
+
+        newSquare = self.GameSquareMasterList[newX][newY]
         self.playerPos = (newX,newY)
 
         #Set the new player pos
-        self.GameSquareMasterList[x][y].hasPlayer = False
-        self.GameSquareMasterList[x][y].l.configure(background='white')
+        oldSquare.hasPlayer = False
+        newSquare.hasPlayer = True
 
-        self.GameSquareMasterList[newX][newY].hasPlayer = True
-        self.GameSquareMasterList[newX][newY].l.configure(background='white')
+        newSquare.l.configure(background='white')
 
+        if(oldSquare.getArrowDir()):
+            newSquare.setArrowDir(oldSquare.getArrowDir())
 
         #Redraw
-        self.GameSquareMasterList[x][y].reload()
-        self.GameSquareMasterList[newX][newY].reload()
+        oldSquare.reload()
+        newSquare.reload()
 
+        if('W' in newSquare.legend):
+            tkMessageBox.showinfo(
+                "LOST", 
+                "You lost because you were eaten by the Wumpus\n"+
+                "But, did the Wumpus win?"
+            )
+            exit()
+        elif('P' in newSquare.legend):
+            tkMessageBox.showinfo(
+                "LOST", 
+                "You fell into the pit D:"
+            )
+            exit()
+
+        
     def __init__(self, textBoard):
         self.playerPos = None
         master = Tk()
@@ -142,13 +231,15 @@ class GameBoard:
                 item = textBoard[x][y]
 
                 hasPlayer = False
+                playerArrowDirection=''
                 if(item == 'S'):
                     hasPlayer = True
+                    playerArrowDirection='↑'
                     self.playerPos = (x,y)
-                elif(not item == 'E' ):
+                elif(not item == 'E'):
                     itemLocations[item].append((x,y))
 
-                gs = GameSquare(item, hasPlayer)
+                gs = GameSquare(item, hasPlayer, playerArrowDirection)
                 GameSquareList.append(gs)
 
                 gs.label(
@@ -166,28 +257,38 @@ class GameBoard:
 
     def addWarnings(self, itemLocations):
         for item in itemLocations:
-            print item
 
             for x,y in itemLocations[item]:
                 warning = ''
                 if('P' == item):
-                    warning = 'B'
+                    warning = 'Breeze'
                 elif('W' == item):
-                    warning = 'S'
+                    warning = 'Smell'
                 #elif('G' == item):
                 #    print 'G'
                 else:
                     continue
-                for newX in range(x-1, x+1):
-                    if(newX<0 or newX>self.SIZE-1):
-                        continue
-                    for newY in range(y-1, y+1):
-                        if(newY<0 or newY>self.SIZE-1):
-                            continue
-                        print warning, newX, newY
-                        if(newY != Y and newX != X and warning not in self.GameSquareMasterList):
-                            self.GameSquareMasterList[newX][newY].legend.append(warning)
-                            self.GameSquareMasterList[newX][newY].reload()
+
+                minX = x-1
+                maxX = x+1
+                minY = y-1
+                maxY = y+1
+
+                itemsToAddWarningTo = []
+
+                if(minX >= 0):
+                    itemsToAddWarningTo.append(self.GameSquareMasterList[minX][y])
+                if(maxX < self.SIZE):
+                    itemsToAddWarningTo.append(self.GameSquareMasterList[maxX][y])
+                if(minY >= 0):
+                    itemsToAddWarningTo.append(self.GameSquareMasterList[x][minY])
+                if(maxY < self.SIZE):
+                    itemsToAddWarningTo.append(self.GameSquareMasterList[x][maxY])
+
+                for gbs in itemsToAddWarningTo:
+                    if(str(item) not in gbs.legend and str(warning) not in gbs.legend): 
+                        gbs.legend.append(warning)
+                        gbs.reload()
 
     def loop(self):
         self.master.mainloop() 
@@ -205,9 +306,9 @@ gb = GameBoard(list(file))
 
 tkMessageBox.showinfo(
     "How To Play", 
-    "Arrow keys to move\n"+
-    "Space to leave\n"+
-    ""
+    "Arrow keys to move.\n"+
+    "Space to climb the ladder(|-|) or pick up the gold (☼).\n"+
+    "Arrow direction (↑←↓→) can be controlled by ('w','a','s','d') respectfully. 'q' will fire"
 )
 
 gb.loop()
