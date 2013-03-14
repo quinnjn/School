@@ -23,6 +23,14 @@ import sys
 # The GameSquare object
 ###############################################################################
 class GameSquare:
+    ###################################################
+    # Constructor
+    ###################################################
+    # Params:
+    # legend - The items that this GameSquare will have
+    # hasPlayer - Does this square currently hold the player?
+    # playerArrowDirection - If there is a arrow, where is it pointing?
+    ###################################################
     def __init__(self, legend, hasPlayer, playerArrowDirection):
         self.hasPlayer = hasPlayer
         self.playerArrowDirection = playerArrowDirection
@@ -35,7 +43,8 @@ class GameSquare:
         self.backgroundColor = 'black'
         if(self.hasPlayer):
             self.backgroundColor = 'white'
-
+    ###################################################
+    ###################################################
     def label(self, master):
         self.l = Label(
             master,
@@ -45,18 +54,23 @@ class GameSquare:
             height = 5
         )
         return self.l
-
+    ###################################################
+    ###################################################
     def getArrowDir(self):
         return self.playerArrowDirection
+    ###################################################
+    ###################################################
     def setArrowDir(self, arrowDir):
         self.playerArrowDirection = arrowDir
 
-
+    ###################################################
+    ###################################################
     def reload(self):
         self.string.set(self)
-
+    ###################################################
+    # toString
+    ###################################################
     def __str__(self):
-
         returnString = ', '.join(self.legend)
         returnString = returnString.replace('G', '☼')
         if(self.hasPlayer):
@@ -85,8 +99,29 @@ class GameSquare:
 # The GameSquare object
 ###############################################################################
 class GameBoard:
+    ###################################################
+    #validRange
+    ###################################################
+    # Determines if a (x,y) are valid.
+    ###################################################
+    #Params:
+    # x - x coord
+    # y - y coord
+    ###################################################
+    #Returns:
+    #True if valid, false otherwise.
+    ###################################################
     def validRange(self,x,y):
         return ((x>=0 and x<self.SIZE)and(y>=0 and y<self.SIZE))
+    ###################################################
+    # shoot
+    ###################################################
+    # If a shoot happens, resolves it.    
+    ###################################################
+    # Params:
+    # x - x coord
+    # y - y coord
+    ###################################################
     def shoot(self, x, y):
         if(not self.validRange(x,y)):
             return
@@ -102,12 +137,25 @@ class GameBoard:
 
             if(minX >= 0):
                 self.GameSquareMasterList[minX][y].legend.remove('Smell')
+                self.GameSquareMasterList[minX][y].reload()
             if(maxX < self.SIZE):
                 self.GameSquareMasterList[maxX][y].legend.remove('Smell')
+                self.GameSquareMasterList[maxX][y].reload()
             if(minY >= 0):
                 self.GameSquareMasterList[x][minY].legend.remove('Smell')
+                self.GameSquareMasterList[x][minY].reload()
             if(maxY < self.SIZE):
                 self.GameSquareMasterList[x][maxY].legend.remove('Smell')
+                self.GameSquareMasterList[x][maxY].reload()
+    ###################################################
+    # keyPress
+    ###################################################
+    # Accepts keyboard input and updates the game board
+    # depending on the action recieved
+    ###################################################
+    # Params:
+    # event - using this to grab the key pressed
+    ###################################################
 
     def keyPress(self, event):
         key = event.keysym
@@ -208,7 +256,9 @@ class GameBoard:
             )
             exit()
 
-        
+    ###################################################
+    # Constructor
+    ###################################################
     def __init__(self, textBoard):
         self.playerPos = None
         master = Tk()
@@ -254,7 +304,14 @@ class GameBoard:
         self.master = master
         self.GameSquareMasterList = GameSquareMasterList
         self.addWarnings(itemLocations)
-
+    ###################################################
+    # addWarnings
+    ###################################################
+    # Adds warnings to squares surrounding Pits, and 
+    ###################################################
+    # Params:
+    # itemLocations - (x,y) pairs where items are located
+    ###################################################
     def addWarnings(self, itemLocations):
         for item in itemLocations:
 
@@ -264,11 +321,7 @@ class GameBoard:
                     warning = 'Breeze'
                 elif('W' == item):
                     warning = 'Smell'
-                #elif('G' == item):
-                #    print 'G'
-                else:
-                    continue
-
+              
                 minX = x-1
                 maxX = x+1
                 minY = y-1
@@ -289,7 +342,11 @@ class GameBoard:
                     if(str(item) not in gbs.legend and str(warning) not in gbs.legend): 
                         gbs.legend.append(warning)
                         gbs.reload()
-
+    ###################################################
+    # loop
+    ###################################################
+    # Runs the Tkinter loop thread
+    ###################################################
     def loop(self):
         self.master.mainloop() 
 
