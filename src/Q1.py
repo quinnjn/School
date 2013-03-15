@@ -11,8 +11,6 @@
 from Tkinter import *
 import tkMessageBox
 import sys
-
-
 ###############################################################################
 #CLASS
 ###############################################################################
@@ -44,7 +42,17 @@ class GameSquare:
         if(self.hasPlayer):
             self.backgroundColor = 'white'
     ###################################################
+    # label
     ###################################################
+    # Creates the label the GameSquare uses
+    ###################################################
+    # Params:
+    # master - the master object to attach this gameSquare to
+    ###################################################
+    # Returns:
+    # The GameSquares Label
+    ###################################################
+
     def label(self, master):
         self.l = Label(
             master,
@@ -55,15 +63,30 @@ class GameSquare:
         )
         return self.l
     ###################################################
+    # getArrowDir
+    ###################################################
+    # Returns the arrow direction
+    ###################################################
+    # Returns:
+    # Returns the arrow direction
     ###################################################
     def getArrowDir(self):
         return self.playerArrowDirection
     ###################################################
+    # setArrowDir
+    ###################################################
+    # Sets the arrow direction 
+    ###################################################
+    # Params:
+    # arrowDir - the direction the arrow should be set to.
     ###################################################
     def setArrowDir(self, arrowDir):
         self.playerArrowDirection = arrowDir
 
     ###################################################
+    # reload
+    ###################################################
+    # Reloads the GameSquare
     ###################################################
     def reload(self):
         self.string.set(self)
@@ -85,12 +108,6 @@ class GameSquare:
             returnString += "|-|\n"
             returnString += "|-|\n"
 
-        # elif(self.legend == 'W'):
-        #     returnString +=  "\n"
-        #     returnString+= "  ^o^\n"
-        #     returnString+= "^\/0\/^\n"
-        #     returnString+= "  /O\\\n"
-        #     returnString+= "_| /_"
         return returnString
 
 ###############################################################################
@@ -351,7 +368,7 @@ class GameBoard:
         self.master.mainloop() 
 
 ###############################################################################
-#FUNCTIONS
+#MAIN
 ###############################################################################
 
 fileLoc = sys.argv[1]
