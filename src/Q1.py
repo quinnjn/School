@@ -29,19 +29,29 @@ class NBCVariable:
         self.false = 0
 
     #############################################
-    # propability
+    # P
     #############################################
     # Returns the probability that this 
-    # variable is true.
+    # variable is (either T/F).
     #############################################
-    def propability(self):
+    # Params:
+    # value : boolean - T/F depending on what 
+    #   value we want to see the probability for
+    #############################################
+    def P(self, value):
         returnVal = 0.0
         total = self.total()
+
+        if(value):
+            value = self.true
+        else:
+            value = self.false
         # the total is always greater than true
+        # or false
         # so we dont need to actually check
         # if the total is not equal to 0.
-        if(self.true != 0):
-            returnVal = float(float(self.true) / float(self.total()))
+        if(value != 0):
+            returnVal = float(float(value) / float(self.total()))
         return returnVal
     #############################################
     # total
@@ -81,7 +91,11 @@ class NBCVariable:
     # __str__ (toString)
     #############################################
     def __str__(self):
-        return "%d/%d == %0.2f" % (self.true, self.total(), self.propability())
+        total = self.total()
+        returnString  = "T(%d/%d == %0.2f)" % (self.true,  total, self.P(True) )
+        returnString += " "
+        returnString += "F(%d/%d == %0.2f)" % (self.false, total, self.P(False))
+        return returnString
 
 #############################################
 # NBC
@@ -89,13 +103,13 @@ class NBCVariable:
 # The Naive Bayesian Classifier
 #############################################
 class NBC:
-    
+
     def __init__(self, fileWithStructure, fileWithData):
         self.loadStructure(fileWithStructure)
         self.loadData(fileWithData)
 
-    def loadData(self, fileWithData):
-        f = open(fileWithData, 'r')
+    def loadData(self, file):
+        f = open(file, 'r')
         f = f.read().split('\n')
         for line in f:
             if(not line):
@@ -121,20 +135,20 @@ class NBC:
 
         print self.evidenceVar
 
-    def loadStructure(self, fileWithStructure):
+    def loadStructure(self, file):
         classVar = {}
         evidenceVar = {}
 
-        f = open(fileWithStructure, 'r')
+        f = open(file, 'r')
         f = f.read().split('\n')
 
         for line in f:
             if(not line):
                 continue
             if(not classVar):
-                classVar[line] = NBCVariable(line)
+                classVar[line] = NBCVariable()
             else:
-                evidenceVar[line] = NBCVariable(line)
+                evidenceVar[line] = NBCVariable()
 
         self.classVar    = classVar
         self.evidenceVar = evidenceVar
