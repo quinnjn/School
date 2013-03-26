@@ -115,16 +115,19 @@ class NBC:
     # toString
     #############################################
     def __str__(self):
-        returnString = "\n"
-        returnString += 'Evidence Variables:\n'
-        for key, val in self.evidenceVar.iteritems():
-            for bool in [True,False]:
-                returnString += "\tP(%s == %r) \t= %d/%d or %0.2f\n" % (key, bool, val.getVal(bool), val.total(), val.P(bool))
+        returnString = ""
 
-        returnString += '\nClass Variables\n'
-        for key, val in self.classVar.iteritems():
-            for bool in [True,False]:
-                returnString += "\tP(%s == %r) \t= %d/%d or %0.2f\n" % (key, bool, val.getVal(bool), val.total(), val.P(bool))
+        #The things we want to print
+        toPrint = {
+            'Class Variables'   :self.classVar,
+            'Evidence Variables':self.evidenceVar
+        }
+
+        for varName, varList in toPrint.iteritems():
+            returnString += '\n'+varName+':\n'
+            for key, val in varList.iteritems():
+                for bool in [True,False]:
+                    returnString += "\tP(%s == %r) \t= %d/%d or %0.2f\n" % (key, bool, val.getVal(bool), val.total(), val.P(bool))
 
         return returnString
     
