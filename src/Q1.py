@@ -77,6 +77,12 @@ class NBCVariable:
         else:
             self.false += 1
 
+    def getVal(self, value):
+        if(value):
+            return self.true
+        else:
+            return self.false
+
     #############################################
     # __repr__
     #############################################
@@ -87,6 +93,7 @@ class NBCVariable:
     #############################################
     def __repr__(self):
         return self.__str__()
+
     #############################################
     # __str__ (toString)
     #############################################
@@ -103,6 +110,24 @@ class NBCVariable:
 # The Naive Bayesian Classifier
 #############################################
 class NBC:
+
+    #############################################
+    # toString
+    #############################################
+    def __str__(self):
+        returnString = "\n"
+        returnString += 'Evidence Variables:\n'
+        for key, val in self.evidenceVar.iteritems():
+            for bool in [True,False]:
+                returnString += "\tP(%s == %r) \t= %d/%d or %0.2f\n" % (key, bool, val.getVal(bool), val.total(), val.P(bool))
+
+        returnString += '\nClass Variables\n'
+        for key, val in self.classVar.iteritems():
+            for bool in [True,False]:
+                returnString += "\tP(%s == %r) \t= %d/%d or %0.2f\n" % (key, bool, val.getVal(bool), val.total(), val.P(bool))
+
+        return returnString
+    
     #############################################
     # Constructor
     #############################################
@@ -143,9 +168,6 @@ class NBC:
                 elif(name in self.evidenceVar):
                     self.evidenceVar[name].observe(val)
 
-
-        print self.evidenceVar
-
     #############################################
     # loadStructure
     #############################################
@@ -181,7 +203,8 @@ class NBC:
 #############################################
 def main():
     #Start NBC, giving the text file locations.
-    NBC(sys.argv[1], sys.argv[2])
+    nbc = NBC(sys.argv[1], sys.argv[2])
+    print nbc
 
 
 if(__name__ == '__main__'):
