@@ -103,29 +103,40 @@ class NBCVariable:
 # The Naive Bayesian Classifier
 #############################################
 class NBC:
-
+    #############################################
+    # Constructor
+    #############################################
     def __init__(self, fileWithStructure, fileWithData):
         self.loadStructure(fileWithStructure)
         self.loadData(fileWithData)
 
+    #############################################
+    # loadData
+    #############################################
+    # Loads the data of the NBC
+    #############################################
+    # Params:
+    # file : string - the string of the file
+    #   we are loading
+    #############################################
     def loadData(self, file):
         f = open(file, 'r')
         f = f.read().split('\n')
         for line in f:
+            #If it's a blank line, skip it
             if(not line):
                 continue
             line = line.split('\t')
             for assignment in line:
-
+                #Do some regex on the line to grab the true or false
+                #along with the variable name.
                 m = re.search('(.*?):(TRUE|FALSE)', assignment)
 
                 name = m.group(1)
                 val = m.group(2)
 
-                if(val.upper() == 'TRUE'):
-                    val = True
-                else:
-                    val = False
+                #If it's true, set it as true. False otherwise
+                val = (val.upper() == 'TRUE')
 
                 if(name in self.classVar):
                     self.classVar[name].observe(val)
@@ -135,6 +146,15 @@ class NBC:
 
         print self.evidenceVar
 
+    #############################################
+    # loadStructure
+    #############################################
+    # Loads the structure of the NBC
+    #############################################
+    # Params:
+    # file : string - the string of the file
+    #   we are loading
+    #############################################
     def loadStructure(self, file):
         classVar = {}
         evidenceVar = {}
@@ -143,6 +163,7 @@ class NBC:
         f = f.read().split('\n')
 
         for line in f:
+            #If it's a blank line, skip it
             if(not line):
                 continue
             if(not classVar):
@@ -150,8 +171,18 @@ class NBC:
             else:
                 evidenceVar[line] = NBCVariable()
 
+        #Set the vars as class variables
         self.classVar    = classVar
         self.evidenceVar = evidenceVar
     
 
-NBC(sys.argv[1], sys.argv[2])
+#############################################
+# MAIN
+#############################################
+def main():
+    #Start NBC, giving the text file locations.
+    NBC(sys.argv[1], sys.argv[2])
+
+
+if(__name__ == '__main__'):
+    main()
