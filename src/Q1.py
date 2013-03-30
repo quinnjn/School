@@ -131,11 +131,12 @@ class NBC:
         #The things we want to print
         toPrint = {
             'Class Variables'   :self.classVar,
-            'Evidence Variables':self.evidenceVar
+            'True Evidence Variables':self.evidenceVar[True],
+            'False Evidence Variables':self.evidenceVar[False]
         }
 
         #loop through the variable name and lists
-        for varName, varList in toPrint.iteritems():
+        for varName, varList in sorted(toPrint.items()):
             returnString += '\n'+varName+':\n'
             #For each list, iterate through the variables
             for key, val in varList.iteritems():
@@ -164,6 +165,9 @@ class NBC:
     def loadData(self, file):
         f = open(file, 'r')
         f = f.read().split('\n')
+
+        currentClassVarValue = None
+
         for line in f:
             #If it's a blank line, skip it
             if(not line):
@@ -182,8 +186,10 @@ class NBC:
 
                 if(name in self.classVar):
                     self.classVar[name].observe(val)
-                elif(name in self.evidenceVar):
-                    self.evidenceVar[name].observe(val)
+                    currentClassVarValue = val
+                elif(name in self.evidenceVar[True]):
+                    self.evidenceVar[currentClassVarValue][name].observe(val)
+
 
     #############################################
     # loadStructure
@@ -196,7 +202,10 @@ class NBC:
     #############################################
     def loadStructure(self, file):
         classVar = {}
-        evidenceVar = {}
+        evidenceVar = {
+            True:{},
+            False:{}
+        }
 
         f = open(file, 'r')
         f = f.read().split('\n')
@@ -208,7 +217,8 @@ class NBC:
             if(not classVar):
                 classVar[line] = NBCVariable()
             else:
-                evidenceVar[line] = NBCVariable()
+                evidenceVar[True][line] = NBCVariable()
+                evidenceVar[False][line] = NBCVariable()
 
         #Set the vars as class variables
         self.classVar    = classVar

@@ -123,6 +123,28 @@ class NBCVariable:
 class NBC:
 
     #############################################
+    # query
+    #############################################
+    def query(self,given):
+        returnVar = ''
+        p = None
+
+        #Figure out the P(classVar) == true
+        for cVarName, cVar in self.classVar.iteritems():
+            p = cVar.P(True)
+
+        #We have P(classVar), now multiply it by the sum of the evidence variables
+        for eVarName, eVar in self.evidenceVar[True].iteritems():
+            givenVal = given[eVarName]
+
+            #Only compute 'Unobserved' values OR if the
+            #user is observing T or F 
+            if(givenVal == True or givenVal == False):# or givenVal == 'Unobserved'):
+                print eVarName, eVar
+                p = p * eVar.P(givenVal)
+        return p
+        
+    #############################################
     # toString
     #############################################
     def __str__(self):
@@ -131,11 +153,12 @@ class NBC:
         #The things we want to print
         toPrint = {
             'Class Variables'   :self.classVar,
-            'Evidence Variables':self.evidenceVar
+            'True Evidence Variables':self.evidenceVar[True],
+            'False Evidence Variables':self.evidenceVar[False]
         }
 
         #loop through the variable name and lists
-        for varName, varList in toPrint.iteritems():
+        for varName, varList in sorted(toPrint.items()):
             returnString += '\n'+varName+':\n'
             #For each list, iterate through the variables
             for key, val in varList.iteritems():
@@ -164,6 +187,9 @@ class NBC:
     def loadData(self, file):
         f = open(file, 'r')
         f = f.read().split('\n')
+
+        currentClassVarValue = None
+
         for line in f:
             #If it's a blank line, skip it
             if(not line):
@@ -182,8 +208,10 @@ class NBC:
 
                 if(name in self.classVar):
                     self.classVar[name].observe(val)
-                elif(name in self.evidenceVar):
-                    self.evidenceVar[name].observe(val)
+                    currentClassVarValue = val
+                elif(name in self.evidenceVar[True]):
+                    self.evidenceVar[currentClassVarValue][name].observe(val)
+
 
     #############################################
     # loadStructure
@@ -196,7 +224,10 @@ class NBC:
     #############################################
     def loadStructure(self, file):
         classVar = {}
-        evidenceVar = {}
+        evidenceVar = {
+            True:{},
+            False:{}
+        }
 
         f = open(file, 'r')
         f = f.read().split('\n')
@@ -208,20 +239,74 @@ class NBC:
             if(not classVar):
                 classVar[line] = NBCVariable()
             else:
-                evidenceVar[line] = NBCVariable()
+                evidenceVar[True][line] = NBCVariable()
+                evidenceVar[False][line] = NBCVariable()
 
         #Set the vars as class variables
         self.classVar    = classVar
         self.evidenceVar = evidenceVar
+
     
 
 #############################################
 # MAIN
 #############################################
+
 def main():
+    print "Instructions"
+    print "------------"
+    print "To set enter \"<name>=true\", \"<name>=false\", or \"<name>=unobserved\""
+    print "To query enter \"q\" or just <Enter>"
+    print "To quit CTRL + Z or type \"quit\""
+
     #Start NBC, giving the text file locations.
     nbc = NBC(sys.argv[1], sys.argv[2])
+    print "\nCurrent data:"
     print nbc
+
+    #Set user defined evidense bars
+    evidenceVarNames = {}
+    for key in nbc.evidenceVar[True].keys():
+        evidenceVarNames[key] = 'Unobserved'
+
+    print "User defined evidece variable status:"
+    print evidenceVarNames
+    print "\n"
+
+    #Build the regex
+    query = re.compile('([A-Z]+)(\s*=\s*(TRUE|FALSE|UNOBSERVED))*', re.IGNORECASE)
+
+    while(True):
+        rawinput = raw_input('?- ')
+        input = rawinput.upper()
+        m = query.search(input)
+
+        if('Q' == input or '' == input):
+            print 'Querying!'
+            print nbc.query(evidenceVarNames)
+        elif('QUIT' == input):
+            exit()
+        elif(m.group(3)):
+            name = m.group(1)
+            val  = m.group(3)
+
+            found = False
+            for eVarName in evidenceVarNames.keys():
+                if(name.upper() == eVarName.upper()):
+                    found = True
+                    if('TRUE' == val):
+                        val = True
+                    elif('FALSE' == val):
+                        val = False
+                    else:
+                        val = val.title()
+
+                    evidenceVarNames[eVarName] = val
+                    print evidenceVarNames
+            if(not found):
+                print name,"isnt a evidence variable"
+        else:
+            print "I dont understand:", rawinput
 
 
 if(__name__ == '__main__'):
