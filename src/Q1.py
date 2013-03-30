@@ -131,8 +131,8 @@ class NBC:
         #The things we want to print
         toPrint = {
             'Class Variables'   :self.classVar,
-            'True Evidence Variables':self.evidenceVar[True],
-            'False Evidence Variables':self.evidenceVar[False]
+            'Class(True) Evidence Variables':self.evidenceVar[True],
+            'Class(False) Evidence Variables':self.evidenceVar[False]
         }
 
         #loop through the variable name and lists
