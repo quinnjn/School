@@ -1,0 +1,20 @@
+Butter:TRUE	Yellow:TRUE	Smooth:TRUE	Tasty:TRUE
+Butter:TRUE	Yellow:TRUE	Smooth:FALSE	Tasty:TRUE
+Butter:TRUE	Yellow:TRUE	Smooth:FALSE	Tasty:TRUE
+Butter:TRUE	Yellow:TRUE	Smooth:FALSE	Tasty:FALSE
+Butter:TRUE	Yellow:TRUE	Smooth:TRUE	Tasty:FALSE
+Butter:TRUE	Yellow:TRUE	Smooth:FALSE	Tasty:TRUE
+Butter:TRUE	Smooth:FALSE	Tasty:TRUE
+Butter:TRUE	Yellow:TRUE
+Butter:FALSE	Yellow:FALSE	Smooth:TRUE	Tasty:TRUE
+Butter:FALSE	Yellow:FALSE	Smooth:TRUE	Tasty:FALSE
+Butter:FALSE	Smooth:FALSE	Tasty:FALSE
+Butter:FALSE	Yellow:TRUE	Tasty:FALSE
+Butter:FALSE	Yellow:FALSE	Smooth:TRUE	Tasty:FALSE
+Butter:FALSE	Yellow:TRUE	Smooth:TRUE	Tasty:TRUE
+Butter:FALSE	Yellow:TRUE	Smooth:FALSE	Tasty:TRUE
+Butter:FALSE	Yellow:TRUE	Smooth:FALSE	Tasty:TRUE
+Butter:FALSE	Yellow:FALSE	Smooth:FALSE	Tasty:TRUE
+Butter:FALSE	Smooth:TRUE	Tasty:FALSE
+Butter:FALSE	Yellow:FALSE	Tasty:FALSE
+

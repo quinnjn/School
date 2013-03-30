@@ -1,0 +1,8 @@
+AndGate:TRUE	BitOne:TRUE	BitTwo:TRUE
+AndGate:TRUE	BitOne:TRUE	BitTwo:TRUE
+AndGate:FALSE	BitOne:TRUE	BitTwo:FALSE
+AndGate:FALSE	BitOne:TRUE	BitTwo:FALSE
+AndGate:FALSE	BitOne:FALSE	BitTwo:TRUE
+AndGate:FALSE	BitOne:FALSE	BitTwo:TRUE
+AndGate:FALSE	BitOne:FALSE	BitTwo:FALSE
+AndGate:FALSE	BitOne:FALSE	BitTwo:FALSE
