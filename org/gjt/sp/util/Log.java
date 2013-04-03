@@ -30,7 +30,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.Writer;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import java.util.*;
 
@@ -40,7 +40,6 @@ import javax.swing.event.ListDataListener;
 import javax.swing.ListModel;
 import javax.swing.SwingUtilities;
 
-import static java.text.DateFormat.MEDIUM;
 //}}}
 
 /**
@@ -358,7 +357,7 @@ public class Log
 	private static final PrintStream realOut;
 	private static final PrintStream realErr;
 	private static final LogListModel listModel;
-	private static final DateFormat timeFormat;
+	private static final SimpleDateFormat timeFormat;
 	private static final int MAX_THROWABLES = 10;
 	public static final List<Throwable> throwables;
 	// initialized externally through setBeepOnOutput method
@@ -380,7 +379,7 @@ public class Log
 		lineSep = System.getProperty("line.separator");
 		listModel = new LogListModel();
 		
-		timeFormat = DateFormat.getTimeInstance(MEDIUM);
+		timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		throwables = Collections.synchronizedList(new ArrayList<Throwable>(MAX_THROWABLES));
 	} //}}}
 
