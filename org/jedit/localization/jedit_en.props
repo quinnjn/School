@@ -599,7 +599,14 @@ about.navigate=Press arrow keys to navigate about text
 # This text scrolls by in the about dialog box.
 # Hack: Since StringTokenizer treats two consequent \n as one token, we
 # insert a space by itself in the text to create blank lines.
-about.text.prefix=jEdit is brought to you by
+about.text.prefix=This update was done by\n\
+Quinn Neumiiller\n\
+and\n\
+Cameron Roth\n\
+for CMPT 470\n\
+at the University of Saskatchewan\n\
+\n\
+jEdit is brought to you by
 about.text.suffix=I'd also like to thank the users for their\n\
                   	comments, feedback and bug reports.
 #}}}
