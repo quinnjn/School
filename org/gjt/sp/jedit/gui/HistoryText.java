@@ -28,7 +28,10 @@ import javax.swing.text.*;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Vector;
+
 import org.gjt.sp.jedit.*;
+import org.gjt.sp.util.Log;
 //}}}
 
 /**
@@ -297,8 +300,10 @@ public class HistoryText
 				super.setVisible(b);
 			}
 		};
-		JMenuItem caption = new JMenuItem(jEdit.getProperty(
-			"history.caption"));
+		JMenuItem caption = new JMenuItem(
+				//jEdit.getProperty("history.caption")
+				"All searches"
+		);
 		caption.addActionListener(new ActionListener()
 		{
 		  public void actionPerformed(ActionEvent e) 
@@ -308,8 +313,8 @@ public class HistoryText
 		});		
  		popup.add(caption);
  		popup.addSeparator();
-
-		for(int i = 0; i < historyModel.getSize(); i++)
+ 		 		
+		for(int i = 0; i < 5; i++)
 		{
 			String item = historyModel.getItem(i);
 			if(item.startsWith(t))
@@ -321,7 +326,7 @@ public class HistoryText
 				popup.add(menuItem);
 			}
 		}
-
+ 		
 		GUIUtilities.showPopupMenu(popup,text,x,y,false);
 	} //}}}
 

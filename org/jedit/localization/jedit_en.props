@@ -44,7 +44,7 @@ lineSep.mac=MacOS (\\r)
 #}}}
 
 #{{{ Miscellaneous
-history.caption=Previously entered strings:
+history.caption=Previously 5 entered strings:
 
 action-set.jEdit=Built-in Commands
 action-set.browser=File System Browser
