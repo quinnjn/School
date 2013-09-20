@@ -118,8 +118,12 @@ Let A be a set with 4 elements
 How many binary operations of $A$ are possible?
 \end{question}
 
-TODO
+TODO Check that $n^{n^2}$ is correct
 
+$n^{n^2} = 4^{4^2}$
+$= 4^{16}$
+$= 4^{16}$
+$= 4\ 294\ 967\ 296$
 \begin{question}{2b}
 Give the operation table for a binary operation on $A=\{a,b,c,d\}$ that has an identity and has inverses, but is not commutative. Show that your operation is not associative.
 \end{question}
@@ -129,9 +133,16 @@ $\star$ & a & b & c & d \\
 \hline
 a       & a & b & c & d \\
 b       & a & a & c & d \\
-c       & a & b & a & d \\
-d       & a & b & c & a
+c       & a & d & a & b \\
+d       & a & c & b & a
 \end{tabular}
+
+$(c \star b) \star d =  c \star (b \star d)$
+
+$d \star d =  c \star d$
+
+$a\neq b$
+
 
 
 % --------------------------------------------------------------
@@ -190,58 +201,108 @@ the set of even integers with respect to addition
 the set of even integers with respect to multiplication
 \end{question}
 
+\underline{Inverse?} \textbf{False. $\frac{1}{5} \notin \{$Even Integers$\}$}
+
+$\forall z,y \in (0,1]$ : $z * y = e = y * z$
+
+$z=5$
+
+$z * y = 1 = y * z$
+
+$y = \frac{1}{5}$
 
 \begin{question}{3f}
 the set of positive divisors of 10 with respect to GCD.
 \end{question}
 
+\underline{Inverse?} \textbf{False.}
+
+Given that the gcd-identity is 10.
+
+$a=10$ $b=5$
+
+$gcd(10,5) = 5$ 
+
+$5 \neq 10$
 
 \begin{question}{3g}
 the set of surjective functions from $A$ to $A$ with respect to composition.
 \end{question}
 
+\underline{Inverse?} \textbf{False. There is a right inverse, but not a left inverse.}
+
+$f(x) \circ g(x) = e(x) = g(x) \circ f(x)$
+
+It is possible given $g(x) = y$ that $f(g(x)) = f(y) = y$ but impossible for $y(f(x)) = e(x)$
+
+$f(x) \circ g(x) = e(x)$
+
+$f(g(x)) = e(x)$
+
+$f(y) = e(x)$
 
 \begin{question}{3h}
-the set of 2 x 2 matricies of the form $\begin{bmatrix}
+the set of 2 x 2 matrices of the form $\begin{bmatrix}
   x & -y \\
   y & x  \\
- \end{bmatrix}$ satisifying $x^2 + y^2 = 1$ under matrix multiplication.
+ \end{bmatrix}$ satisfying $x^2 + y^2 = 1$ under matrix multiplication.
 
 \end{question}
 
+\textbf{yes it is a group}
 
 \begin{question}{3i}
 the set of polynomials with real coefficients having constant term 1 under multiplication.
 \end{question}
 
+\textbf{yes it is a group}
 
 \begin{question}{3j}
 the set of permutations $f$ of \{1,2,3\} with f(2) = 1 under composition.
 \end{question}
+
+\underline{Closed?} \textbf{False. If f(2) = 1, then f(g(2)) should equal 1. Although this is not the case we see in the example provided. }
+
+\begin{tabular}{l|llll}
+    & $f(x)$ & $g(x)$ & $f(g(x))$ \\
+    \hline
+ 1  & $2$    & $3$    & $3$ \\
+ 2  & $1$    & $1$    & $2$ \\
+ 3  & $3$    & $2$    & $1$ \\
+\end{tabular}
 
 % --------------------------------------------------------------
 %                         Q4
 % --------------------------------------------------------------
 
 \begin{question}{4}
-Decide if the following sets with two operations are rings. If it is not, find the first property of the ring defintiion that fails to hold. If it is a ring, also determine if it is an integral domain or a field.
+Decide if the following sets with two operations are rings. If it is not, find the first property of the ring definition that fails to hold. If it is a ring, also determine if it is an integral domain or a field.
 \end{question}
+
 
 \begin{question}{4a}
 The set of nonnegative real numbers with respect to + and $\times$
 \end{question}
 
+TODO
+
 \begin{question}{4b}
 The set of even integers with respect to + and $\times$
 \end{question}
+
+TODO
 
 \begin{question}{4c}
 The set $D = \{x+y\sqrt{2} : x, y \in \Z\}$ under + and $\times$
 \end{question}
 
+TODO
+
 \begin{question}{4d}
 The set of functions $\R$ to $\R$ under + of values and function composition $\bigcirc$
 \end{question}
+
+TODO
 
 \begin{question}{4e}
 The set of 2 x 2 matricies of the form $\begin{bmatrix}
@@ -249,6 +310,8 @@ The set of 2 x 2 matricies of the form $\begin{bmatrix}
   y & x  \\
  \end{bmatrix}$ with $x,y \in \R$ under matrix addition and matrix multiplication. 
 \end{question}
+
+TODO
 
 % --------------------------------------------------------------
 %                         End Document
