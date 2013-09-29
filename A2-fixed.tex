@@ -23,6 +23,17 @@
 \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{bbm}
+
+
+\usepackage{fancyhdr}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{Compiled on {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
  
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -134,15 +145,11 @@ $z = \frac{1}{6} $
 
 $\frac{1}{6} \notin \Z^+$. This holds for all values of $z,y$ except, in the case that $y=1$, $z= \frac{1}{1} = 1, 1 \in \Z^+$
 
-
-
 \begin{question}{3e}
 the set of even integers with respect to multiplication
 \end{question}
 
 \underline{Identity?} \textbf{False. $1 \notin \{$Even Integers$\}$}
-
-
 
 \begin{question}{3f}
 the set of positive divisors of 10 with respect to GCD.
