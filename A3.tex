@@ -143,29 +143,159 @@ Find all solutions, if any, for the following euqations in $\Z_n$
 
 %1. Determine if there is a solution
 %
-% gcd(a,b) = d
+% gcd(a,z) = d
 %
 %  1. d=1 			One Solution
 %  2. d>1, d|b		d 	Solutions
 %  3. d>1, !(d|b)	No Solution
 
+% z = a(z/a) + (z%a)
+% continues until (z%a) = 1 or 0
+
 %2. 
 
 \begin{question}{2a}
-$2x = 5$ in $\Z_{15}$
-$2x \equiv 5$ mod $15$\\
+$2x = 5$ mod $15$
+
+1. Determine gcd(a,z)
+
+gcd(2,15)
+
+\begin{align*}
+15 =& 2(7) + 1
+=& 1
+\end{align*}
+
+2. Back substitute
+
+\begin{align*}
+1 = 15 - 2(7)\\
+\end{align*}
+
+3. Finding inverse
+\begin{align*}
+1 = 15 + 2(-7)\\
+\end{align*} 
+
+Inverse is -7
+
+4. Solving for x
+\begin{align*}
+2x(-7) = 5(-7) in \Z_{15}\\
+(-14)x = -35 in \Z_{15}\\
+x = -35 in \Z_{15}\\
+x = -35 in \Z_{15}\\
+x = 10 in \Z_{15}\\
+\end{align*}
 \end{question}
 
 \begin{question}{2b}
-$23x = 1 in \Z_{41}$
+$23x = 1$ in $\Z_{41}$
+
+1. Determine gcd(a,z)
+
+gcd(23,41)
+
+\begin{align*}
+41 =& 23(1) +18 \\
+23 =& 18(1) +5 \\
+18 =& 5(3) + 3 \\
+5 =& 3(1) +2 \\
+3 =& 2(1) +1 \\
+=& 1 \\
+\end{align*}
+
+There is one unique solution for x.
+
+2. Back substitute
+
+\begin{align*}
+1 =& 3 - 2(1) \\
+=& 3-(5-3) = 3(2)-5\\
+=& (18-5(3))(2)-5 = 18(2)-5(7)\\ 
+=& 18(2)-(23-18)(7) = 18(9)-23(7)\\
+=& (41-23)(9)-23(7) = 41(9)-23(16)\\
+=& 41(9)-23(16)\\ 
+\end{align*}
+
+3. Finding inverse
+\begin{align*}
+1 = 41(9) + 23x(-16)
+\end{align*}
+Inverse is -16
+
+4. Solving for x
+\begin{align*}
+23x(-16) =& 1(-16) in \Z_{41}\\
+1x =& -16 in \Z_{41}\\
+x =& -16 in \Z_{41}
+\end{align*}
 \end{question}
 
 \begin{question}{2c}
-$1426x = 597 in \Z_{2000}$
+$1426x = 597$ in $\Z_{2000}$
+
+1. Determine gcd(a,z)
+
+gcd(1426,2000)
+
+\begin{align*}
+2000 =& 1426(1) + 574 \\
+1426 =& 574(2) + 278 \\
+574 =& 278(2) + 18 \\
+278 =& 18(15) + 8 \\
+18 =& 8(2) + 2 \\
+8 =& 2(4) + 0
+\end{align*}
+
+gcd(1426,2000) = 2
+
+Is $597|2$? No. There is no solution.
 \end{question}
 
 \begin{question}{2d}
-$1731x = 871 in \Z_{2000}$
+$1731x = 871$ in $\Z_{2000}$
+
+1. Determine gcd(a,z)
+
+gcd(1731,2000)
+
+\begin{align*}
+2000 =& 1731(1) + 269 \\
+1731 =& 269(6) + 117 \\
+269 =& 117(2) + 35 \\
+117 =& 35(3) + 12 \\
+35 =& 12(2) + 11 \\
+12 =& 11(1) + 1 \\
+\end{align*}
+
+gcd(1731,2000) = 1
+
+2. Back substitute
+
+\begin{align*}
+1 =& 12 - 11\\
+1 =& 12(3) - 35\\
+1 =& 117(3) - 35(10)\\
+1 =& 117(23) - 269(10)\\
+1 =& 1731(23) - 269(148)\\
+1 =& 1731(171) - 2000(148)\\
+\end{align*}
+
+3. Finding inverse
+\begin{align*}
+1 = 1731x(171) + 2000(148)
+\end{align*}
+
+Inverse is 171. 
+
+4. Solving for x
+\begin{align*}
+1731x(171) =& 871(171) in \Z{2000}\\
+1731x(171) =& 1(171) in \Z{2000}\\
+296001x = 148941 in \Z{2000}\\
+x = 941 in \Z{2000}\\
+\end{align*}
 \end{question}
 
 \begin{question}{2e}
@@ -176,14 +306,69 @@ $6x + 5y=2$
 \end{tabular}
 in $\Z_{12}$.
 
+1. Determine gcd(a,z)
+
+det = $10x \equiv 1$ mod $12$
+gcd(10, 12) = 2
+
+There is no solution because $2\nmid 1$
+
 \end{question}
 
 \begin{question}{2f}
 $x^4 + 3x^2 +10 = 0$ in $\Z_{11}$
 \end{question}
 
+\begin{tabular}{c|c}
+ &$x^4 + 3x^2 +10 = 0$ in $\Z_{11}$\\
+\hline
+0 & 16\\
+1 & 16\\
+2 & 20\\
+3 & 28\\
+4 & 24\\
+5 & 24\\
+6 & 28\\
+7 & 36\\
+8 & 48\\
+9 & 48
+\end{tabular}
+
+No solution.
+
 \begin{question}{2g}
-$x^2 = 17$ in $\Z_{24}$
+$x^2 \equiv 17$ in $\Z_{24}$
+
+\begin{tabular}{c|c}
+& $x^2 \equiv 17$ in $\Z_{24}$\\
+\hline
+0 & $0$\\
+1 & $1$\\
+2 & $4$\\
+3 & $9$\\
+4 & $16$\\
+5 & $25 \equiv 1$\\
+6 & $36 \equiv 12$\\
+7 & $49 \equiv 1$\\
+8 & $64 \equiv 16$\\
+9 & $81 \equiv 9$\\
+10 & $100 \equiv 4$\\
+11 & $121 \equiv 1$\\
+12 & $144 \equiv 0$\\
+13 & $169 \equiv 1$\\
+14 & $196 \equiv 4$\\
+15 & $225 \equiv 9$\\
+16 & $256 \equiv 16$\\
+17 & $289 \equiv 1$\\
+18 & $324 \equiv 12$\\
+19 & $361 \equiv 1$\\
+20 & $400 \equiv 16$\\
+21 & $441 \equiv 9$\\
+22 & $484 \equiv 4$\\
+23 & $529 \equiv 1$\\
+
+
+\end{tabular}
 \end{question}
 
 
