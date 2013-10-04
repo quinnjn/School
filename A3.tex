@@ -383,18 +383,123 @@ Find all solutions for $x$, up to congruence. If there is more than one equation
 
 \begin{question}{3a}
 $x \equiv 1$ mod 4 and $x \equiv 7$ mod 13.
+
+1. Setting equations to equal each other
+
+\begin{align*}
+x =& 4k + 1 = 13l + 7\\
+=&   4k -13l = 6\\
+\end{align*}
+
+2. EA
+
+\begin{align*}
+13 =& 4(3) + 1\\
+4  =& 1(4) + 0
+\end{align*}
+
+3. Back substitution
+
+\begin{align*}
+1 =& 13 - 4(3)\\
+1=& (-1)-13 + 4(-3)\\
+(6)1=& 6(4(-3) -13(-1))\\
+6=& 4(-18) - 13(-6)\\
+\end{align*}
+
+4. Verification.
+
+\begin{align*}
+4(-18)+1 =& -72 +1\\
+=& -71 \\
+\end{align*}
+\begin{align*}
+13(-6) + 7 =& -78 + 7 \\
+=& -71 \\
+\end{align*}
 \end{question}
 
 \begin{question}{3b}
 $x \equiv 11$ mod 142 and $x \equiv 25$ mod 86.
+
+1. Setting equations to equal each other
+
+\begin{align*}
+x =& 142k +11 = 86l + 25\\
+=& 142k -86l  = 14\\
+\end{align*}
+
+2. EA
+
+\begin{align*}
+142 = 86(1) + 56 \\
+86  = 56(1) + 30 \\
+56  = 30(1) + 26 \\
+30  = 26(1) + 4 \\
+26  = 4(6)  + 2 \\
+4   = 2(2)  + 0 \\
+\end{align*}
+
+3. Back substitution
+
+\begin{align*}
+2 =& 26 - 4(6) \\
+2 =& 26 - (30 - 26)(6) \\ 
+2 =& 26(7) - 30(6)\\
+2 =& (56-30)(7) - 30(6)\\ 
+2 =& 56(7) - 30(7) - 30(6)\\ 
+2 =& 56(7) - 30(13)\\ 
+2 =& 56(7) - (86-56)(13)\\ 
+2 =& 56(7) -86(13) +56(13)\\ 
+2 =& 56(20) -86(13)\\
+2 =& (142-86)(20) -86(13)\\
+2 =& 142(20) -86(20) -86(13)\\
+2 =& 142(20) -86(33)\\
+7(2) =& 7(142(20) -86(33))\\
+14 =& 142(140) -86(231)\\
+\end{align*}
+
+4. Verification
+
+\begin{align*}
+142k + 11 =& 142(140) + 11\\
+=& 19880 + 11\\ 
+=& 19891\\ 
+\end{align*}
+
+\begin{align*}
+86l + 25 =& 86(231) + 25\\
+=& 19891\\ 
+\end{align*}
+
 \end{question}
 
 \begin{question}{3c}
 $x \equiv 2^{63}$ mod 61.
+
+gcd(2, 61) = 1
+
+$\phi (61) = 60$ Due to 61 being prime.
+
+\begin{align*}
+$2^63 =& 2^{(60+3)}$\\
+$=& 2^{60} * 2^3$\\
+$=& 1 * 8$\\
+$=& 8$\\
+\end{align*}
+
 \end{question}
 
 \begin{question}{3d}
 $x \equiv 7^{78}$ mod 79.
+
+gcd(7, 78) = 1
+
+$\phi (79) =& 78$ Due to 79 being prime.
+
+\begin{align*}
+7^78 =& 1\\
+\end{align*}
 \end{question}
 
 \begin{question}{3e}
