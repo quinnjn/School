@@ -107,23 +107,109 @@ Divisibility Rules. Suppose that $a \in \N$ is written as $a = a_na_{n-1}...a_1a
 
 \begin{question}{1a}
 Prove that $a\equiv$ ($\displaystyle\sum\limits_{i=0}^n a_i$) mod 9.
+\begin{proof}
+
+Each $a_i$ can be represented as $a_i*10^i$
+
+We know that $9 \equiv 10-1$ and that $10^i \equiv 1 \textrm{ mod } 9$
+
+Therefore, 
+
+$a_i*10^i \equiv a_i$
+
+$a_n*10^n + a_{n-1}*10^{n-1} + ... +a_1*10^1 + a_0*10^0$
+
+$\equiv a_n + a_{n-1} + ... +a_1 + a_0 \textrm{ mod } 9$
+
+$\equiv (\displaystyle\sum\limits_{i=0}^n a_i) \textrm{ mod } 9$
+
+
+\end{proof}
 \end{question}
 
 \begin{question}{1b}
 Prove that $a\equiv$ ($\displaystyle\sum\limits_{i=0}^n a_i$) mod 3.
+\begin{proof}
+
+Each $a_i$ can be represented as $a_i*10^i$
+
+We know that $9 \equiv 10-1$, $3 \equiv 9$ and that $10^i \equiv 1 \textrm{ mod } 3$
+
+Therefore, 
+
+$a_i*10^i \equiv a_i$
+
+$a_n*10^n + a_{n-1}*10^{n-1} + ... +a_1*10^1 + a_0*10^0$
+
+$\equiv a_n + a_{n-1} + ... +a_1 + a_0 \textrm{ mod } 3$
+
+$\equiv (\displaystyle\sum\limits_{i=0}^n a_i) \textrm{ mod } 3$
+
+
+\end{proof}
 \end{question}
 
 \begin{question}{1c}
 Prove that $a\equiv$ $a_0$ mod 5.
+\begin{proof}
 
+Each $a_i$ can be represented as $a_i*10^i$
+
+We know that $5 \equiv 10$ and that $10^i \equiv 0 \textrm{ mod } 5$
+
+Therefore, 
+
+$a_i*10^i \equiv a_i$
+
+$a_n*10^n + a_{n-1}*10^{n-1} + ... +a_1*10^1 + a_0*10^0$
+
+$\equiv a_n*0 + a_{n-1}*0 + ... +a_1*0 + a_0*1$
+
+$\equiv 0 + 0 + ... +0 + a_0 \textrm{ mod } 5$
+
+$\equiv a_0 \textrm{ mod } 5$
+
+
+\end{proof}
 \end{question}
 
 \begin{question}{1d}
 Prove that $a\equiv$ ($\displaystyle\sum\limits_{i=0}^n (-1)^i a_i$) mod 11.
+\begin{proof}
+
+Each $a_i$ can be represented as $a_i*10^i$
+
+We know that $10^k \equiv -1^k \textrm{ mod } 11$
+
+Therefore, 
+
+$a_n*10^n + a_{n-1}*10^{n-1} + ... +a_1*10^1 + a_0*10^0$
+
+$\equiv a_n*-1^n + a_{n-1}*-1^{n-1} + ... +a_1*-1^1 + a_0*-1^0$
+
+$\equiv$ ($\displaystyle\sum\limits_{i=0}^n (-1)^i a_i$) mod 11.
+
+
+\end{proof}
 \end{question}
 
 \begin{question}{1e}
-Prove that modulo 7, $a \equiv (a_0 + 3a_1 + 3a_2)-(a_3+3a_4+2a_5)+(a_6+3a_7+2a_8)-(a_9+3a_{10}+2a_{11})+$...
+Prove that modulo 7, $a \equiv (a_0 + 3a_1 + 2a_2)-(a_3+3a_4+2a_5)+(a_6+3a_7+2a_8)-(a_9+3a_{10}+2a_{11})+$...
+\begin{proof}
+$10^0 \equiv 3^0 \textrm{ mod } 7 \equiv 1 \textrm{ mod } 7$\\
+$10^1 \equiv 3^1 \textrm{ mod } 7 \equiv 3 \textrm{ mod } 7$\\
+$10^2 \equiv 3^2 \textrm{ mod } 7 \equiv 2 \textrm{ mod } 7$\\
+
+$10^3 \equiv 3^3 \textrm{ mod } 7 \equiv -1 \textrm{ mod } 7$\\
+$10^4 \equiv 3^4 \textrm{ mod } 7 \equiv -3 \textrm{ mod } 7$\\
+$10^5 \equiv 3^5 \textrm{ mod } 7 \equiv -2 \textrm{ mod } 7$\\
+
+$10^6 = 10^{\phi(7)} \equiv 1 \textrm{ mod } 7$\\
+$10^7 = 10^{6+1} = 10^6 * 10^1 = 10^{\phi(7)} * 10^1 \equiv 1*10 \equiv 3 \textrm{ mod } 7$\\
+$10^8 = 10^{6+2} = 10^6 * 10^2 = 10^{\phi(7)} * 10^2 \equiv 1*100 \equiv 2 \textrm{ mod } 7$\\
+
+We can see that a pattern forms for any power of 10, $k$, where $k > 6$, such that $10^k \equiv 10^{k \textrm{ mod } \phi(7)}$
+\end{proof}
 \end{question}
 
 
@@ -162,7 +248,7 @@ $2x = 5$ mod $15$
 gcd(2,15)
 
 \begin{align*}
-15 =& 2(7) + 1
+15 =& 2(7) + 1 \\
 =& 1
 \end{align*}
 
@@ -181,11 +267,11 @@ Inverse is -7
 
 4. Solving for x
 \begin{align*}
-2x(-7) = 5(-7) in \Z_{15}\\
-(-14)x = -35 in \Z_{15}\\
-x = -35 in \Z_{15}\\
-x = -35 in \Z_{15}\\
-x = 10 in \Z_{15}\\
+2x(-7) = 5(-7) \textrm{ in } \Z_{15}\\
+(-14)x = -35 \textrm{ in } \Z_{15}\\
+x = -35 \textrm{ in } \Z_{15}\\
+x = -35 \textrm{ in } \Z_{15}\\
+x = 10 \textrm{ in } \Z_{15}\\
 \end{align*}
 \end{question}
 
@@ -226,9 +312,9 @@ Inverse is -16
 
 4. Solving for x
 \begin{align*}
-23x(-16) =& 1(-16) in \Z_{41}\\
-1x =& -16 in \Z_{41}\\
-x =& -16 in \Z_{41}
+23x(-16) =& 1(-16) \textrm{ in } \Z_{41}\\
+1x =& -16 \textrm{ in } \Z_{41}\\
+x =& -16 \textrm{ in } \Z_{41}
 \end{align*}
 \end{question}
 
@@ -291,10 +377,10 @@ Inverse is 171.
 
 4. Solving for x
 \begin{align*}
-1731x(171) =& 871(171) in \Z{2000}\\
-1731x(171) =& 1(171) in \Z{2000}\\
-296001x = 148941 in \Z{2000}\\
-x = 941 in \Z{2000}\\
+1731x(171) =& 871(171) \textrm{ in } \Z_{2000}\\
+1731x(171) =& 1(171) \textrm{ in } \Z_{2000}\\
+296001x = 148941 \textrm{ in } \Z_{2000}\\
+x = 941 \textrm{ in } \Z_{2000}\\
 \end{align*}
 \end{question}
 
@@ -437,7 +523,7 @@ x =& 142k +11 = 86l + 25\\
 56  = 30(1) + 26 \\
 30  = 26(1) + 4 \\
 26  = 4(6)  + 2 \\
-4   = 2(2)  + 0 \\
+4   = 2(2)  + 0
 \end{align*}
 
 3. Back substitution
@@ -482,10 +568,10 @@ gcd(2, 61) = 1
 $\phi (61) = 60$ Due to 61 being prime.
 
 \begin{align*}
-$2^63 =& 2^{(60+3)}$\\
-$=& 2^{60} * 2^3$\\
-$=& 1 * 8$\\
-$=& 8$\\
+2^63 =& 2^{(60+3)}\\
+=& 2^{60} * 2^3\\
+=& 1 * 8\\
+=& 8
 \end{align*}
 
 \end{question}
@@ -495,15 +581,30 @@ $x \equiv 7^{78}$ mod 79.
 
 gcd(7, 78) = 1
 
-$\phi (79) =& 78$ Due to 79 being prime.
+$\phi (79) = 78$ Due to 79 being prime.
 
 \begin{align*}
-7^78 =& 1\\
+7^78 =& 1
 \end{align*}
 \end{question}
 
 \begin{question}{3e}
 $x^2 + 3x \equiv 3$ mod 8.
+
+\begin{tabular}{l|l}
+& $x^2 + 3x \equiv 3$ in $\Z_{8}$\\
+\hline
+0 & $0$\\
+1 & $4$\\
+2 & $10 \equiv 2$\\
+3 & $18 \equiv 2$\\
+4 & $28 \equiv 4$\\
+5 & $40 \equiv 0$\\
+6 & $54 \equiv 6$\\
+7 & $70 \equiv 6$
+\end{tabular}
+
+No solution.
 \end{question}
 
 % --------------------------------------------------------------
@@ -511,7 +612,29 @@ $x^2 + 3x \equiv 3$ mod 8.
 % --------------------------------------------------------------
 
 \begin{question}{4}
-Suppose $p$ is a position prime integer. Prove that $\forall x,y \in \Z, (x+y)^p \equiv x^p + y^p$ mod $p$
+Suppose $p$ is a positive prime integer. Prove that $\forall x,y \in \Z, (x+y)^p \equiv x^p + y^p$ mod $p$
+
+\begin{proof}
+Since p is a positive prime integer and we know $\phi(p) \equiv 1$, $\phi(p) = p-1$.
+
+\begin{align*}
+(x+y)^p \textrm{ mod } p \equiv & (x+y)^{(p-1+1)} \textrm{ mod } p\\
+\equiv & (x+y)(x+y)^{(p-1)}\\
+\equiv & (x+y)(1)\\
+\equiv & x+y\\
+\equiv & x(1)+y(1)\\
+\equiv & x(x^{\phi(p)})+y(y^{\phi(p)})\\
+\equiv & x(x^{p-1})+y(y^{p-1})\\
+\equiv & x^{p}+y^{p}\\
+\end{align*}
+
+
+% Then (x+y)^p = (x+y)(x+y)^(p-1) (mod p) ≡ (x+y)(1) (mod p). Then we have (x+y)^p ≡ (x+y) (mod p), hence (x+y)^p ≡ x (mod p) + y (mod p). Multiply back through by (x+y)^(p-1) gives us 
+
+% (x+y)^p(x+y)^(p-1) ≡ x^p + y^p (mod p) and since (x+y)^(p-1) ≡ 1 (mod p) we have 
+
+% (x+y)^p ≡ x^p + y^p (mod p) as we wished to prove. 
+\end{proof}
 \end{question}
 
 % --------------------------------------------------------------
@@ -573,10 +696,82 @@ $\phi(101)=100$
 
 \begin{question}{6a}
 Give the multiplication table for the group $U_{12}$.
+
+1. Find the number of units
+\begin{align*}
+\phi(12) =& \phi(2^2) * \phi(3)\\
+=& 2 * 2\\
+=& 2 * 2
+\end{align*}
+
+2. Find the 4 units
+
+\centering
+\begin{tabular}{l|l}
+& gcd(x, 12)\\
+\hline
+0 & gcd(0, 12) = $12 \equiv 0$\\
+1 & gcd(1, 12) = $1$\\
+2 & gcd(2, 12) = $2$\\
+3 & gcd(3, 12) = $3$\\
+4 & gcd(4, 12) = $4$\\
+5 & gcd(5, 12) = $1$\\
+6 & gcd(6, 12) = $6$\\
+7 & gcd(7, 12) = $1$\\
+8 & gcd(8, 12) = $4$\\
+9 & gcd(9, 12) = $3$\\
+10 & gcd(10, 12) = $2$\\
+11 & gcd(11, 12) = $1$\\
+\end{tabular}
+
+$U_{12}$ = \{$1, 5, 7, 11$\}
+
+\begin{tabular}{c|c|c|c|c}
+& 1 & 5 & 7 & 11\\
+\hline
+$1$ & $1$& $5$& $7$& $11$\\
+
+$5$ & $5$& $25 \equiv 1$& $35 \equiv 11$& $55 \equiv 7$\\
+
+$7$ & $7$& $35 \equiv 11$& $49 \equiv 1$& $77 \equiv 5$\\
+
+$11$ & $11$& $55 \equiv 7$& $77 \equiv 5$& $121 \equiv 1$
+\end{tabular}
 \end{question}
 
 \begin{question}{6b}
 Compute the inverse of 43 in $U_{63}$
+
+1. Find the number of units
+\begin{align*}
+\phi(63) =& \phi(3^2) * \phi(7)\\
+=& 3(2) * 6\\
+=& 6 * 6\\
+=& 36\\
+\end{align*}
+
+gcd(43,63) = $1$
+
+\begin{align*}
+63 =& 43(1) + 20\\
+43 =& 20(2) + 3\\
+20 =& 3(6)  + 2\\
+3  =& 2(1)  + 1\\
+\end{align*}
+
+\begin{align*}
+1 =& 3 - 2\\
+1 =& 3 - (20-3(6))\\
+1 =& 3 - 20 +3(6)\\
+1 =& 3(7) - 20\\
+1 =& (43-20(2))(7) - 20\\
+1 =& 43(7) -20(15)\\
+1 =& 43(7) -(63-43)(15)\\
+1 =& 43(7) -63(15) +43(15)\\
+1 =& 43(22) -63(15)\\
+\end{align*}
+
+Inverse is 22.
 \end{question}
 
 
