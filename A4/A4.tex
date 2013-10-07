@@ -145,7 +145,23 @@ of 2 adjacent digits, what is its correct ISBN-13?
 % --------------------------------------------------------------
 
 \begin{question}{3}
-Passport numbers. The identification code used for international passports is:
+Passport numbers. The identication code used for international passports is:
+[(6 or 9-digit passport number)-(check digit)]-
+(3 letter country code)-[(6-digit birth date)-(check digit)]-
+(an M or F)-[(6-digit expiry date)-(check digit)]>>>>>(overall check digit)
+Each check digit is calculated using the check vector pattern (7; 3; 1; 7; 3; 1; :::) mod 10.
+The overall check digit is calculated with all of the preceding digits in the passport ID,
+including check digits, excluding letters.
+\end{question}
+
+\begin{question}{3a}
+Verify the validity of the passport number
+044455533-1-USA-460920-5-M-040913-1>>>>>>>>>>>>8
+\end{question}
+
+\begin{question}{3b}
+Determine check digits to complete the following (fake) Canadian passport number:
+203241-?-CAN-840712-?-F-090215-?>>>>>>>>>>?
 \end{question}
 
 % --------------------------------------------------------------
@@ -154,6 +170,15 @@ Passport numbers. The identification code used for international passports is:
 
 \begin{question}{4}
 Hacking RSA cryptosystems.
+\end{question}
+
+\begin{question}{4a}
+Suppose an RSA cryptosystem has public key ($n$, $e$) = (6282, 197). Find the associated private key ($\phi(n)$, $d$)
+\end{question}
+
+\begin{question}{4b}
+Let ($n$, $e$) = ($9991$, $11$) be the public key for an RSA cryptosystem that encrypts
+letters using the standard ASCII system. Decipher the transmitted message: 5752 7155
 \end{question}
 
 % --------------------------------------------------------------
