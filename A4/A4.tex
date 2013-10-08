@@ -106,40 +106,86 @@ Check-digit codes. Check whether or not the following codewords are valid for th
 code given.
 \end{question}
 
+% --------------------------------------------------------------
+%                         Q1a
+% --------------------------------------------------------------
+
 \begin{question}{1a}
 the UPC number 7-80133-19831-7
-\begin{tabular}[l|l|l]
-i & a & i*a & ia mod 10  \\
-7 & 3 & 21 & 1 \\
-8 & 1 & 8  & 8 \\
-0 & 3 & 0  & 0 \\
-1 & 1 & 1  & 1 \\
-3 & 3 & 9  & 9 \\
-3 & 1 & 3  & 3 \\
-1 & 3 & 3  & 3 \\
-9 & 1 & 9  & 9 \\
-8 & 3 & 21 & 1 \\
-3 & 1 & 3  & 3 \\
-1 & 3 & 3  & 3 \\
-7 & 1 & 7  & 7 \\
+
+%\begin{tabular}{l|l|l|l}
+%i & a & ia & ia mod 10  \\
+%\hline
+%7 & 3 & 21 & 1 \\
+%8 & 1 & 8  & 8 \\
+%0 & 3 & 0  & 0 \\
+%1 & 1 & 1  & 1 \\
+%3 & 3 & 9  & 9 \\
+%3 & 1 & 3  & 3 \\
+%1 & 3 & 3  & 3 \\
+%9 & 1 & 9  & 9 \\
+%8 & 3 & 21 & 1 \\
+%3 & 1 & 3  & 3 \\
+%1 & 3 & 3  & 3 \\
+%7 & 1 & 7  & 7
+%\end{tabular}
+
+\begin{tabular}{l|cccccccccccc}
+\hline
+i     & 7  & 8 & 0 & 1 & 3 & 3 & 1 & 9 & 8 & 3 & 1 & 7 \\
+a     & 3  & 1 & 3 & 1 & 3 & 1 & 3 & 1 & 3 & 1 & 3 & 1\\
+\hline
+(i*a) & 21 & 8 & 0 & 1 & 9 & 3 & 3 & 9 & 24 & 3 & 3 & 7
 \end{tabular}
 
 \begin{align*}
-
+=&21 + 8 + 0 + 1 + 9 + 3 + 3 + 9 + 24 + 3 + 3 + 7\textrm{ mod } 10\\
+=&91 \textrm{ mod } 10\\
+=&1 \textrm{ mod } 10\\
 \end{align*}
 \end{question}
 
+% --------------------------------------------------------------
+%                         Q1b
+% --------------------------------------------------------------
+
 \begin{question}{1b}
 the ISBN-10 number 0-87150-334-X.
+
+\begin{tabular}{l|cccccccccc}
+\hline
+i     & 0  & 8  & 7  & 1  & 5  & 0  & 3  & 3  & 4 \\
+a     & 1  & 2  & 3  & 4  & 5  & 6  & 7  & 8  & 9 \\
+\hline
+(i*a) & 0  & 16 & 21 & 4  & 25 & 0  & 21 & 27 & 36
+\end{tabular}
+
+\begin{align*}
+=&0  + 16 + 21 + 4  + 25 + 0  + 21 + 27 + 36\textrm{ mod } 11\\
+=&150 \textrm{ mod } 11\\
+=&0 \textrm{ mod } 11\\
+\end{align*}
 \end{question}
+
+% --------------------------------------------------------------
+%                         Q1c
+% --------------------------------------------------------------
 
 \begin{question}{1c}
 the ISBN-10 number 0-13-319831-0.
 \end{question}
 
+% --------------------------------------------------------------
+%                         Q1d
+% --------------------------------------------------------------
+
 \begin{question}{1d}
 the ISBN-13 number 978-1-4292-6009-1
 \end{question}
+
+% --------------------------------------------------------------
+%                         Q13
+% --------------------------------------------------------------
 
 \begin{question}{1e}
 the Bank ID number 145-79429-1.
@@ -164,7 +210,7 @@ of 2 adjacent digits, what is its correct ISBN-13?
 % --------------------------------------------------------------
 
 \begin{question}{3}
-Passport numbers. The identication code used for international passports is:
+Passport numbers. The identication code used for international passports is:
 [(6 or 9-digit passport number)-(check digit)]-
 (3 letter country code)-[(6-digit birth date)-(check digit)]-
 (an M or F)-[(6-digit expiry date)-(check digit)]>>>>>(overall check digit)
@@ -173,10 +219,18 @@ The overall check digit is calculated with all of the preceding digits in the pa
 including check digits, excluding letters.
 \end{question}
 
+% --------------------------------------------------------------
+%                         Q3a
+% --------------------------------------------------------------
+
 \begin{question}{3a}
 Verify the validity of the passport number
 044455533-1-USA-460920-5-M-040913-1>>>>>>>>>>>>8
 \end{question}
+
+% --------------------------------------------------------------
+%                         Q3b
+% --------------------------------------------------------------
 
 \begin{question}{3b}
 Determine check digits to complete the following (fake) Canadian passport number:
@@ -191,9 +245,17 @@ Determine check digits to complete the following (fake) Canadian passport number
 Hacking RSA cryptosystems.
 \end{question}
 
+% --------------------------------------------------------------
+%                         Q4a
+% --------------------------------------------------------------
+
 \begin{question}{4a}
 Suppose an RSA cryptosystem has public key ($n$, $e$) = (6282, 197). Find the associated private key ($\phi(n)$, $d$)
 \end{question}
+
+% --------------------------------------------------------------
+%                         Q4b
+% --------------------------------------------------------------
 
 \begin{question}{4b}
 Let ($n$, $e$) = ($9991$, $11$) be the public key for an RSA cryptosystem that encrypts
@@ -209,9 +271,17 @@ Digital signatures. Bob's RSA cryptosystem uses public key (9379, 1837). Alice's
 public key (8453, 7).
 \end{question}
 
+% --------------------------------------------------------------
+%                         Q5a
+% --------------------------------------------------------------
+
 \begin{question}{5a}
 Verify that Bob's private key is (9184, 5) and Alice's private key is (8268, 7087).
 \end{question}
+
+% --------------------------------------------------------------
+%                         Q5b
+% --------------------------------------------------------------
 
 \begin{question}{5b}
 Alice wants to send the signed message $ALGEBRA$ to Bob. She will encrypt in
