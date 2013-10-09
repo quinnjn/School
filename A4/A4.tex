@@ -314,7 +314,27 @@ including check digits, excluding letters.
 \begin{question}{3a}
 Verify the validity of the passport number
 044455533-1-USA-460920-5-M-040913-1$>>>>>>>>>>>>$8
-\end{question}
+
+For my purposeses, I'm going to drop all the letters, and seperate the sections.
+044455533-1-460920-5-040913-1$>>>>>>>>>>>>$8
+
+[[044455533-1]-[460920-5]-[040913-1]$>>>>>>>>>>>>$8]
+
+Checking passport number.
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 0  & 4  & 4  & 4  & 5  & 5  & 5  & 3  & 3  & 1\\
+a     & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7\\
+\hline
+(i*a) & 0  & 12 & 4  & 28 & 15 & 6  & 35 & 9  & 3  & 7
+\end{tabular}
+
+\begin{align*}
+=& 0  + 12 + 4  + 28 + 15 + 6  + 35 + 9  + 3 + 7 \textrm{ mod } 10\\
+=& 119 \textrm{ mod } 10\\
+=& 9 \textrm{ mod } 10
+\end{align*}
 
 % --------------------------------------------------------------
 %                         Q3b
