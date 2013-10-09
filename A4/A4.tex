@@ -129,7 +129,6 @@ the UPC number 7-80133-19831-7
 %1 & 3 & 3  & 3 \\
 %7 & 1 & 7  & 7
 %\end{tabular}
-
 \begin{tabular}{l|cccccccccccc}
 \hline
 i     & 7  & 8 & 0 & 1 & 3 & 3 & 1 & 9 & 8 & 3 & 1 & 7 \\
@@ -143,6 +142,8 @@ a     & 3  & 1 & 3 & 1 & 3 & 1 & 3 & 1 & 3 & 1 & 3 & 1\\
 =&91 \textrm{ mod } 10\\
 =&1 \textrm{ mod } 10\\
 \end{align*}
+
+Not Valid.
 \end{question}
 
 % --------------------------------------------------------------
@@ -154,17 +155,19 @@ the ISBN-10 number 0-87150-334-X.
 
 \begin{tabular}{l|cccccccccc}
 \hline
-i     & 0  & 8  & 7  & 1  & 5  & 0  & 3  & 3  & 4 \\
-a     & 1  & 2  & 3  & 4  & 5  & 6  & 7  & 8  & 9 \\
+i     & 0  & 8  & 7  & 1  & 5  & 0  & 3  & 3  & 4 & 10 \\
+a     & 10 & 9  & 8  & 7  & 6  & 5  & 4  & 3  & 2 & 1 \\
 \hline
-(i*a) & 0  & 16 & 21 & 4  & 25 & 0  & 21 & 27 & 36
+(i*a) & 0  & 72 & 56 & 7  & 30 & 0  & 12 & 9  & 8 & 10
 \end{tabular}
 
 \begin{align*}
-=&0  + 16 + 21 + 4  + 25 + 0  + 21 + 27 + 36\textrm{ mod } 11\\
-=&150 \textrm{ mod } 11\\
-=&0 \textrm{ mod } 11\\
+=&0  + 72 + 56 + 7  + 30 + 0  + 12 + 9  + 8 + 10\textrm{ mod } 11\\
+=&204 \textrm{ mod } 11\\
+=&6 \textrm{ mod } 11
 \end{align*}
+
+Not Valid.
 \end{question}
 
 % --------------------------------------------------------------
@@ -173,6 +176,22 @@ a     & 1  & 2  & 3  & 4  & 5  & 6  & 7  & 8  & 9 \\
 
 \begin{question}{1c}
 the ISBN-10 number 0-13-319831-0.
+
+\begin{tabular}{l|cccccccccc}
+\hline
+i     & 0  & 1  & 3  & 3  & 1  & 9  & 8  & 3  & 1 & 0 \\
+a     & 10 & 9  & 8  & 7  & 6  & 5  & 4  & 3  & 2 & 1 \\
+\hline
+(i*a) & 0  & 9  & 24 & 21 & 6  & 45 & 32 & 9  & 2 & 0
+\end{tabular}
+
+\begin{align*}
+=& 0  + 9  + 24 + 21 + 6  + 45 + 32 + 9  + 2 + 0 \textrm{ mod } 11\\
+=& 148 \textrm{ mod } 11\\
+=& 5 \textrm{ mod } 11
+\end{align*}
+
+Not Valid.
 \end{question}
 
 % --------------------------------------------------------------
@@ -181,14 +200,46 @@ the ISBN-10 number 0-13-319831-0.
 
 \begin{question}{1d}
 the ISBN-13 number 978-1-4292-6009-1
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 9  & 7  & 8  & 1  & 4  & 2  & 9  & 2  & 6  & 0 & 0 & 9 & 1\\
+a     & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3 & 1 & 3 & 1 \\ 
+\hline
+(i*a) & 9  & 21 & 8  & 3  & 4  & 6  & 9  & 6  & 6  & 0 & 0 & 27 & 1
+\end{tabular}
+
+\begin{align*}
+=& 9  + 21 + 8  + 3  + 4  + 6  + 9  + 6  + 6  + 0 + 0 + 27 + 1 \textrm{ mod } 10 \\
+=& 100 \textrm{ mod } 10 \\
+=& 0 \textrm{ mod } 10 \\
+\end{align*}
+
+Valid.
 \end{question}
 
 % --------------------------------------------------------------
-%                         Q13
+%                         Q1e
 % --------------------------------------------------------------
 
 \begin{question}{1e}
 the Bank ID number 145-79429-1.
+
+\begin{tabular}{l|ccccccccc}
+\hline
+i     & 1  & 4  & 5  & 7  & 9  & 4  & 2  & 9  & 1 \\
+a     & 7  & 3  & 9  & 7  & 3  & 9  & 7  & 3  & 9 \\ 
+\hline
+(i*a) & 7  & 12 & 45 & 49 & 27 & 36 & 14 & 27 & 9
+\end{tabular}
+
+\begin{align*}
+=& 7  + 12 + 45 + 49 + 27 + 36 + 14 + 27 + 9 \textrm{ mod } 10\\
+=& 226 \textrm{ mod } 10\\
+=& 6 \textrm{ mod } 10\\
+\end{align*}
+
+Not valid, $5 \neq 6$
 \end{question}
 
 % --------------------------------------------------------------
@@ -203,6 +254,43 @@ Although the codeword appears to be valid in the ISBN-13 system, it does not cor
 to a book in your store's inventory. Assuming the ISBN is incorrect only because of a switch
 of 2 adjacent digits, what is its correct ISBN-13?
 (For fun: look up the actual title, author, and publisher of this book online.)
+
+\begin{align*}
+7-9 =&-2\\
+8-7 =& 1\\
+0-8 =& -8\\
+3-0=&3\\
+2-3=&-1\\
+1-2=&-1\\
+7-1=&6\\
+5-7=&-2\\
+2-5=&-3\\
+2-7=&-5
+\end{align*}
+Try switching 2 and 7.
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 9  & 7  & 8  & 0  & 3  & 2  & 1  & 7  & 5  & 7 & 2 & 7 & 2\\
+a     & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3 & 1 & 3 & 1 \\ 
+\hline
+(i*a) & 9  & 21 & 8  & 0  & 3  & 6  & 1  & 21 & 5  & 21& 2 &21 & 2
+\end{tabular}
+
+\begin{align*}
+=& 9  + 21 + 8  + 0  + 3  + 6  + 1  + 21 + 5  + 21+ 2 +21 + 2 \textrm{ mod } 10\\
+=& 120 \textrm{ mod } 10\\
+=& 0 \textrm{ mod } 10
+\end{align*}
+
+ISBN-13: 978-0-321-75727-2
+
+Title: Statistics : Informed Decisions Using Data with CD 4th
+
+Author: Michael Sullivan III
+
+Publisher: Addison Wesley
+
 \end{question}
 
 % --------------------------------------------------------------
@@ -213,7 +301,7 @@ of 2 adjacent digits, what is its correct ISBN-13?
 Passport numbers. The identication code used for international passports is:
 [(6 or 9-digit passport number)-(check digit)]-
 (3 letter country code)-[(6-digit birth date)-(check digit)]-
-(an M or F)-[(6-digit expiry date)-(check digit)]>>>>>(overall check digit)
+(an M or F)-[(6-digit expiry date)-(check digit)]$>>>>>$(overall check digit)
 Each check digit is calculated using the check vector pattern (7; 3; 1; 7; 3; 1; :::) mod 10.
 The overall check digit is calculated with all of the preceding digits in the passport ID,
 including check digits, excluding letters.
