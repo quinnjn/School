@@ -105,20 +105,112 @@ Let $a$ and $b$ be elements of a multiplicative group $G$.
 \begin{question}{1a}
 Show that $a$ and $a^{-1}$ have the same order.
 
-Claim: $|a| = |a^{-1}|$
+Claim:
+$|a| = |a^{-1}|$
 
+\begin{proof}
+Let $|a| = m$, $|a^{-1}| = n$
 
+By definition of the order of an element, $|a| = m$ means that $a^m = e$, and $m$ is the smallest positive integer with this result. 
 
+$a^m = e$
+
+$(a^{-m})a^m = (a^{-m})e$
+
+$e = a^{-m}$
+
+$e = (a^{-1})^m$. Since the order of $a^{-1}$ must be the least such exponent, $n \leq m$. 
+
+Alternatively, 
+
+$(a^{-1})^n = e$
+
+$(a^n)(a^{-1})^n = e(a^n)$
+
+$(a^n)(a^{-n}) = a^n$
+
+$e = a^n$ Since the order of $a$ must be the least such exponent, $m \leq n$.
+
+Since, $m \leq n$ and $n \leq m$ then $m = n$.
+\end{proof}
 \end{question}
 
-\begin{question}{1b}
-Show that $a$ and $b^{-1}ab$ have the same order.
+\begin{question}{1b} Show that $a$ and $b^{-1}ab$ have the same order.
+
+Claim: $|a| = |b^{-1}ab|$
+\begin{proof}
+Let $|a|=m$, $|b^{-1}ab|=n$
+
+$a^m = e, (b^{-1}ab)^n = e$
+
+$(b^{-1}ab)^n = e$
+
+$b^n(b^{-n} a^n b^n ) = b^n(e)$
+
+$ea^n b^n = b^n$
+
+$a^n b^n = b^n$
+
+$b^{-n}(a^n b^n) = b^{-n}(b^n)$
+
+$a^n e = e$ Since the order of $a^m$ must be the least such exponent, $m \leq n$.
+
+
+Alternatively, 
+
+$a^m = e$
+
+$b^{-n}(a^m) = b^{-n}(e)$
+
+$(b^{-n}a^m) = b^{-n}$
+
+$b^n(b^{-n}a^m) = b^n(b^{-n})$
+
+$b^na^mb^{-n} = e$ Since the order of $b^{-n}ab^n$ must be the least such exponent, $n \leq m$.
+
+Since, $m \leq n$ and $n \leq m$ then $m = n$.
+\end{proof}
 \end{question}
 
-\begin{question}{1c}
-Show that $ab$ and $ba$ have the same order.
-\end{question}
+\begin{question}{1c} Show that $ab$ and $ba$ have the same order.
 
+Claim: $|ab| = |ba|$
+\begin{proof}
+Let $|ab|=m$, $|ba|=n$
+
+$(ab)^m = e$
+
+$a^-m((ab)^m) = a^-m(e)$
+
+$b^m = a^-m$
+
+$b^{-m}(b^m) = b^{-m}(a^-m)$
+
+$e = (ab)^{-m}$
+
+$(ba)^m(e) = (ba)^m((ab)^{-m})$
+
+$(ba)^m = e$ Since the order of $ba$ must be the least such exponent, $n \leq m$.
+
+Alternatively,
+
+$(ba)^n = e$
+
+$b^{-n}(b^na^n) = b^{-n}(e)$
+
+$a^n = b^{-n}$
+
+$a^{-n}(a^n) = a^{-n}(b^{-n})$
+
+$e = b^{-n}a^{-n}$
+
+$e = (ab)^{-n}$
+
+$(ab)^n = e$ Since the order of $ab$ must be the least such exponent, $m \leq n$.
+
+Since, $m \leq n$ and $n \leq m$ then $m = n$.
+\end{proof}
+\end{question}
 \end{question}
 
 % --------------------------------------------------------------
@@ -128,16 +220,18 @@ Show that $ab$ and $ba$ have the same order.
 \begin{question}{2}
 Suppose $a$ and $b$ are elements of the group ($\Z_n$, +) that have the same order. Show
 that $\langle a \rangle$ = $\langle b \rangle$.
+
+Suppose $c \in \langle a \rangle, \langle b \rangle$. Since $|a|$ = $|b|$, This implies that $\langle a \rangle \subseteq \langle b \rangle$ and $\langle a \rangle \subseteq \langle b \rangle$, and therefore $\langle a \rangle$ = $\langle b \rangle$.
+
 \end{question}
 
 % --------------------------------------------------------------
 %                         Q3
 % --------------------------------------------------------------
 
-\begin{question}{3}
-Let $g$ be an element of a multiplicative group $G$ with identity $e$. Show that if $g$ has
-order $n$ and $g^m = e$, then $n$ divides $m$.
+\begin{question}{3} Let $g$ be an element of a multiplicative group $G$ with identity $e$. Show that if $g$ has order $n$ and $g^m = e$, then $n$ divides $m$.
 
+If $m = qn + s : q,s \in \Z$ and $0 \leq s < n$. Then $g^s = g^{m-qn} = g^m(g^n)^{-q} = e(g^n)^{-q} = ee^{-q} = e$. Since $0 \leq s < n$, and $n$ is the smallest positive integer such that $g^m = e$, s must be 0, giving $m= qn$.
 
 \end{question}
 
