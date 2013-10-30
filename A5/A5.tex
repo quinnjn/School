@@ -1,0 +1,301 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{a}
+%\author{Quinn Neumiiller}
+%\date{September 2013}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bbm}
+
+
+\usepackage{fancyhdr}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{Compiled on {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+
+
+%\begin{theorem}{x.yz} %You can use theorem, exercise, problem, or question here.  Modify x.yz to be whatever number you are proving
+%Delete this text and write theorem statement here.
+%\end{theorem}
+
+%Blah, blah, blah. \mathbb{Z} Here is an example of the \texttt{align} environment:
+%%Note 1: The * tells LaTeX not to number the lines.  If you remove the *, be sure to remove it below, too.
+%%Note 2: Inside the align environment, you do not want to use $-signs.  The reason for this is that this is already a math environment. This is why we have to include \text{} around any text inside the align environment.
+%\begin{align*}
+%\sum_{i=1}^{k+1}i & = \left(\sum_{i=1}^{k}i\right) +(k+1)\\ 
+%& = \frac{k(k+1)}{2}+k+1 & (\text{by inductive hypothesis})\\
+%& = \frac{k(k+1)+2(k+1)}{2}\\
+%& = \frac{(k+1)(k+2)}{2}\\
+%& = \frac{(k+1)((k+1)+1)}{2}.
+%\end{align*}
+%\end{proof}
+% 
+%\begin{theorem}{x.yz}
+%Let $n\in \Z$.  Then yada yada.
+%\end{theorem}
+% 
+%\begin{proof}
+%Blah, blah, blah.  I'm so smart.
+%\end{proof}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 5: Examples of Groups
+}
+\author{Quinn Neumiiller}
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q1
+% --------------------------------------------------------------
+
+\begin{question}{1}
+Let $a$ and $b$ be elements of a multiplicative group $G$.
+\begin{question}{1a}
+Show that $a$ and $a^{-1}$ have the same order.
+
+Claim: $|a| = |a^{-1}|$
+
+
+
+\end{question}
+
+\begin{question}{1b}
+Show that $a$ and $b^{-1}ab$ have the same order.
+\end{question}
+
+\begin{question}{1c}
+Show that $ab$ and $ba$ have the same order.
+\end{question}
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+
+\begin{question}{2}
+Suppose $a$ and $b$ are elements of the group ($\Z_n$, +) that have the same order. Show
+that $\langle a \rangle$ = $\langle b \rangle$.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q3
+% --------------------------------------------------------------
+
+\begin{question}{3}
+Let $g$ be an element of a multiplicative group $G$ with identity $e$. Show that if $g$ has
+order $n$ and $g^m = e$, then $n$ divides $m$.
+
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q4
+% --------------------------------------------------------------
+
+\begin{question}{4}
+Let $H = \{$
+$ I =
+\begin{bmatrix}
+1 & 0 \\
+0 & 1 \\
+\end{bmatrix},
+A = 
+\begin{bmatrix}
+ 0 & -1 \\
+-1 &  0 \\
+\end{bmatrix},
+B = 
+\begin{bmatrix}
+-1 &  0 \\
+ 0 & -1 \\
+\end{bmatrix},
+C = 
+\begin{bmatrix}
+0 & 1 \\
+1 & 0 \\
+\end{bmatrix}
+\}$
+\end{question}
+
+\begin{question}{4a}
+Make a table for the matrix multiplication operation on $H$.
+
+\begin{tabular}[c]{c|cccc}
+   & I & A & B & C  \\
+   \hline
+I  & I & A & B & C \\
+A  & A & I & C & B \\
+B  & B & C & I & A \\
+C  & C & B & A & I
+\end{tabular}
+
+\end{question}
+
+\begin{question}{4b}
+Show that ($H$, $\times$) is isomorphic to the group ($U_8$, $\times$).
+(Hint: Find an explicit bijection $\psi$: $H$ $\rightarrow$ $U_8$ that results in matching multiplication
+tables.)
+
+$U_n$ = $\{x \in \Z_n : gcd(x, n) = 1\}$ $|U_n| = \phi(n)$
+
+$U_8$ = $\{1,3,5,7\}$
+\\\\
+
+\begin{tabular}[c]{c|cccc}
+$H$ & I & A & B & C  \\
+   \hline
+I  & I & A & B & C \\
+A  & A & I & C & B \\
+B  & B & C & I & A \\
+C  & C & B & A & I
+\end{tabular}
+$ \rightarrow \psi \rightarrow $
+\begin{tabular}[c]{c|cccc}
+$U_8$& 1 & 3 & 5 & 7  \\
+   \hline
+1  & 1 & 3 & 5 & 7 \\
+3  & 3 & 1 & 7 & 5 \\
+5  & 5 & 7 & 1 & 3 \\
+7  & 7 & 5 & 3 & 1
+\end{tabular}\\\\
+
+\begin{tabular}{c|cccc}
+x      & I & A & B & C \\
+\hline
+$\psi(x)$ & 1 & 3 & 5 & 7
+\end{tabular}
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q5
+% --------------------------------------------------------------
+
+\begin{question}{5a}
+Find the order of the linear groups ($GL_2$($\Z_5$), $\times$) and ($GL_2$($\Z_7$), $\times$)
+
+$|GL_2$($\Z_p$)$| = (p^2-1)(p^2-p)$
+
+$|GL_2$($\Z_5$)$| = (5^2-1)(5^2-5) = (24)(20) = 480$
+
+$|GL_2$($\Z_7$)$| = (7^2-1)(7^2-7) = (48)(42) = 2016$
+
+\end{question}
+
+\begin{question}{5b}
+Find the order of the symmetric groups $S_{10}$ and $S_{15}$.
+
+$|S_n|$ = $n!$
+
+$|S_{10}|$ = $10! = 3628800$
+
+$|S_{15}|$ = $15! = 1307674400000$
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q6
+% --------------------------------------------------------------
+
+\begin{question}{6}
+Let $f$ and $g$ be the elements of $S_7$ given by \\
+
+$f= \begin{bmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+3 & 4 & 5 & 6 & 1 & 7 & 2
+\end{bmatrix}
+$\\
+
+$g= \begin{bmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+5 & 1 & 7 & 3 & 2 & 4 & 6
+\end{bmatrix}
+$\\
+
+Calculate $f^{-1}, f^2, f^3, g \circ f, and f^{-1} \circ g \circ f$.
+
+$f^{-1}= \begin{bmatrix}
+3 & 4 & 5 & 6 & 1 & 7 & 2 \\
+1 & 2 & 3 & 4 & 5 & 6 & 7
+\end{bmatrix}
+$\\
+
+$f^{2}= \begin{bmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+5 & 6 & 1 & 7 & 3 & 2 & 4
+\end{bmatrix}
+$\\
+
+$f^{3}= \begin{bmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+1 & 7 & 3 & 2 & 5 & 4 & 6
+\end{bmatrix}
+$\\
+
+$g \circ f = \begin{bmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+7 & 3 & 2 & 4 & 5 & 6 & 1
+\end{bmatrix}
+$\\
+
+$f^{-1} \circ g \circ f = \begin{bmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+6 & 1 & 7 & 2 & 3 & 4 & 5
+\end{bmatrix}
+$\\
+\end{question}
+
+\end{document}
