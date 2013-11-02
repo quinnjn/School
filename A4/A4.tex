@@ -334,48 +334,47 @@ a     & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
 =& 8 \textrm{ mod } 10
 \end{align*}
 
+Passport number is invalid, hence the passport is invalid.
+
+% Checking birth date
+
+% \begin{tabular}{l|ccccccccccccc}
+% \hline
+% i     & 4  & 6  & 0  & 9  & 2  & 0  & 5 \\
+% a     & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
+% \hline
+% (i*a) & 28 & 18 & 0  & 63 & 6  & 0  & 35
+% \end{tabular}
+
+% \begin{align*}
+% =& 28 + 18 + 0  + 63 + 6  + 0  + 35 \textrm{ mod } 10\\
+% =& 150 \textrm{ mod } 10\\
+% =& 0 \textrm{ mod } 10
+% \end{align*}
+
+% Birth date is valid.
 
 
-Checking birth date
+% Checking Expiry date
 
-\begin{tabular}{l|ccccccccccccc}
-\hline
-i     & 4  & 6  & 0  & 9  & 2  & 0  & 5 \\
-a     & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
-\hline
-(i*a) & 28 & 18 & 0  & 63 & 6  & 0  & 35
-\end{tabular}
+% \begin{tabular}{l|ccccccccccccc}
+% \hline
+% i     & 0  & 4  & 0  & 9  & 1  & 3  & 1 \\
+% a     & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
+% \hline
+% (i*a) & 0  & 12 & 0  & 63 & 3  & 3  & 7 
+% \end{tabular}
 
-\begin{align*}
-=& 28 + 18 + 0  + 63 + 6  + 0  + 35 \textrm{ mod } 10\\
-=& 150 \textrm{ mod } 10\\
-=& 0 \textrm{ mod } 10
-\end{align*}
+% \begin{align*}
+% =& 0  + 12 + 0  + 63 + 3  + 3  + 7  \textrm{ mod } 10\\
+% =& 88 \textrm{ mod } 10\\
+% =& 8 \textrm{ mod } 10
+% \end{align*}
 
-Birth date is valid.
-
-
-
-Checking Expiry date
-
-\begin{tabular}{l|ccccccccccccc}
-\hline
-i     & 0  & 4  & 0  & 9  & 1  & 3  & 1 \\
-a     & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
-\hline
-(i*a) & 0  & 12 & 0  & 63 & 3  & 3  & 7 
-\end{tabular}
-
-\begin{align*}
-=& 0  + 12 + 0  + 63 + 3  + 3  + 7  \textrm{ mod } 10\\
-=& 88 \textrm{ mod } 10\\
-=& 8 \textrm{ mod } 10
-\end{align*}
-
-Expiry date is invalid.
+% Expiry date is invalid.
 
 
-
+\end{question}
 
 % --------------------------------------------------------------
 %                         Q3b
@@ -500,25 +499,18 @@ a     & 7   & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1
 \begin{align*}
 =& 14  + 3   + 14   + 12  + 1   + 56  + 24  + 4   + 21  + 1   + 14  + 12  + 63  + 2   + 7   + 15  + 3 \textrm{ mod } 10\\
 =& 266 \textrm{ mod } 10\\
-=& 6 \textrm{ mod } 10\\
+=& 6 \textrm{ mod } 10
 \end{align*}
 
 \begin{align*}
-=& 6 + 1(x)\textrm{ mod } 10\\
-=& 6 + x\textrm{ mod } 10\\
-10=& 6 + 4\textrm{ mod } 10\\
+=& 6 + 7(x)\textrm{ mod } 10\\
+3=& 6 + 7(1)\textrm{ mod } 10\\
+0=& 6 + 7(2)\textrm{ mod } 10
 \end{align*}
 
-\begin{align*}
-=& 6 +1(4) \textrm{ mod } 10\\
-=& 6 +4    \textrm{ mod } 10\\
-=& 10 \textrm{ mod } 10\\
-=& 0 \textrm{ mod } 10
-\end{align*}
+Final checkdigit on the passport is 2.
 
-Final checkdigit on the passport is 4.
-
-Total valid passport is: 203241-8-CAN-840712-4-F-090215-3$>>>>>>>>>>$4
+Total valid passport is: 203241-8-CAN-840712-4-F-090215-3$>>>>>>>>>>$2
 
 
 \end{question}
@@ -537,24 +529,47 @@ Hacking RSA cryptosystems.
 
 \begin{question}{4a}
 Suppose an RSA cryptosystem has public key ($n$, $e$) = (6282, 197). Find the associated private key ($\phi(n)$, $d$)
-\end{question}
 
 \begin{align*}
 \phi(n) &= \phi(3141) * \phi(2) \\
         &= \phi(3141) * \phi(2) \\
         &= \phi(349) * \phi(3^2) * \phi(2) \\
         &= \phi(349) * \phi(3^2) * \phi(2) \\
-        &= 349^{1-1}(349-1) * 3^{2-1}(3-1) * 2 \\
-        &= 1(349-1) * 3(3-1) * 2 \\
-        &= 348 * 3(2) * 2 \\
-        &= 348 * 6 * 2 \\
-        &= 4176 \\
+        &= 349^{1-1}(349-1) * 3^{2-1}(3-1) \\
+        &= 1(349-1) * 3(3-1) \\
+        &= 348 * 3(2)\\
+        &= 348 * 6 \\
+        &= 2088 \\
+\end{align*}
+
+private key = (2088, $d$)
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 2088 &= 197d = 1 \textrm{ mod }  2088 \\
 \end{align*}
 
 \begin{align*}
-c &= 
+2088 &= 197(10) + 118 \\
+197 &=  118(1)  + 79\\
+118 &=   79(1)  + 39\\
+79  &=   39(2)  +  1
 \end{align*}
 
+\begin{align*}
+1 &= 79 - 39(2)	\\
+1 &= 79 - (118-79)(2)	\\
+1 &= -118(2) +79(3)	\\
+1 &= -118(2) + (197-118)(3)	\\
+1 &= 197(3) -118(5)	\\
+1 &= 197(3) -(2088-197(10))(5)	\\
+1 &= 197(3) -2088(5) +197(50)	\\
+1 &= -2088(5) +197(53)	\\
+1 + 2088(5)&= 197(53)
+\end{align*}
+
+private key = (2088, 53)
+
+\end{question}
 % --------------------------------------------------------------
 %                         Q4b
 % --------------------------------------------------------------
@@ -562,6 +577,42 @@ c &=
 \begin{question}{4b}
 Let ($n$, $e$) = ($9991$, $11$) be the public key for an RSA cryptosystem that encrypts
 letters using the standard ASCII system. Decipher the transmitted message: 5752 7155
+
+\begin{align*}
+\phi(n) &= \phi(9991)\\
+		&= \phi(97)\phi(103)\\
+		&= 96 * 102\\
+		&= 9792
+\end{align*}
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 9792 &= 11d = 1 \textrm{ mod }  9792 \\
+\end{align*}
+
+
+\begin{align*}
+9792 &= 11(890) + 2 \\
+11 &= 2(5) + 1 \\
+\end{align*}
+
+\begin{align*}
+1 &= 11 - 2(5) \\
+1 &= 11 - (9792 - 11(890))(5) \\
+1 &= 11 - 9792(5) + 11(5)(890) \\
+1 &= - 9792(5) + 11(4451) \\
+1 + 9792(5) &= 11(4451) \\
+\end{align*}
+
+private key = ($9792$, $4451$)
+
+\begin{align*}
+5752^{4451} \textrm{ mod } 9991 &= 2440 \\
+7155^{4451} \textrm{ mod } 9991 &= 4228 \\
+\end{align*}
+
+24 40 42 28
+
+$\uparrow(*\lfloor$
 \end{question}
 
 % --------------------------------------------------------------
@@ -584,9 +635,54 @@ public key (8453, 7).
 \begin{question}{5a}
 Verify that Bob's private key is (9184, 5) and Alice's private key is (8268, 7087).
 
-($n_A$, $e_A$) = ($8453$, $7$)
+Bob's private key
 
-($n_B$, $e_B$) = ($9379$, $1837$)
+\begin{align*}
+\phi(n) &= \phi(9379)\\
+        &= \phi(83)\phi(113)\\
+        &= 82*112\\
+        &= 9184\\
+\end{align*}
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 9184 
+&= 1837d = 1 \textrm{ mod } 9184 \\
+\end{align*}
+
+\begin{align*}
+9184 &= 1837(4) + 1836 \\
+1837 &= 1836    + 1 \\
+\end{align*}
+
+\begin{align*}
+1 &= 1837 - 1836\\
+1 &= 1837 - (9184 - 1837(4))\\
+1 &= 1837 -9184 +1837(4)\\
+1 &= 1837(5) -9184\\
+1 \textrm{ mod } 9184 &= 1837(5)\\
+\end{align*}
+
+private key ($9184$,$5$)
+
+Alice's private key
+
+\begin{align*}
+\phi(n) &= \phi(8453)\\
+        &= \phi(107)\phi(79)\\
+        &= 106*78\\
+        &= 106*78\\
+        &= 8268
+\end{align*}
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 8268 \\
+&= 7d \textrm{ mod } 8268   \\
+&= 7(7087) \textrm{ mod } 8268   \\
+&= 49609 \textrm{ mod } 8268   \\
+&= 49609 \textrm{ mod } 8268   \\
+&= 1 \textrm{ mod } 8268   \\
+\end{align*}
+
 \end{question}
 
 % --------------------------------------------------------------
@@ -599,5 +695,54 @@ Alice wants to send the signed message $ALGEBRA$ to Bob. She will encrypt in
 the calculations Bob will use to verify the signed message he receives without knowledge of
 Alice's private key.
 \end{question}
+
+\begin{tabular}{lllllll}
+A  & L  & G  & E  & B  & R  & A  \\ 
+\hline 
+65 & 76 & 71 & 69 & 66 & 82 & 65 
+\end{tabular}
+
+ALGEBRA split up into 4-digit blocks : $6576$ $7169$ $6682$ $0065$
+
+Encoding ALGEBRA
+
+\begin{align*}
+m^{d} \textrm{ mod } n &= c_a\\
+6576^{7087} \textrm{ mod } 8453 &= 6188 \\
+7169^{7087} \textrm{ mod } 8453 &= 1070 \\
+6682^{7087} \textrm{ mod } 8453 &= 4486 \\
+0065^{7087} \textrm{ mod } 8453 &= 1144 
+\end{align*}
+
+\begin{align*}
+c_a^{e_b} \textrm{ mod } n_b &= c_{ab}\\
+6188^{1837} \textrm{ mod } 9379 &= 9114 \\
+1070^{1837} \textrm{ mod } 9379 &= 57 \\
+4486^{1837} \textrm{ mod } 9379 &= 476 \\
+1144^{1837} \textrm{ mod } 9379 &= 1889 
+\end{align*}
+
+
+Alice would send $9114$ $57$ $476$ $1889$
+
+Bob decrypting
+
+\begin{align*}
+c^{d_b} \textrm{ mod } n_b &= c_{b}\\
+9114	^{5} \textrm{ mod } 9379 &= 6188 \\
+57		^{5} \textrm{ mod } 9379 &= 1070 \\
+476		^{5} \textrm{ mod } 9379 &= 4486 \\
+1889	^{5} \textrm{ mod } 9379 &= 1144
+\end{align*}
+
+\begin{align*}
+c^{e_a} \textrm{ mod } n_a &= m\\
+6188	^{7} \textrm{ mod } 8453 = 6576 \\
+1070	^{7} \textrm{ mod } 8453 = 7169 \\
+4486	^{7} \textrm{ mod } 8453 = 6682 \\
+1144	^{7} \textrm{ mod } 8453 = 0065 \\
+\end{align*}
+
+$6576$ $7169$ $6682$ $0065$ = ALGEBRAy
 
 \end{document}
