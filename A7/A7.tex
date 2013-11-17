@@ -1,0 +1,309 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{a}
+%\author{Quinn Neumiiller}
+%\date{September 2013}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{bbm}
+
+
+\usepackage{fancyhdr}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{Compiled on {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 7: Examples of Groups
+}
+\author{Quinn Neumiiller}
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q1
+% --------------------------------------------------------------
+
+\begin{question}{Q1}
+Perform the following calculations in $\C$:
+\end{question}
+
+\begin{question}{1a}
+\begin{align*}
+(2-3i)+(-1 +4i) &= (2-3i)+(-1 +4i)\\
+&= 2 -3i -1 + 4i\\
+&= 1 + i
+\end{align*}
+\end{question}
+
+\begin{question}{1b}
+\begin{align*}
+(2-11i)(-4+3i) 
+&= -8 + 6i + 44i - 33i^2\\ 
+&= 50i + 33 -8 \\
+&= 50i +25 
+\end{align*}
+\end{question}
+\begin{question}{1c}
+\begin{align*}
+(4+3i)^{-1}
+\end{align*}
+\end{question}
+\begin{question}{1d}
+\begin{align*}
+(\sqrt{2}i)^{8}
+ &= (\sqrt{2})^8(i)^8\\ 
+ &= ((\sqrt{2})^2)^4((i)^2)^4\\ 
+ &= (2)^4(-1)^4\\ 
+ &= 16
+\end{align*}
+\end{question}
+\begin{question}{1e}
+\begin{align*}
+(2+3i)\overline{(3+4i)}
+ &= (2+3i)(3-4i)\\ 
+ &= 6-8i+9i-12i^2\\ 
+ &= 6+i+12\\ 
+ &= 18+i\\ 
+\end{align*}
+\end{question}
+\begin{question}{1f}
+\begin{align*}
+(2\sqrt{3}i-2)^{6}
+ &= \\ 
+\end{align*}
+\end{question}
+\begin{question}{1g}
+\begin{align*}
+(1-i)^{4}
+ &= \\ 
+\end{align*}
+\end{question}
+\begin{question}{1h}
+\begin{align*}
+(\frac{1}{4\sqrt{2}} - \frac{\sqrt{3i}}{4\sqrt{2}})^{9}
+ &= \\ 
+\end{align*}
+\end{question}
+\begin{question}{1i}
+\begin{align*}
+(re^{i\theta})^{-1}
+ &= \\ 
+\end{align*} 
+Express in polar form
+\end{question}
+\begin{question}{1j}
+\begin{align*}
+(\sqrt{5}e^{\frac{2\pi i}{5}})(2\sqrt{5}e^{\frac{3\pi i}{5}})
+ &= \\ 
+\end{align*}
+Express in standard $x+yi$ form
+\end{question}
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+\begin{question}{Q2}
+Solve the following equations. Find all solutions for $z$ in $\C$. Express your answer in $x+yi$ form when convenient, otherwise leave them in polar form.
+\end{question}
+
+\begin{question}{2a}
+\end{question}
+\begin{question}{2b}
+\end{question}
+\begin{question}{2c}
+\end{question}
+\begin{question}{2d}
+\end{question}
+\begin{question}{2e}
+\end{question}
+\begin{question}{2f}
+\end{question}
+\begin{question}{2g}
+\end{question}
+% --------------------------------------------------------------
+%                         Q3
+% --------------------------------------------------------------
+\begin{question}{3}
+Suppose $(D, +, x)$ is an integral domain that is not a field.
+\end{question}
+\begin{question}{3a}
+Prove that the ring $(D[x], +, x)$ of polynomials in the variable $x$ with coeffcients in $D$ is an integral domain. (For this question, you should assume that if $R$ is a commutative ring, then $R[x]$ is a commuative ring.)
+\end{question}
+
+\begin{question}{3b}
+\end{question}
+% --------------------------------------------------------------
+%                         Q4
+% --------------------------------------------------------------
+\begin{question}{4}
+For each of the following, find the unique quotient $q(x)$ and remainder r(x) in the given polynomial ring when $g(x)$ is divided by $f(x)$.
+\end{question}
+\begin{question}{4a}
+\end{question}
+\begin{question}{4b}
+\end{question}
+\begin{question}{4c}
+\end{question}
+% --------------------------------------------------------------
+%                         Q5
+% --------------------------------------------------------------
+\begin{question}{5}
+Prove the $Remainder$ $Theorem$. Let $F$ be a field. Let $f(x) \in F[x]$ and let $c \in F$. Prove that the remainder of $f(x)$ divided by $(x-c)$ is $f(c)$.
+\end{question}
+\end{document}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 7: Examples of Groups
+}
+\author{Quinn Neumiiller}
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q1
+% --------------------------------------------------------------
+
+\begin{question}{Q1}
+Perform the following calculations in $\C$:
+\end{question}
+
+\begin{question}{1a}
+$(2-3i)+(-1 +4i)$
+\end{question}
+\begin{question}{1b}
+$(2-11i)(-4+3i)$
+\end{question}
+\begin{question}{1c}
+$(4+3i)^{-1}$
+\end{question}
+\begin{question}{1d}
+$(\sqrt{2i})^{8}$
+\end{question}
+\begin{question}{1e}
+$(2+3i)\overline{(3+4i)}$
+\end{question}
+\begin{question}{1f}
+$(2\sqrt{3i}-2)^{6}$
+\end{question}
+\begin{question}{1g}
+$(1-i)^{4}$
+\end{question}
+\begin{question}{1h}
+$(\frac{1}{4\sqrt{2}} - \frac{\sqrt{3i}}{4\sqrt{2}})^{9}$
+\end{question}
+\begin{question}{1i}
+$(re^{i\theta})^{-1}$ Express in polar form
+\end{question}
+\begin{question}{1j}
+$(\sqrt{5}e^{\frac{2\pi i}{5}})(2\sqrt{5}e^{\frac{3\pi i}{5}})$
+Express in standard $x+yi$ form
+\end{question}
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+\begin{question}{Q2}
+Solve the following equations. Find all solutions for $z$ in $\C$. Express your answer in $x+yi$ form when convenient, otherwise leave them in polar form.
+\end{question}
+
+\begin{question}{2a}
+\end{question}
+\begin{question}{2b}
+\end{question}
+\begin{question}{2c}
+\end{question}
+\begin{question}{2d}
+\end{question}
+\begin{question}{2e}
+\end{question}
+\begin{question}{2f}
+\end{question}
+\begin{question}{2g}
+\end{question}
+% --------------------------------------------------------------
+%                         Q3
+% --------------------------------------------------------------
+\begin{question}{3}
+Suppose $(D, +, x)$ is an integral domain that is not a field.
+\end{question}
+\begin{question}{3a}
+Prove that the ring $(D[x], +, x)$ of polynomials in the variable $x$ with coeffcients in $D$ is an integral domain. (For this question, you should assume that if $R$ is a commutative ring, then $R[x]$ is a commuative ring.)
+\end{question}
+
+\begin{question}{3b}
+\end{question}
+% --------------------------------------------------------------
+%                         Q4
+% --------------------------------------------------------------
+\begin{question}{4}
+For each of the following, find the unique quotient $q(x)$ and remainder r(x) in the given polynomial ring when $g(x)$ is divided by $f(x)$.
+\end{question}
+\begin{question}{4a}
+\end{question}
+\begin{question}{4b}
+\end{question}
+\begin{question}{4c}
+\end{question}
+% --------------------------------------------------------------
+%                         Q5
+% --------------------------------------------------------------
+\begin{question}{5}
+Prove the $Remainder$ $Theorem$. Let $F$ be a field. Let $f(x) \in F[x]$ and let $c \in F$. Prove that the remainder of $f(x)$ divided by $(x-c)$ is $f(c)$.
+\end{question}
+\end{document}
