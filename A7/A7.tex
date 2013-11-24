@@ -1,0 +1,477 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{a}
+%\author{Quinn Neumiiller}
+%\date{September 2013}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{bbm}
+
+\usepackage{polynom}
+
+\usepackage{fancyhdr}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{Compiled on {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\z}{\overline{z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 7: Examples of Groups
+}
+\author{Quinn Neumiiller}
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q1
+% --------------------------------------------------------------
+
+\begin{question}{Q1}
+Perform the following calculations in $\C$:
+\end{question}
+
+\begin{question}{1a}
+\begin{align*}
+(2-3i)+(-1 +4i) &= (2-3i)+(-1 +4i)\\
+&= 2 -3i -1 + 4i\\
+&= 1 + i
+\end{align*}
+\end{question}
+
+\begin{question}{1b}
+\begin{align*}
+(2-11i)(-4+3i) 
+&= -8 + 6i + 44i - 33i^2\\ 
+&= 50i + 33 -8 \\
+&= 50i +25 
+\end{align*}
+\end{question}
+\begin{question}{1c}
+\begin{align*}
+(4+3i)^{-1}
+	&= \frac{4-3i}{4^2+3^3} \\
+	&= \frac{4-3i}{16+9} \\
+	&= \frac{4-3i}{25} \\
+\end{align*}
+\end{question}
+\begin{question}{1d}
+\begin{align*}
+(\sqrt{2}i)^{8}
+ &= (\sqrt{2})^8(i)^8\\ 
+ &= ((\sqrt{2})^2)^4((i)^2)^4\\ 
+ &= (2)^4(-1)^4\\ 
+ &= 16
+\end{align*}
+\end{question}
+\begin{question}{1e}
+\begin{align*}
+(2+3i)\overline{(3+4i)}
+ &= (2+3i)(3-4i)\\ 
+ &= 6-8i+9i-12i^2\\ 
+ &= 6+i+12\\ 
+ &= 18+i\\ 
+\end{align*}
+\end{question}
+\begin{question}{1f}
+Let $x=-2$ and $y=2\sqrt{3}$
+
+\begin{align*}
+r 
+ &= \sqrt{x^2 + y^2} \\
+ &= \sqrt{(-2)^2 + (2\sqrt{3})^2} \\
+ &= \sqrt{4 + (4*3)} \\
+ &= \sqrt{4 + 12} \\
+ &= \sqrt{16} \\
+ &= 4 \\
+\end{align*}
+
+\begin{align*}
+\theta 
+&= tan^{-1}(\frac{2\sqrt{3}}{-2}) \\
+&= tan^{-1}(\sqrt{-3}) \\
+&= -\frac{\pi}{3}
+\end{align*}
+
+\begin{align*}
+(2\sqrt{3}i-2)^{6}
+ &= (re^{i\theta})^6\\ 
+ &= ((4)e^{i(-\frac{\pi}{3})})^6\\ 
+ &= (4^6)e^{6i(-\frac{\pi}{3})}\\ 
+ &= 4096e^{-2\pi i}\\ 
+ &= 4096(\cos(-2\pi) + i\sin(-2\pi))\\ 
+ &= 4096(1 + i0)\\ 
+ &= 4096 
+\end{align*}
+
+
+\end{question}
+\begin{question}{1g}
+Let $x=1$ and $y=-1$
+\begin{align*}
+r
+&= \sqrt{(1)^2+(-1)^2} \\
+&= \sqrt{1+1} \\
+&= \sqrt{2}
+\end{align*}
+
+\begin{align*}
+\theta
+ &= tan^{-1}(-\sqrt{3}) \\
+ &= tan^{-1}(-\sqrt{3}) \\
+ &= -\frac{\pi}{3}
+\end{align*}
+
+\begin{align*}
+(1-i)^{4}
+ &= (re^{i\theta})^4\\ 
+ &= ((\sqrt{2})e^{i(-\frac{\pi}{4})})^4\\ 
+ &= (\sqrt{2})^4e^{4i(-\frac{\pi}{4})}\\ 
+ &= 4e^{-4i\pi}\\ 
+ &= 4(\cos(-\pi)+i\sin(-\pi))\\
+ &= 4(-1+i0)\\
+ &= -4
+\end{align*}
+\end{question}
+
+\begin{question}{1h} Express in polar form
+Let $x=1$ and $y=-\sqrt{3}$
+
+\begin{align*}
+\theta
+ &= tan^{-1}(-\sqrt{3}) \\
+ &= tan^{-1}(-\sqrt{3}) \\
+ &= -\frac{\pi}{3}
+\end{align*}
+
+\begin{align*}
+r 
+&= \sqrt{1^2 + (\sqrt{3})^2} \\
+&= \sqrt{1 + 3} \\
+&= \sqrt{4} \\
+&= 2 \\
+\end{align*}
+
+\begin{align*}
+(\frac{1}{4\sqrt{2}} - \frac{\sqrt{3i}}{4\sqrt{2}})^{9}
+ &= (\frac{1}{4\sqrt{2}}(1-\sqrt{3i}))^{9} \\
+ &= (\frac{1}{4\sqrt{2}}(re^{i\theta}))^{9} \\
+ &= (\frac{1}{4\sqrt{2}}(2)e^{i(-\frac{\pi}{3}})))^{9} \\
+ &= (\frac{1}{2\sqrt{2}}e^{i(-\frac{\pi}{3}})))^{9} \\
+ &= (\frac{1}{2\sqrt{2}})^9   e^{-3\pi i} \\
+ &= \frac{1}{8192\sqrt{2}}   e^{-3\pi i} \\
+ &= \frac{1}{8192\sqrt{2}}   (\cos(-3\pi) +i\sin(-3\pi)) \\
+ &= \frac{1}{8192\sqrt{2}}   (-1 +i0) \\
+ &= -\frac{1}{8192\sqrt{2}}
+\end{align*}
+\end{question}
+
+
+\begin{question}{1i}
+\begin{align*}
+(re^{i\theta})^{-1}
+ &= \frac{e^{-i\theta}}{r}
+\end{align*} 
+\end{question}
+
+\begin{question}{1j} Express in standard $x+yi$ form
+\begin{align*}
+(\sqrt{5}e^{\frac{2\pi i}{5}})(2\sqrt{5}e^{\frac{3\pi i}{5}})
+ &= 2(\sqrt{5})^2e^{\pi i}\\ 
+ &= 10(-1)\\ 
+ &= -10 
+\end{align*}
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+\begin{question}{Q2}
+Solve the following equations. Find all solutions for $z$ in $\C$. Express your answer in $x+yi$ form when convenient, otherwise leave them in polar form.
+\end{question}
+
+%z^n = r^n e^{in\theta}
+%
+%so if z^n = 5 ...
+%r^n = 5
+%thus, r=\sqrt[n]{5}
+%
+\begin{question}{2a}
+$z^2=5$
+
+$r = \sqrt{5}$
+
+$\theta = 0$
+
+$2\theta \in [0, 4\pi)$
+
+$2\theta \in \{0, 2\pi\}$
+
+$\theta \in \{0, \pi\}$
+
+$z = \{\sqrt{5}e^{i{0}}, \sqrt{5}e^{i\pi}\}$
+
+$z = \{\sqrt{5}, \sqrt{5}(\cos{\pi}+i\sin{\pi})\}$
+
+$z = \{\sqrt{5}, \sqrt{5}(-1+i0\}$
+
+$z = \{\sqrt{5}, -\sqrt{5}\}$
+
+
+\end{question}
+\begin{question}{2b}
+$z^2 +2z +3 =0$
+
+Apply the quadratic equation
+
+\begin{align*}
+\frac{-2\pm \sqrt{4-4(3)}}{2} 
+	&= -1\pm \frac{\sqrt{-8}}{2} \\
+	&= -1\pm \frac{2i\sqrt{2}}{2} \\
+	&= -1\pm i\sqrt{2} 
+\end{align*}
+\end{question}
+
+\begin{question}{2c}
+$z^3=-1$
+
+$r = \sqrt[3]{-1}$
+
+$\theta = 0$
+
+$3\theta \in [0, 6\pi)$
+
+$3\theta \in \{0, 2\pi, 4\pi\}$
+
+$\theta \in \{0, \frac{2\pi}{3}, \frac{4\pi}{3}\}$
+
+$z = \{\sqrt[3]{-1}e^{i0}, \sqrt[3]{-1}e^{i\frac{2\pi}{3}}, \sqrt[3]{-1}e^{i\frac{4\pi}{3}}\}$ 
+
+$z = \{\sqrt[3]{-1}(\cos(0)+i\sin(0)), \sqrt[3]{-1}e^{i\frac{2\pi}{3}}, \sqrt[3]{-1}e^{i\frac{4\pi}{3}}\}$ 
+
+$z = \{\sqrt[3]{-1}, \sqrt[3]{-1}e^{i\frac{2\pi}{3}}, \sqrt[3]{-1}e^{i\frac{4\pi}{3}}\}$ 
+
+\end{question}
+\begin{question}{2d}
+$z^3 + 6z^2 + 12z + 3 = 0$ (Hint: $(z+2)^3 = z^3 + 6z^2 + 12z + 8$)
+
+$z^3 + 6z^2 + 12z + 8 = 5$ 
+
+$(z+2)^3 = 5$ 
+
+Let $\z = z+2$
+
+$\z^3 = 5$
+
+$r = \sqrt[3]{5}$
+
+$\theta = 0$
+
+$3\theta \in [0, 6\pi)$
+
+$3\theta \in \{0, 2\pi, 4\pi\}$
+
+$\theta \in \{0, \frac{2\pi}{3}, \frac{4\pi}{3}\}$
+
+$\z = \{\sqrt[3]{5}e^{i0}, \sqrt[3]{5}e^{i\frac{2\pi}{3}}, \sqrt[3]{5}e^{i\frac{4\pi}{3}}\}$ 
+
+$\z = \{\sqrt[3]{5}, \sqrt[3]{5}e^{i\frac{2\pi}{3}}, \sqrt[3]{5}e^{i\frac{4\pi}{3}}\}$ 
+
+$(z+2) = \{\sqrt[3]{5}, \sqrt[3]{5}e^{i\frac{2\pi}{3}}, \sqrt[3]{5}e^{i\frac{4\pi}{3}}\}$ 
+
+$z = \{\sqrt[3]{5}-2, \sqrt[3]{5}e^{i\frac{2\pi}{3}}-2, \sqrt[3]{5}e^{i\frac{4\pi}{3}}-2\}$ 
+
+\end{question}
+\begin{question}{2e}
+$z^4 = 16 - 16i$
+
+$\theta = tan^{-1}(-1) = -\frac{\pi}{4}$
+
+$4\theta = [0, 8\pi)$
+
+$4\theta = \{-\frac{\pi}{4}, 2\pi-\frac{\pi}{4}, 4\pi -\frac{\pi}{4}, 6\pi -\frac{\pi}{4}\}$
+
+$4\theta = \{-\frac{\pi}{4}, \frac{7\pi}{4}, \frac{15\pi}{4}, \frac{23\pi}{4}\}$
+
+$\theta = \{-\frac{\pi}{16}, \frac{7\pi}{16}, \frac{15\pi}{16}, \frac{23\pi}{16}\}$
+
+$r = (\sqrt{16^2+(-16)^2})^{1/4}$
+
+$r = (\sqrt{512})^{1/4}$
+
+$r = (16\sqrt{2})^{1/4}$
+
+$r = 2(2)^{1/4}$
+
+$z = \{2(2)^{1/4}e^{i(-\frac{\pi}{16})}, 2(2)^{1/4}e^{i(\frac{7\pi}{16})},  2(2)^{1/4}e^{i(\frac{15\pi}{16})},  2(2)^{1/4}e^{i(\frac{23\pi}{16})} \}$
+\end{question}
+\begin{question}{2f}
+$z^6 = -1 - \sqrt{3}i$
+
+$\theta = tan^{-1}(\sqrt(3)) = \frac{\pi}{3}$
+
+$6\theta = [0, 12\pi]$
+
+$6\theta = \{\frac{\pi}{3}, 2\pi+ \frac{\pi}{3}, 4\pi+\frac{\pi}{3}, 6\pi+\frac{\pi}{3}, 8\pi+\frac{\pi}{3}, 10\pi+\frac{\pi}{3}  \}$
+
+$6\theta = \{\frac{\pi}{3}, \frac{7\pi}{3}, \frac{13\pi}{3}, \frac{19\pi}{3}, \frac{25\pi}{3}, \frac{31\pi}{3}  \}$
+
+$\theta = \{\frac{\pi}{18}, \frac{7\pi}{18}, \frac{13\pi}{18}, \frac{19\pi}{18}, \frac{25\pi}{18}, \frac{31\pi}{18}  \}$
+
+$r = (\sqrt{(-1)^2 + (-\sqrt{3})^2})^{1/6}$
+
+$r = (\sqrt{1+3})^{1/6}$
+
+$r = (2)^{1/6}$
+
+$z = \{(2)^{1/6}e^{i\frac{\pi}{18}}, (2)^{1/6}e^{i\frac{7\pi}{18}}, (2)^{1/6}e^{i\frac{13\pi}{18}}, (2)^{1/6}e^{i\frac{19\pi}{18}}, (2)^{1/6}e^{i\frac{25\pi}{18}}, (2)^{1/6}e^{i\frac{31\pi}{18}}  \}$
+
+\end{question}
+\begin{question}{2g}
+$z^2 + (4-4\sqrt{3}i)z -16 = 0$
+
+Let $b = (4-4\sqrt{3}i)$
+
+$z^2 + bz -16 = 0$
+
+\begin{align*}
+\frac{-b\pm \sqrt{b^2-4(-16)}}{2} 
+  &= \frac{-b}{2}\pm \frac{\sqrt{b^2+64}}{2} \\
+  &= \frac{-(4-4\sqrt{3}i)}{2}\pm \frac{\sqrt{(4-4\sqrt{3}i)^2+64}}{2} \\
+  &= 2+2\sqrt{3}i  \pm  \frac{\sqrt{(-32-32\sqrt(3)i)+64}}{2} \\
+  &= 2+2\sqrt{3}i  \pm  \frac{\sqrt{32-32\sqrt(3)i}}{2} \\
+\end{align*}
+
+\end{question}
+% --------------------------------------------------------------
+%                         Q3
+% --------------------------------------------------------------
+\begin{question}{3}
+Suppose $(D, +, x)$ is an integral domain that is not a field.
+\end{question}
+\begin{question}{3a}
+Prove that the ring $(D[x], +, x)$ of polynomials in the variable $x$ with coeffcients in $D$ is an integral domain. (For this question, you should assume that if $R$ is a commutative ring, then $R[x]$ is a commuative ring.)
+
+\begin{proof}
+$D[x]$ is a integral domain iff, $(D[x], +, x)$ is a commutative ring and $(D[x]^x, x)$ is closed.
+
+Given that $D[x]$ is an assumed commuative ring.
+
+When $f(x)g(x) \in D[x]$  $\setminus\{0\} \implies$ deg $f(x) = n\in \N$ and deg $g(x) = m \in \N$
+
+By Lemma 6.1 in the notes, deg($f(x)g(x)$)$=n+m \in \N \implies f(x)g(x) \neq 0$.
+
+Therefore, $D[x]$ is closed.
+
+Because $D[x]$ is closed and an assumed commuative ring, $D[x]$ is a integral domain.
+
+\end{proof}
+\end{question}
+
+\begin{question}{3b}
+Let $F$ be a field. Explain why the polynomial ring $F[x,y]$ is an integral domain
+
+\begin{proof}
+A similar proof given in 3a can be used to prove $F[x,y]$.
+
+Given that F is a field, it inherits the commutative ring property.
+
+When $f(x,y)g(x,y) \in F[x,y]$  $\setminus\{0\} \implies$ deg $f(x,y) = n\in \N$ and deg $g(x,y) = m \in \N$
+
+By Lemma 6.1 in the notes, deg($f(x,y)g(x,y)$)$=n+m \in \N \implies f(x,y)g(x,y) \neq 0$.
+
+Therefore, $F[x,y]$ is closed.
+
+Because $F[x,y]$ is closed and a commuative ring, $F[x,y]$ is a integral domain.
+\end{proof}
+\end{question}
+\pagebreak
+% --------------------------------------------------------------
+%                         Q4
+% --------------------------------------------------------------
+\begin{question}{4}
+For each of the following, find the unique quotient $q(x)$ and remainder r(x) in the given polynomial ring when $g(x)$ is divided by $f(x)$.
+\end{question}
+\begin{question}{4a}
+$g(x) = x^4 + x^3 + x^2 -1$ and $f(x)=x^2+x+2$ in $\Z_3[x]$
+\vspace{10cm}
+\end{question}
+\begin{question}{4b}
+$g(x) = x^6 + 3x^5 + 4x^2 +2x + 2$ and $f(x)=x^2+2x+2$ in $\Z_5[x]$
+\vspace{10cm}
+\end{question}
+\begin{question}{4c}
+$g(x) = x^6 + 3x^5 + 4x^2 +2x +2$ and $f(x)=x^2+2x+2$ in $\Z_{11}[x]$
+\vspace{10cm}
+\end{question}
+% --------------------------------------------------------------
+%                         Q5
+% --------------------------------------------------------------
+\begin{question}{5}
+Prove the $Remainder$ $Theorem$. Let $F$ be a field. Let $f(x) \in F[x]$ and let $c \in F$. Prove that the remainder of $f(x)$ divided by $(x-c)$ is $f(c)$.
+
+\begin{proof}
+Let $q(x)$ be the quotient, and $r(x)$ the remainder.
+
+By division algorithm, $f(x) = q(x)(x-c) + r(x)$
+
+Let $x = c$
+
+$f(c) = q(c)(c-c) + r(c)$
+
+$f(c) = q(c)0 + r(c)$
+
+$f(c) = r(c)$
+
+Hence $f(c)$ is the remainder, $r(c)$.
+
+\end{proof}
+\end{question}
+\end{document}
