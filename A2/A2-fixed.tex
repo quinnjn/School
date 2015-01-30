@@ -1,0 +1,265 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{a}
+%\author{Quinn Neumiiller}
+%\date{September 2013}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bbm}
+
+
+\usepackage{fancyhdr}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{Compiled on {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+
+
+%\begin{theorem}{x.yz} %You can use theorem, exercise, problem, or question here.  Modify x.yz to be whatever number you are proving
+%Delete this text and write theorem statement here.
+%\end{theorem}
+
+%Blah, blah, blah. \mathbb{Z} Here is an example of the \texttt{align} environment:
+%%Note 1: The * tells LaTeX not to number the lines.  If you remove the *, be sure to remove it below, too.
+%%Note 2: Inside the align environment, you do not want to use $-signs.  The reason for this is that this is already a math environment. This is why we have to include \text{} around any text inside the align environment.
+%\begin{align*}
+%\sum_{i=1}^{k+1}i & = \left(\sum_{i=1}^{k}i\right) +(k+1)\\ 
+%& = \frac{k(k+1)}{2}+k+1 & (\text{by inductive hypothesis})\\
+%& = \frac{k(k+1)+2(k+1)}{2}\\
+%& = \frac{(k+1)(k+2)}{2}\\
+%& = \frac{(k+1)((k+1)+1)}{2}.
+%\end{align*}
+%\end{proof}
+% 
+%\begin{theorem}{x.yz}
+%Let $n\in \Z$.  Then yada yada.
+%\end{theorem}
+% 
+%\begin{proof}
+%Blah, blah, blah.  I'm so smart.
+%\end{proof}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 2 \underline{Episode 2}: The Algebraic Systems, Groups, Rings, and Fields Strikes Back
+}
+\author{Quinn Neumiiller} %if necessary, replace with your course title
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+
+\begin{question}{2b}
+Give the operation table for a binary operation on $A=\{a,b,c,d\}$ that has an identity and has inverses, but is not commutative. Show that your operation is not associative.
+\end{question}
+
+\begin{tabular}{l|llll}
+$\star$ & a & b & c & d \\
+\hline
+a       & a & b & c & d \\
+b       & b & a & c & d \\
+c       & c & d & a & b \\
+d       & d & c & b & a
+\end{tabular}
+
+$(c \star b) \star d =  c \star (b \star d)$
+
+$d \star d =  c \star d$
+
+$a\neq b$
+
+
+
+% --------------------------------------------------------------
+%                         Q3
+% --------------------------------------------------------------
+
+\begin{question}{3b}
+$\Z^+$ under multiplication.
+\end{question}
+
+\underline{Inverse?} \textbf{False.}
+
+$\forall z,y \in \Z^+$ : $z * y = e = y * z$
+
+$y=6$
+
+$z * y = 1 = y * z$
+
+$z * 6 = 1 = 6 * z$
+
+$z * 6 = 1 $
+
+$z = \frac{1}{6} $
+
+$\frac{1}{6} \notin \Z^+$. This holds for all values of $z,y$ except, in the case that $y=1$, $z= \frac{1}{1} = 1, 1 \in \Z^+$
+
+\begin{question}{3e}
+the set of even integers with respect to multiplication
+\end{question}
+
+\underline{Identity?} \textbf{False.}
+
+$y * e = y = e * y$\\
+
+$y * e = y$
+
+$e = \frac{y}{y}$
+
+$e = 1$\\
+
+$e * y = y$
+
+$e = \frac{y}{y}$
+
+$e = 1$
+
+$1 \notin \{$Even Integers\}, so there is no identity.
+
+\begin{question}{3f}
+the set of positive divisors of 10 with respect to GCD.
+\end{question}
+
+\underline{Inverse?} \textbf{False.}
+
+Given that the gcd-identity is 10.
+
+$gcd(y,x) = e = gcd(x,y)$
+
+$gcd(10,10) = 10$ \\
+
+$gcd(5,1) 	= 1$
+
+$gcd(5,2) 	= 2$
+
+$gcd(5,5) 	= 5$
+
+$gcd(5,10) 	= 5$
+
+$5$ does not have an inverse belong to the set of {positive divisors of 10}. 
+
+
+\begin{question}{3g}
+the set of surjective functions from $A$ to $A$ with respect to composition.
+\end{question}
+
+\underline{Inverse?} \textbf{False. There is a right inverse, but not a left inverse.}
+
+Consider a surjective function $f$ which maps $f(a)=f(c)=b$ where $a,b,c \in A$
+
+$f(c)=b$, therefore $f^{-1}(b) = c$ by definition of inverse.
+
+Although, we can see that $f(a)=f(c)=b$ which implies $f(a)=b$ meaning that $f^{-1}(b) = a$ as well.
+
+Since $f^{-1}(b)$ does not have a single unique answer, it is not a function, and not in the set $A$. 
+
+Furthermore this set contains elements with no inverses, so this set is not a group.
+
+\begin{question}{3i}
+the set of polynomials with real coefficients having constant term 1 under multiplication.
+\end{question}
+
+\underline{Inverse?} \textbf{False.}
+
+Given that the identity is 1.
+
+$y * y^{-1} = e$
+
+$y = (x+1)$
+
+$y * y^{-1} = e$
+
+$(x+1) * (x+1)^{-1} = 1$
+
+$(x+1) * \frac{1}{(x+1)} = 1$
+
+$\frac{1}{(x+1)} \notin $\{set of polynomials with real coefficients having constant term 1 under multiplication\}
+
+% --------------------------------------------------------------
+%                         Q4
+% --------------------------------------------------------------
+
+\begin{question}{4d}
+The set of functions $\R$ to $\R$ under + of values and function composition $\circ$
+\end{question}
+
+\underline{Distributive?} \textbf{False.}
+
+$f(x) = x-1$
+$g(x) = x+1$
+$h(x) = x+2$
+
+$f \circ (g+h) \stackrel{?}{=} f \circ g + f \circ h)$
+
+$f \circ (x+1+x+2)$
+
+$f(2x+3)$
+$2x+2$
+
+$f \circ g + f \circ h$
+
+$f(g(x)) + f(h(x))$
+
+$f(x+1) + f(x+2)$
+
+$x + x+1$
+
+$2x+1$
+
+$f \circ (g+h) \neq f \circ g + f \circ h)$
+
+% --------------------------------------------------------------
+%                         End Document
+% --------------------------------------------------------------
+\end{document}

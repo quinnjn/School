@@ -1,0 +1,748 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{a}
+%\author{Quinn Neumiiller}
+%\date{September 2013}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bbm}
+
+
+\usepackage{fancyhdr}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{Compiled on {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+
+
+%\begin{theorem}{x.yz} %You can use theorem, exercise, problem, or question here.  Modify x.yz to be whatever number you are proving
+%Delete this text and write theorem statement here.
+%\end{theorem}
+
+%Blah, blah, blah. \mathbb{Z} Here is an example of the \texttt{align} environment:
+%%Note 1: The * tells LaTeX not to number the lines.  If you remove the *, be sure to remove it below, too.
+%%Note 2: Inside the align environment, you do not want to use $-signs.  The reason for this is that this is already a math environment. This is why we have to include \text{} around any text inside the align environment.
+%\begin{align*}
+%\sum_{i=1}^{k+1}i & = \left(\sum_{i=1}^{k}i\right) +(k+1)\\ 
+%& = \frac{k(k+1)}{2}+k+1 & (\text{by inductive hypothesis})\\
+%& = \frac{k(k+1)+2(k+1)}{2}\\
+%& = \frac{(k+1)(k+2)}{2}\\
+%& = \frac{(k+1)((k+1)+1)}{2}.
+%\end{align*}
+%\end{proof}
+% 
+%\begin{theorem}{x.yz}
+%Let $n\in \Z$.  Then yada yada.
+%\end{theorem}
+% 
+%\begin{proof}
+%Blah, blah, blah.  I'm so smart.
+%\end{proof}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 4: Applications of Modular Arithmetic to Codes and
+Cryptography
+}
+\author{Quinn Neumiiller} %if necessary, replace with your course title
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q1
+% --------------------------------------------------------------
+
+\begin{question}{1}
+Check-digit codes. Check whether or not the following codewords are valid for the
+code given.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q1a
+% --------------------------------------------------------------
+
+\begin{question}{1a} %Finished
+the UPC number 7-80133-19831-7
+
+%\begin{tabular}{l|l|l|l}
+%i & a & ia & ia mod 10  \\
+%\hline
+%7 & 3 & 21 & 1 \\
+%8 & 1 & 8  & 8 \\
+%0 & 3 & 0  & 0 \\
+%1 & 1 & 1  & 1 \\
+%3 & 3 & 9  & 9 \\
+%3 & 1 & 3  & 3 \\
+%1 & 3 & 3  & 3 \\
+%9 & 1 & 9  & 9 \\
+%8 & 3 & 21 & 1 \\
+%3 & 1 & 3  & 3 \\
+%1 & 3 & 3  & 3 \\
+%7 & 1 & 7  & 7
+%\end{tabular}
+\begin{tabular}{l|cccccccccccc}
+\hline
+i     & 7  & 8 & 0 & 1 & 3 & 3 & 1 & 9 & 8 & 3 & 1 & 7 \\
+a     & 3  & 1 & 3 & 1 & 3 & 1 & 3 & 1 & 3 & 1 & 3 & 1\\
+\hline
+(i*a) & 21 & 8 & 0 & 1 & 9 & 3 & 3 & 9 & 24 & 3 & 3 & 7
+\end{tabular}
+
+\begin{align*}
+=&21 + 8 + 0 + 1 + 9 + 3 + 3 + 9 + 24 + 3 + 3 + 7\textrm{ mod } 10\\
+=&91 \textrm{ mod } 10\\
+=&1 \textrm{ mod } 10\\
+\end{align*}
+
+Not Valid.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q1b
+% --------------------------------------------------------------
+
+\begin{question}{1b} %Finished
+the ISBN-10 number 0-87150-334-X.
+
+\begin{tabular}{l|cccccccccc}
+\hline
+i     & 0  & 8  & 7  & 1  & 5  & 0  & 3  & 3  & 4 & 10 \\
+a     & 10 & 9  & 8  & 7  & 6  & 5  & 4  & 3  & 2 & 1 \\
+\hline
+(i*a) & 0  & 72 & 56 & 7  & 30 & 0  & 12 & 9  & 8 & 10
+\end{tabular}
+
+\begin{align*}
+=&0  + 72 + 56 + 7  + 30 + 0  + 12 + 9  + 8 + 10\textrm{ mod } 11\\
+=&204 \textrm{ mod } 11\\
+=&6 \textrm{ mod } 11
+\end{align*}
+
+Not Valid.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q1c
+% --------------------------------------------------------------
+
+\begin{question}{1c} %Finished
+the ISBN-10 number 0-13-319831-0.
+
+\begin{tabular}{l|cccccccccc}
+\hline
+i     & 0  & 1  & 3  & 3  & 1  & 9  & 8  & 3  & 1 & 0 \\
+a     & 10 & 9  & 8  & 7  & 6  & 5  & 4  & 3  & 2 & 1 \\
+\hline
+(i*a) & 0  & 9  & 24 & 21 & 6  & 45 & 32 & 9  & 2 & 0
+\end{tabular}
+
+\begin{align*}
+=& 0  + 9  + 24 + 21 + 6  + 45 + 32 + 9  + 2 + 0 \textrm{ mod } 11\\
+=& 148 \textrm{ mod } 11\\
+=& 5 \textrm{ mod } 11
+\end{align*}
+
+Not Valid.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q1d
+% --------------------------------------------------------------
+
+\begin{question}{1d} %Finished
+the ISBN-13 number 978-1-4292-6009-1
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 9  & 7  & 8  & 1  & 4  & 2  & 9  & 2  & 6  & 0 & 0 & 9 & 1\\
+a     & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3 & 1 & 3 & 1 \\ 
+\hline
+(i*a) & 9  & 21 & 8  & 3  & 4  & 6  & 9  & 6  & 6  & 0 & 0 & 27 & 1
+\end{tabular}
+
+\begin{align*}
+=& 9  + 21 + 8  + 3  + 4  + 6  + 9  + 6  + 6  + 0 + 0 + 27 + 1 \textrm{ mod } 10 \\
+=& 100 \textrm{ mod } 10 \\
+=& 0 \textrm{ mod } 10 \\
+\end{align*}
+
+Valid.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q1e
+% --------------------------------------------------------------
+
+\begin{question}{1e} %Finished
+the Bank ID number 145-79429-1.
+
+\begin{tabular}{l|ccccccccc}
+\hline
+i     & 1  & 4  & 5  & 7  & 9  & 4  & 2  & 9  & 1 \\
+a     & 7  & 3  & 9  & 7  & 3  & 9  & 7  & 3  & 9 \\ 
+\hline
+(i*a) & 7  & 12 & 45 & 49 & 27 & 36 & 14 & 27 & 9
+\end{tabular}
+
+\begin{align*}
+=& 7  + 12 + 45 + 49 + 27 + 36 + 14 + 27 + 9 \textrm{ mod } 10\\
+=& 226 \textrm{ mod } 10\\
+=& 6 \textrm{ mod } 10\\
+\end{align*}
+
+Not valid, $5 \neq 6$
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+
+\begin{question}{2} %Finished
+Error correction? You, the bookseller, have entered the following ISBN-13 number for
+the book you are trying to ring through the till:
+978-0-321-75277-2
+Although the codeword appears to be valid in the ISBN-13 system, it does not correspond
+to a book in your store's inventory. Assuming the ISBN is incorrect only because of a switch
+of 2 adjacent digits, what is its correct ISBN-13?
+(For fun: look up the actual title, author, and publisher of this book online.)
+
+\begin{align*}
+7-9 =&-2\\
+8-7 =& 1\\
+0-8 =& -8\\
+3-0=&3\\
+2-3=&-1\\
+1-2=&-1\\
+7-1=&6\\
+5-7=&-2\\
+2-5=&-3\\
+2-7=&-5
+\end{align*}
+Try switching 2 and 7.
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 9  & 7  & 8  & 0  & 3  & 2  & 1  & 7  & 5  & 7 & 2 & 7 & 2\\
+a     & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3  & 1  & 3 & 1 & 3 & 1 \\ 
+\hline
+(i*a) & 9  & 21 & 8  & 0  & 3  & 6  & 1  & 21 & 5  & 21& 2 &21 & 2
+\end{tabular}
+
+\begin{align*}
+=& 9  + 21 + 8  + 0  + 3  + 6  + 1  + 21 + 5  + 21+ 2 +21 + 2 \textrm{ mod } 10\\
+=& 120 \textrm{ mod } 10\\
+=& 0 \textrm{ mod } 10
+\end{align*}
+
+ISBN-13: 978-0-321-75727-2
+
+Title: Statistics : Informed Decisions Using Data with CD 4th
+
+Author: Michael Sullivan III
+
+Publisher: Addison Wesley
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q3
+% --------------------------------------------------------------
+
+\begin{question}{3}
+Passport numbers. The identication code used for international passports is:
+[(6 or 9-digit passport number)-(check digit)]-
+(3 letter country code)-[(6-digit birth date)-(check digit)]-
+(an M or F)-[(6-digit expiry date)-(check digit)]$>>>>>$(overall check digit)
+Each check digit is calculated using the check vector pattern (7; 3; 1; 7; 3; 1; :::) mod 10.
+The overall check digit is calculated with all of the preceding digits in the passport ID,
+including check digits, excluding letters.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q3a
+% --------------------------------------------------------------
+
+\begin{question}{3a} %Check with Alexa
+Verify the validity of the passport number
+044455533-1-USA-460920-5-M-040913-1$>>>>>>>>>>>>$8
+
+For my purposeses, I'm going to drop all the letters, and seperate the sections.
+[[044455533-1]-[460920-5]-[040913-1]$>>>>>>>>>>>>$8]
+
+Checking passport number.
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 0  & 4  & 4  & 4  & 5  & 5  & 5  & 3  & 3  & 1 \\
+a     & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
+\hline
+(i*a) & 0  & 12 & 4  & 28 & 15 & 5  & 35 & 9  & 3  & 7
+\end{tabular}
+
+\begin{align*}
+=& 0  + 12 + 4  + 28 + 15 + 5  + 35 + 9  + 3  + 7 \textrm{ mod } 10\\
+=& 118 \textrm{ mod } 10\\
+=& 8 \textrm{ mod } 10
+\end{align*}
+
+Passport number is invalid, hence the passport is invalid.
+
+% Checking birth date
+
+% \begin{tabular}{l|ccccccccccccc}
+% \hline
+% i     & 4  & 6  & 0  & 9  & 2  & 0  & 5 \\
+% a     & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
+% \hline
+% (i*a) & 28 & 18 & 0  & 63 & 6  & 0  & 35
+% \end{tabular}
+
+% \begin{align*}
+% =& 28 + 18 + 0  + 63 + 6  + 0  + 35 \textrm{ mod } 10\\
+% =& 150 \textrm{ mod } 10\\
+% =& 0 \textrm{ mod } 10
+% \end{align*}
+
+% Birth date is valid.
+
+
+% Checking Expiry date
+
+% \begin{tabular}{l|ccccccccccccc}
+% \hline
+% i     & 0  & 4  & 0  & 9  & 1  & 3  & 1 \\
+% a     & 7  & 3  & 1  & 7  & 3  & 1  & 7 \\
+% \hline
+% (i*a) & 0  & 12 & 0  & 63 & 3  & 3  & 7 
+% \end{tabular}
+
+% \begin{align*}
+% =& 0  + 12 + 0  + 63 + 3  + 3  + 7  \textrm{ mod } 10\\
+% =& 88 \textrm{ mod } 10\\
+% =& 8 \textrm{ mod } 10
+% \end{align*}
+
+% Expiry date is invalid.
+
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q3b
+% --------------------------------------------------------------
+
+\begin{question}{3b} %Finished
+Determine check digits to complete the following (fake) Canadian passport number:
+203241-?-CAN-840712-?-F-090215-?$>>>>>>>>>>$?
+
+Finding passport number.
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 2 & 0 & 3 & 2 & 4 & 1\\
+a     & 7 & 3 & 1 & 7 & 3 & 1\\
+\hline
+(i*a) & 14& 0 & 3 & 14& 12& 1
+\end{tabular}
+
+\begin{align*}
+=& 14+ 0 + 3 + 14+ 12+ 1 \textrm{ mod } 10\\
+=& 44\textrm{ mod } 10\\
+=& 4 \textrm{ mod } 10\\
+\end{align*}
+
+\begin{align*}
+=& 4 + 7(x)\textrm{ mod } 10\\
+11 =& 4 + 7(1)\textrm{ mod } 10\\
+18 =& 4 + 7(2)\textrm{ mod } 10\\
+25 =& 4 + 7(3)\textrm{ mod } 10\\
+32 =& 4 + 7(4)\textrm{ mod } 10\\
+39 =& 4 + 7(5)\textrm{ mod } 10\\
+46 =& 4 + 7(6)\textrm{ mod } 10\\
+53 =& 4 + 7(7)\textrm{ mod } 10\\
+60 =& 4 + 7(8)\textrm{ mod } 10\\
+\end{align*}
+
+Check digit for the passport number is 8.
+
+
+
+Checking birth date
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 8  & 4  & 0  & 7  & 1  & 2 \\
+a     & 7  & 3  & 1  & 7  & 3  & 1 \\
+\hline
+(i*a) & 56 & 12 & 0  & 49 & 3  & 2
+\end{tabular}
+
+\begin{align*}
+=& 56 + 12 + 0 + 49 + 3 + 2 \textrm{ mod } 10\\
+=& 122 \textrm{ mod } 10\\
+=& 2 \textrm{ mod } 10
+\end{align*}
+
+\begin{align*}
+=& 2 + 7(x)\textrm{ mod } 10\\
+9=& 2 + 7(1)\textrm{ mod } 10\\
+16=& 2 + 7(2)\textrm{ mod } 10\\
+23=& 2 + 7(3)\textrm{ mod } 10\\
+30=& 2 + 7(4)\textrm{ mod } 10\\
+\end{align*}
+
+\begin{align*}
+=& 56 + 12 + 0 + 49 + 3 + 2 + 7(4)\textrm{ mod } 10\\
+=& 56 + 12 + 0 + 49 + 3 + 2 + 28\textrm{ mod } 10\\
+=& 150 \textrm{ mod } 10\\
+=& 0 \textrm{ mod } 10
+\end{align*}
+
+Check digit for the birth date is 4.
+
+
+
+Checking Expiry date
+090215
+
+\begin{tabular}{l|ccccccccccccc}
+\hline
+i     & 0  & 9  & 0  & 2  & 1  & 5  \\
+a     & 7  & 3  & 1  & 7  & 3  & 1  \\
+\hline
+(i*a) & 0  & 27 & 0  & 14 & 3  & 5
+\end{tabular}
+
+\begin{align*}
+=& 0  + 27 + 0  + 14 + 3  + 5  \textrm{ mod } 10\\
+=& 49 \textrm{ mod } 10\\
+=& 9 \textrm{ mod } 10
+\end{align*}
+
+\begin{align*}
+=& 9 + 7(x)\textrm{ mod } 10\\
+16=& 9 + 7(1)\textrm{ mod } 10\\
+23=& 9 + 7(2)\textrm{ mod } 10\\
+30=& 9 + 7(3)\textrm{ mod } 10\\
+\end{align*}
+
+\begin{align*}
+=& 0  + 27 + 0  + 14 + 3  + 5 +7(3) \textrm{ mod } 10\\
+=& 0  + 27 + 0  + 14 + 3  + 5 + 21 \textrm{ mod } 10\\
+=& 70 \textrm{ mod } 10\\
+=& 0 \textrm{ mod } 10
+\end{align*}
+
+Check digit for expiry date is 3.
+
+
+
+Checking the full passport, aka: 203241884071240902153?
+
+\begin{tabular}{l|ccccccccccccccccccccc}
+\hline
+i     &  2  & 0  & 3  & 2  & 4  & 1  & 8  & 8  & 4  & 0  & 7  & 1  & 2  & 4  & 0  & 9  & 0  & 2  & 1  & 5  & 3 \\
+a     & 7   & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1  & 7  & 3  & 1 \\
+\hline
+(i*a) & 14 & 0 & 3  & 14  & 12 & 1  & 56 & 24 & 4  & 0  & 21 & 1  & 14 & 12 & 0  & 63 & 0  & 2  & 7  & 15 & 3
+\end{tabular}
+
+\begin{align*}
+=& 14  + 3   + 14   + 12  + 1   + 56  + 24  + 4   + 21  + 1   + 14  + 12  + 63  + 2   + 7   + 15  + 3 \textrm{ mod } 10\\
+=& 266 \textrm{ mod } 10\\
+=& 6 \textrm{ mod } 10
+\end{align*}
+
+\begin{align*}
+=& 6 + 7(x)\textrm{ mod } 10\\
+3=& 6 + 7(1)\textrm{ mod } 10\\
+0=& 6 + 7(2)\textrm{ mod } 10
+\end{align*}
+
+Final checkdigit on the passport is 2.
+
+Total valid passport is: 203241-8-CAN-840712-4-F-090215-3$>>>>>>>>>>$2
+
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q4
+% --------------------------------------------------------------
+
+\begin{question}{4}
+Hacking RSA cryptosystems.
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q4a
+% --------------------------------------------------------------
+
+\begin{question}{4a}
+Suppose an RSA cryptosystem has public key ($n$, $e$) = (6282, 197). Find the associated private key ($\phi(n)$, $d$)
+
+\begin{align*}
+\phi(n) &= \phi(3141) * \phi(2) \\
+        &= \phi(3141) * \phi(2) \\
+        &= \phi(349) * \phi(3^2) * \phi(2) \\
+        &= \phi(349) * \phi(3^2) * \phi(2) \\
+        &= 349^{1-1}(349-1) * 3^{2-1}(3-1) \\
+        &= 1(349-1) * 3(3-1) \\
+        &= 348 * 3(2)\\
+        &= 348 * 6 \\
+        &= 2088 \\
+\end{align*}
+
+private key = (2088, $d$)
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 2088 &= 197d = 1 \textrm{ mod }  2088 \\
+\end{align*}
+
+\begin{align*}
+2088 &= 197(10) + 118 \\
+197 &=  118(1)  + 79\\
+118 &=   79(1)  + 39\\
+79  &=   39(2)  +  1
+\end{align*}
+
+\begin{align*}
+1 &= 79 - 39(2)	\\
+1 &= 79 - (118-79)(2)	\\
+1 &= -118(2) +79(3)	\\
+1 &= -118(2) + (197-118)(3)	\\
+1 &= 197(3) -118(5)	\\
+1 &= 197(3) -(2088-197(10))(5)	\\
+1 &= 197(3) -2088(5) +197(50)	\\
+1 &= -2088(5) +197(53)	\\
+1 + 2088(5)&= 197(53)
+\end{align*}
+
+private key = (2088, 53)
+
+\end{question}
+% --------------------------------------------------------------
+%                         Q4b
+% --------------------------------------------------------------
+
+\begin{question}{4b}
+Let ($n$, $e$) = ($9991$, $11$) be the public key for an RSA cryptosystem that encrypts
+letters using the standard ASCII system. Decipher the transmitted message: 5752 7155
+
+\begin{align*}
+\phi(n) &= \phi(9991)\\
+		&= \phi(97)\phi(103)\\
+		&= 96 * 102\\
+		&= 9792
+\end{align*}
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 9792 &= 11d = 1 \textrm{ mod }  9792 \\
+\end{align*}
+
+
+\begin{align*}
+9792 &= 11(890) + 2 \\
+11 &= 2(5) + 1 \\
+\end{align*}
+
+\begin{align*}
+1 &= 11 - 2(5) \\
+1 &= 11 - (9792 - 11(890))(5) \\
+1 &= 11 - 9792(5) + 11(5)(890) \\
+1 &= - 9792(5) + 11(4451) \\
+1 + 9792(5) &= 11(4451) \\
+\end{align*}
+
+private key = ($9792$, $4451$)
+
+\begin{align*}
+5752^{4451} \textrm{ mod } 9991 &= 2440 \\
+7155^{4451} \textrm{ mod } 9991 &= 4228 \\
+\end{align*}
+
+24 40 42 28
+
+$\uparrow(*\lfloor$
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q5
+% --------------------------------------------------------------
+
+\begin{question}{5}
+Digital signatures. Bob's RSA cryptosystem uses public key (9379, 1837). Alice's uses
+public key (8453, 7).
+
+($n_A$, $e_A$) = ($8453$, $7$)
+
+($n_B$, $e_B$) = ($9379$, $1837$)
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q5a
+% --------------------------------------------------------------
+
+\begin{question}{5a}
+Verify that Bob's private key is (9184, 5) and Alice's private key is (8268, 7087).
+
+Bob's private key
+
+\begin{align*}
+\phi(n) &= \phi(9379)\\
+        &= \phi(83)\phi(113)\\
+        &= 82*112\\
+        &= 9184\\
+\end{align*}
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 9184 
+&= 1837d = 1 \textrm{ mod } 9184 \\
+\end{align*}
+
+\begin{align*}
+9184 &= 1837(4) + 1836 \\
+1837 &= 1836    + 1 \\
+\end{align*}
+
+\begin{align*}
+1 &= 1837 - 1836\\
+1 &= 1837 - (9184 - 1837(4))\\
+1 &= 1837 -9184 +1837(4)\\
+1 &= 1837(5) -9184\\
+1 \textrm{ mod } 9184 &= 1837(5)\\
+\end{align*}
+
+private key ($9184$,$5$)
+
+Alice's private key
+
+\begin{align*}
+\phi(n) &= \phi(8453)\\
+        &= \phi(107)\phi(79)\\
+        &= 106*78\\
+        &= 106*78\\
+        &= 8268
+\end{align*}
+
+\begin{align*}
+(d)(e) = 1 \textrm{ mod } 8268 \\
+&= 7d \textrm{ mod } 8268   \\
+&= 7(7087) \textrm{ mod } 8268   \\
+&= 49609 \textrm{ mod } 8268   \\
+&= 49609 \textrm{ mod } 8268   \\
+&= 1 \textrm{ mod } 8268   \\
+\end{align*}
+
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q5b
+% --------------------------------------------------------------
+
+\begin{question}{5b}
+Alice wants to send the signed message $ALGEBRA$ to Bob. She will encrypt in
+2-letter (4-digit) blocks using standard ASCII. What message should she transmit? Provide
+the calculations Bob will use to verify the signed message he receives without knowledge of
+Alice's private key.
+\end{question}
+
+\begin{tabular}{lllllll}
+A  & L  & G  & E  & B  & R  & A  \\ 
+\hline 
+65 & 76 & 71 & 69 & 66 & 82 & 65 
+\end{tabular}
+
+ALGEBRA split up into 4-digit blocks : $6576$ $7169$ $6682$ $0065$
+
+Encoding ALGEBRA
+
+\begin{align*}
+m^{d} \textrm{ mod } n &= c_a\\
+6576^{7087} \textrm{ mod } 8453 &= 6188 \\
+7169^{7087} \textrm{ mod } 8453 &= 1070 \\
+6682^{7087} \textrm{ mod } 8453 &= 4486 \\
+0065^{7087} \textrm{ mod } 8453 &= 1144 
+\end{align*}
+
+\begin{align*}
+c_a^{e_b} \textrm{ mod } n_b &= c_{ab}\\
+6188^{1837} \textrm{ mod } 9379 &= 9114 \\
+1070^{1837} \textrm{ mod } 9379 &= 57 \\
+4486^{1837} \textrm{ mod } 9379 &= 476 \\
+1144^{1837} \textrm{ mod } 9379 &= 1889 
+\end{align*}
+
+
+Alice would send $9114$ $57$ $476$ $1889$
+
+Bob decrypting
+
+\begin{align*}
+c^{d_b} \textrm{ mod } n_b &= c_{b}\\
+9114	^{5} \textrm{ mod } 9379 &= 6188 \\
+57		^{5} \textrm{ mod } 9379 &= 1070 \\
+476		^{5} \textrm{ mod } 9379 &= 4486 \\
+1889	^{5} \textrm{ mod } 9379 &= 1144
+\end{align*}
+
+\begin{align*}
+c^{e_a} \textrm{ mod } n_a &= m\\
+6188	^{7} \textrm{ mod } 8453 = 6576 \\
+1070	^{7} \textrm{ mod } 8453 = 7169 \\
+4486	^{7} \textrm{ mod } 8453 = 6682 \\
+1144	^{7} \textrm{ mod } 8453 = 0065 \\
+\end{align*}
+
+$6576$ $7169$ $6682$ $0065$ = ALGEBRAy
+
+\end{document}

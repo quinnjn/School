@@ -1,0 +1,313 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{a}
+%\author{Quinn Neumiiller}
+%\date{September 2013}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bbm}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+
+
+%\begin{theorem}{x.yz} %You can use theorem, exercise, problem, or question here.  Modify x.yz to be whatever number you are proving
+%Delete this text and write theorem statement here.
+%\end{theorem}
+
+%Blah, blah, blah. \mathbb{Z} Here is an example of the \texttt{align} environment:
+%%Note 1: The * tells LaTeX not to number the lines.  If you remove the *, be sure to remove it below, too.
+%%Note 2: Inside the align environment, you do not want to use $-signs.  The reason for this is that this is already a math environment. This is why we have to include \text{} around any text inside the align environment.
+%\begin{align*}
+%\sum_{i=1}^{k+1}i & = \left(\sum_{i=1}^{k}i\right) +(k+1)\\ 
+%& = \frac{k(k+1)}{2}+k+1 & (\text{by inductive hypothesis})\\
+%& = \frac{k(k+1)+2(k+1)}{2}\\
+%& = \frac{(k+1)(k+2)}{2}\\
+%& = \frac{(k+1)((k+1)+1)}{2}.
+%\end{align*}
+%\end{proof}
+% 
+%\begin{theorem}{x.yz}
+%Let $n\in \Z$.  Then yada yada.
+%\end{theorem}
+% 
+%\begin{proof}
+%Blah, blah, blah.  I'm so smart.
+%\end{proof}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 2 Algebraic Systems, Groups, Rings, and Fields
+}
+\author{Quinn Neumiiller} %if necessary, replace with your course title
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q1
+% --------------------------------------------------------------
+
+\begin{question}{1}
+Let $A$ be a set with binary operations $\odot$. Supposed $\odot$ is associative and has identity.
+\end{question}
+
+\begin{question}{1(a)}
+Invent some suitable but weird notation for the $\odot$-inverse on an element $x$ of $A$, other than $-x$ or $x^{-1}$. (Warning: It is pretty hard to get this wrong.)
+\end{question}
+
+$x^{\copyright}$
+
+\begin{question}{1(b)}
+Suppose $x$ and $y$ are elements of $A$ that have $\odot$-inverses. Simplify the inverse of $x\odot y$ using the notation you introduced in part(a)
+\end{question}
+
+${(x\odot y)}^{\copyright}$ = $y^{\copyright}\odot x^{\copyright}$
+
+
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+
+\begin{question}{2}
+Let A be a set with 4 elements
+\end{question}
+
+\begin{question}{2a}
+How many binary operations of $A$ are possible?
+\end{question}
+
+$n^{n^2} = 4^{4^2}$
+$= 4^{16}$
+$= 4^{16}$
+$= 4\ 294\ 967\ 296$
+\begin{question}{2b}
+Give the operation table for a binary operation on $A=\{a,b,c,d\}$ that has an identity and has inverses, but is not commutative. Show that your operation is not associative.
+\end{question}
+
+\begin{tabular}{l|llll}
+$\star$ & a & b & c & d \\
+\hline
+a       & a & b & c & d \\
+b       & a & a & c & d \\
+c       & a & d & a & b \\
+d       & a & c & b & a
+\end{tabular}
+
+$(c \star b) \star d =  c \star (b \star d)$
+
+$d \star d =  c \star d$
+
+$a\neq b$
+
+
+
+% --------------------------------------------------------------
+%                         Q3
+% --------------------------------------------------------------
+
+
+\begin{question}{3}
+Device whether or not each set is a group with respect to the indicated operation. If it is a group, just say "yes it is a group". If it is not a group, find the first of the four group properties (closed, associative, identity, inverses) that does not hold, and show that it does not hold.
+\end{question}
+
+\begin{question}{3a}
+$\R$ - $\Q$ under addition.
+\end{question}
+
+\underline{Closed?} \textbf{False. $0 \notin (\R-\Q)$}
+
+$-\sqrt{2} + \sqrt{2} = 0$. 
+
+
+\begin{question}{3b}
+$\Z^+$ under multiplication.
+\end{question}
+
+\underline{Inverse?} \textbf{False. $\frac{1}{y} \notin \Z^+$.}
+
+$\forall z,y \in \Z^+$ : $z * y = e = y * z$
+
+$z * y = 1 = y * z$
+
+$y = \frac{1}{z}$
+
+
+\begin{question}{3c}
+the half-open interval (0,1] under multiplication.
+\end{question}
+
+\underline{Inverse?} \textbf{False. $\frac{1}{0.5} \notin (0,1]$, because $\frac{1}{0.5} > 1$}
+
+$\forall z,y \in (0,1]$ : $z * y = e = y * z$
+
+$z=0.5$
+
+$z * y = 1 = y * z$
+
+$y = \frac{1}{0.5}$
+
+
+\begin{question}{3d}
+the set of even integers with respect to addition
+\end{question}
+
+\textbf{yes it is a group}
+
+\begin{question}{3e}
+the set of even integers with respect to multiplication
+\end{question}
+
+\underline{Identity?} \textbf{False.}
+
+
+
+\begin{question}{3f}
+the set of positive divisors of 10 with respect to GCD.
+\end{question}
+
+\underline{Inverse?} \textbf{False.}
+
+Given that the gcd-identity is 10.
+
+$a=10$ $b=5$
+
+$gcd(10,5) = 5$ 
+
+$5 \neq 10$
+
+\begin{question}{3g}
+the set of surjective functions from $A$ to $A$ with respect to composition.
+\end{question}
+
+\underline{Inverse?} \textbf{False. There is a right inverse, but not a left inverse.}
+
+$f(x) \circ g(x) = e(x) = g(x) \circ f(x)$
+
+It is possible given $g(x) = y$ that $f(g(x)) = f(y) = y$ but impossible for $y(f(x)) = e(x)$
+
+$f(x) \circ g(x) = e(x)$
+
+$f(g(x)) = e(x)$
+
+$f(y) = e(x)$
+
+\begin{question}{3h}
+the set of 2 x 2 matrices of the form $\begin{bmatrix}
+  x & -y \\
+  y & x  \\
+ \end{bmatrix}$ satisfying $x^2 + y^2 = 1$ under matrix multiplication.
+
+\end{question}
+
+\textbf{yes it is a group}
+
+\begin{question}{3i}
+the set of polynomials with real coefficients having constant term 1 under multiplication.
+\end{question}
+
+\textbf{yes it is a group}
+
+\begin{question}{3j}
+the set of permutations $f$ of \{1,2,3\} with f(2) = 1 under composition.
+\end{question}
+
+\underline{Closed?} \textbf{False. If f(2) = 1, then f(g(2)) should equal 1. Although this is not the case we see in the example provided. }
+
+\begin{tabular}{l|llll}
+    & $f(x)$ & $g(x)$ & $f(g(x))$ \\
+    \hline
+ 1  & $2$    & $3$    & $3$ \\
+ 2  & $1$    & $1$    & $2$ \\
+ 3  & $3$    & $2$    & $1$ \\
+\end{tabular}
+
+% --------------------------------------------------------------
+%                         Q4
+% --------------------------------------------------------------
+
+\begin{question}{4}
+Decide if the following sets with two operations are rings. If it is not, find the first property of the ring definition that fails to hold. If it is a ring, also determine if it is an integral domain or a field.
+\end{question}
+
+
+\begin{question}{4a}
+The set of nonnegative real numbers with respect to + and $\times$
+\end{question}
+
+\underline{Inverse?} \textbf{False, not a ring. In order for additive Abelian groups to have an inverse, the set needs to include negative real numbers. }
+
+\begin{question}{4b}
+The set of even integers with respect to + and $\times$
+\end{question}
+
+\underline{Identity?} \textbf{False, not a ring. The identity for $\times$ is 1, where $1 \notin \{$Even Integers$\}$}
+
+\begin{question}{4c}
+The set $D = \{x+y\sqrt{2} : x, y \in \Z\}$ under + and $\times$
+\end{question}
+
+\underline{Checking for field, Inverse?} \textbf{False. The inverse for $a+b\sqrt{2}$ is $\frac{1}{a+b\sqrt{2}}$ which is not in set $D$. ($D$, +, $\times$) is a ring, and a integral domain.}
+
+\begin{question}{4d}
+The set of functions $\R$ to $\R$ under + of values and function composition $\circ$
+\end{question}
+
+\underline{Checking for field, Inverse?} \textbf{False. The set of composition functions includes more than bijections. Bijections are the only composition functions to satisfy inverses. ($\R$, +, $\circ$) is a ring, and a integral domain.}
+
+
+\begin{question}{4e}
+The set of 2 x 2 matricies of the form $\begin{bmatrix}
+  x & -y \\
+  y & x  \\
+ \end{bmatrix}$ with $x,y \in \R$ under matrix addition and matrix multiplication. 
+\end{question}
+
+\textbf{This is a ring, a integral domain, and a field.}
+
+% --------------------------------------------------------------
+%                         End Document
+% --------------------------------------------------------------
+\end{document}

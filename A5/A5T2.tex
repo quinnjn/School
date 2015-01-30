@@ -1,0 +1,205 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{a}
+%\author{Quinn Neumiiller}
+%\date{September 2013}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bbm}
+
+
+\usepackage{fancyhdr}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{Compiled on {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Samples
+% --------------------------------------------------------------
+
+
+%\begin{theorem}{x.yz} %You can use theorem, exercise, problem, or question here.  Modify x.yz to be whatever number you are proving
+%Delete this text and write theorem statement here.
+%\end{theorem}
+
+%Blah, blah, blah. \mathbb{Z} Here is an example of the \texttt{align} environment:
+%%Note 1: The * tells LaTeX not to number the lines.  If you remove the *, be sure to remove it below, too.
+%%Note 2: Inside the align environment, you do not want to use $-signs.  The reason for this is that this is already a math environment. This is why we have to include \text{} around any text inside the align environment.
+%\begin{align*}
+%\sum_{i=1}^{k+1}i & = \left(\sum_{i=1}^{k}i\right) +(k+1)\\ 
+%& = \frac{k(k+1)}{2}+k+1 & (\text{by inductive hypothesis})\\
+%& = \frac{k(k+1)+2(k+1)}{2}\\
+%& = \frac{(k+1)(k+2)}{2}\\
+%& = \frac{(k+1)((k+1)+1)}{2}.
+%\end{align*}
+%\end{proof}
+% 
+%\begin{theorem}{x.yz}
+%Let $n\in \Z$.  Then yada yada.
+%\end{theorem}
+% 
+%\begin{proof}
+%Blah, blah, blah.  I'm so smart.
+%\end{proof}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Math 223 \\
+Assignment 5: Examples of Groups, Attempt #2
+}
+\author{Quinn Neumiiller}
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Q1
+% --------------------------------------------------------------
+
+\begin{question}{1b} Show that $a$ and $b^{-1}ab$ have the same order.
+
+Claim: $|a| = |b^{-1}ab|$
+\begin{proof}
+Let $|a|=m$, $|b^{-1}ab|=n$
+
+$a^m = e, (b^{-1}ab)^n = e$
+
+$(b^{-1}ab)^n = e$
+
+$b^{-1}a^nb = e$
+
+$a^n = e$ Since the order of $a^m$ must be the least such exponent, $m \leq n$.
+
+
+Alternatively, 
+
+$a^m = e$
+
+$b^{-1}(a^m) = b^{-1}(e)$
+
+$(b^{-1}a^m) = b^{-1}$
+
+$b(b^{-1}a^m) = b(b^{-1})$
+
+$ba^mb^{-1} = e$ Since the order of $b^{-1}a^nb$ must be the least such exponent, $n \leq m$.
+
+Since, $m \leq n$ and $n \leq m$ then $m = n$.
+\end{proof}
+\end{question}
+
+\begin{question}{1c} Show that $ab$ and $ba$ have the same order.
+
+Claim: $|ab| = |ba|$
+\begin{proof}
+Let $|ab|=m$, $|ba|=n$
+
+$(ab)^m = e$
+
+$a(ba)^{(m-1)}b = e$
+
+$(a^{-1})(a(ba)^{(m-1)}b) = (a^{-1})(e)$
+
+$(ba)^{(m-1)}b = a^{-1}$
+
+$(a)((ba)^{(m-1)}b) = (a)a^{-1}$
+
+$(ba)^{(m-1)}(ab) = e$
+
+$(ba)^{m} = e$ Since the order of $ba$ must be the least such exponent, $n \leq m$.
+
+Alternatively,
+
+$(ba)^n = e$
+
+$b(ab)^{(n-1)}a = e$
+
+$(b^{-1})(b(ab)^{(n-1)}a) = b^{-1}e$
+
+$(ab)^{(n-1)}a = b^{-1}e$
+
+$(b) ((ab)^{(n-1)}a) = (b)b^{-1}e$
+
+$(ab)^{(n-1)}(ab) = e$
+
+$(ab)^{n} = e$ Since the order of $ab$ must be the least such exponent, $m \leq n$.
+
+Since, $m \leq n$ and $n \leq m$ then $m = n$, giving $|ab| = |ba|$
+\end{proof}
+\end{question}
+
+% --------------------------------------------------------------
+%                         Q2
+% --------------------------------------------------------------
+
+\begin{question}{2}
+
+Claim: $m=|a|=|b|$
+
+\begin{proof}
+
+$bx = a$ mod $n$
+
+$b^{-1}(bx) = b^{-1}a$ mod $n$
+
+$x = b^{-1}a$ mod $n$
+
+We need to verify that b has an inverse in $\Z_n$.
+
+There is an element $e \in  \langle b \rangle$, which is the $m$th element of $ \langle b \rangle$ such that $bm \equiv e $ mod $n$.
+
+$m$ is the inverse, due to this. 
+
+Therefore $x = ma$ mod $n$, and $a \in  \langle b \rangle$.
+
+if $a \in  \langle b \rangle$, then $\forall i \in  \langle a \rangle : i \in  \langle b \rangle$, so $ \langle a \rangle \subseteq  \langle b \rangle$.
+
+Finally, since $ \langle a \rangle \subseteq  \langle b \rangle$, and the size of $ \langle a \rangle$ equals the size of $ \langle b \rangle$, $ \langle a \rangle =  \langle b \rangle$.  
+
+\end{proof}
+\end{question}
+
+\end{document}
