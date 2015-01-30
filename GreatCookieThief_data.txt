@@ -1,0 +1,13 @@
+IsCookieThief:TRUE	BlueFur:TRUE	GooglyEyes:TRUE	BlackHat:TRUE	RedScarf:TRUE
+IsCookieThief:TRUE	BlueFur:TRUE	GooglyEyes:TRUE	BlackHat:TRUE	RedScarf:TRUE
+IsCookieThief:TRUE	BlueFur:TRUE	GooglyEyes:TRUE	BlackHat:FALSE	RedScarf:FALSE
+IsCookieThief:TRUE	BlueFur:TRUE	GooglyEyes:TRUE	BlackHat:TRUE	RedScarf:FALSE
+IsCookieThief:FALSE	BlueFur:FALSE	GooglyEyes:FALSE	BlackHat:FALSE	RedScarf:FALSE
+IsCookieThief:FALSE	BlueFur:FALSE	GooglyEyes:FALSE	BlackHat:FALSE	RedScarf:FALSE
+IsCookieThief:FALSE	BlueFur:FALSE	GooglyEyes:FALSE	BlackHat:TRUE	RedScarf:FALSE
+IsCookieThief:FALSE	BlueFur:FALSE	GooglyEyes:FALSE	BlackHat:TRUE	RedScarf:TRUE
+IsCookieThief:FALSE	BlueFur:FALSE	GooglyEyes:FALSE	BlackHat:FALSE	RedScarf:TRUE
+IsCookieThief:FALSE	BlueFur:TRUE	GooglyEyes:FALSE	BlackHat:TRUE	RedScarf:FALSE
+IsCookieThief:FALSE	BlueFur:FALSE	GooglyEyes:TRUE	BlackHat:FALSE	RedScarf:FALSE
+IsCookieThief:FALSE	BlueFur:FALSE	GooglyEyes:FALSE	BlackHat:TRUE	RedScarf:FALSE
+IsCookieThief:FALSE	BlueFur:TRUE	GooglyEyes:TRUE	BlackHat:TRUE	RedScarf:TRUE

@@ -1,0 +1,147 @@
+\documentclass{article}
+%--Packages------------
+\usepackage{fancyvrb}
+\usepackage{alltt}
+
+%----------------------
+
+%--Variables-----------
+\newcommand{\AssignmentNum}{4}
+\newcommand{\QuestionNum}{1}
+\newcommand{\AssignmentTitle}{The Reverend to the Rescue}
+\newcommand{\AssignmentDate}{\today}
+%----------------------
+
+%--Title & Author------
+\title{CMPT 317, Term 2, 2013\\
+Assignment \AssignmentNum\\
+Question \QuestionNum\\
+\AssignmentTitle
+}
+\author{
+    \begin{tabular}{ l r }
+      Name: & Quinn Neumiiller \\
+      NSID: & qjn162 \\
+      Student \# & 11065618 \\
+    \end{tabular}
+}
+\date{\AssignmentDate}
+%----------------------
+
+%--Document------------
+\begin{document}
+   \maketitle
+   
+   \section{Compiling}
+   Not required for Python
+
+   \section{Execution}
+   To execute, change the terminal directory to where this PDF file sits.
+   You will need to specify the file containing the NBC structure data and the NBC data
+   Then in the terminal execute:
+    \begin{alltt}
+    python src/Q\QuestionNum.py <NBC Structure Data File> <NBC Data File>
+    \end{alltt}
+   Example:
+    \begin{alltt}
+    python src/Q\QuestionNum.py AndGate.txt AndGate_data.txt
+    \end{alltt}
+
+  \section{Usage}
+    No usage required, script is self automated
+  \section{Explanation}
+    The script will take in the the NBC structure data file and determine the Class Variable and the remaining Evidence Variables.
+
+    It will then load the NBC data file, which the program will determine the probability for each variable.
+
+    \subsection{Class Variable Probability}
+
+    This is simply determining if the class variable is true or false in this line, giving us the probability of each observed
+    case if it was True or False.
+
+    \subsection{Evidence Variable Probability}
+
+    Similar to the Class Variable Probability where we are determining in each observed case if it was T or F but we also
+    care to know if the Class Variable was T or F in this case. So we actually have 4 probabilities for each Evidence Variable:
+
+    \begin{itemize}
+    \item     $P(Evidence | Class)$
+    \item     $P(Evidence | \lnot Class)$
+    \item     $P(\lnot Evidence | Class)$
+    \item     $P(\lnot Evidence | \lnot Class)$
+    \end{itemize}
+
+
+  \section{Output from Examples}
+  \subsection{AndGate}
+  \begin{alltt}
+Class Variables:
+  P(AndGate == True)  = 2/8 or 0.25
+  P(AndGate == False)   = 6/8 or 0.75
+
+Class(False) Evidence Variables:
+  P(BitOne == True)   = 2/6 or 0.33
+  P(BitOne == False)  = 4/6 or 0.67
+  P(BitTwo == True)   = 2/6 or 0.33
+  P(BitTwo == False)  = 4/6 or 0.67
+
+Class(True) Evidence Variables:
+  P(BitOne == True)   = 2/2 or 1.00
+  P(BitOne == False)  = 0/2 or 0.00
+  P(BitTwo == True)   = 2/2 or 1.00
+  P(BitTwo == False)  = 0/2 or 0.00
+  \end{alltt}
+
+  \subsection{CantBelieveItsNotButter}
+  \begin{alltt}
+Class Variables:
+  P(Butter == True)   = 8/19 or 0.42
+  P(Butter == False)  = 11/19 or 0.58
+
+Class(False) Evidence Variables:
+  P(Tasty == True)  = 5/11 or 0.45
+  P(Tasty == False)   = 6/11 or 0.55
+  P(Smooth == True)   = 5/9 or 0.56
+  P(Smooth == False)  = 4/9 or 0.44
+  P(Yellow == True)   = 4/9 or 0.44
+  P(Yellow == False)  = 5/9 or 0.56
+
+Class(True) Evidence Variables:
+  P(Tasty == True)  = 5/7 or 0.71
+  P(Tasty == False)   = 2/7 or 0.29
+  P(Smooth == True)   = 2/7 or 0.29
+  P(Smooth == False)  = 5/7 or 0.71
+  P(Yellow == True)   = 7/7 or 1.00
+  P(Yellow == False)  = 0/7 or 0.00
+  \end{alltt}
+
+  \subsection{GreatCookieThief}
+  \begin{alltt}
+Class Variables:
+  P(IsCookieThief == True)  = 4/13 or 0.31
+  P(IsCookieThief == False)   = 9/13 or 0.69
+
+Class(False) Evidence Variables:
+  P(BlackHat == True)   = 5/9 or 0.56
+  P(BlackHat == False)  = 4/9 or 0.44
+  P(RedScarf == True)   = 3/9 or 0.33
+  P(RedScarf == False)  = 6/9 or 0.67
+  P(BlueFur == True)  = 2/9 or 0.22
+  P(BlueFur == False)   = 7/9 or 0.78
+  P(GooglyEyes == True)   = 2/9 or 0.22
+  P(GooglyEyes == False)  = 7/9 or 0.78
+
+Class(True) Evidence Variables:
+  P(BlackHat == True)   = 3/4 or 0.75
+  P(BlackHat == False)  = 1/4 or 0.25
+  P(RedScarf == True)   = 2/4 or 0.50
+  P(RedScarf == False)  = 2/4 or 0.50
+  P(BlueFur == True)  = 4/4 or 1.00
+  P(BlueFur == False)   = 0/4 or 0.00
+  P(GooglyEyes == True)   = 4/4 or 1.00
+  P(GooglyEyes == False)  = 0/4 or 0.00
+  \end{alltt}
+
+\end{document}
+%----------------------
+
