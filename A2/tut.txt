@@ -1,0 +1,22 @@
+(1)
+Constraint of midterm dates
+Midterm.constraints.txt
+
+Max value of N which search gives solution
+For which N+1 doesnt return results
+
+(2)
+-------------------------------
+Scheduling assignment due dates
+-------------------------------
+4 assignments, 4 varbs
+
+What are values? Jan 17 - April 9th
+Cannot pick during midterm break
+
+0-4 max value of X
+
+(3)
+MRV - picks variable with min of numbers in domain
+Degree Heuristic - Increasing the branch factor
+  Finding the variable with most number of constraints
